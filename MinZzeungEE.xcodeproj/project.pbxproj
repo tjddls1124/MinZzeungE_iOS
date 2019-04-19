@@ -12,6 +12,10 @@
 		3D90632122438152007ED6B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D90631F22438152007ED6B7 /* Main.storyboard */; };
 		3D90632322438153007ED6B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D90632222438153007ED6B7 /* Assets.xcassets */; };
 		3D90632622438153007ED6B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D90632422438153007ED6B7 /* LaunchScreen.storyboard */; };
+		3D916AF3224CC3E100F2611A /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D916AF2224CC3E100F2611A /* MyTableViewController.swift */; };
+		3D916AF7224CC4D900F2611A /* ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D916AF6224CC4D900F2611A /* ID.swift */; };
+		3DC367952269E36900633672 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC367942269E36900633672 /* DetailViewController.swift */; };
+		3DC8D318224E051500C3170F /* IDListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8D317224E051500C3170F /* IDListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		3D90632222438153007ED6B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D90632522438153007ED6B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D90632722438153007ED6B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D916AF2224CC3E100F2611A /* MyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
+		3D916AF6224CC4D900F2611A /* ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ID.swift; sourceTree = "<group>"; };
+		3DC367942269E36900633672 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		3DC8D317224E051500C3170F /* IDListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +67,11 @@
 				3D90631F22438152007ED6B7 /* Main.storyboard */,
 				3D90632222438153007ED6B7 /* Assets.xcassets */,
 				3D90632422438153007ED6B7 /* LaunchScreen.storyboard */,
+				3DC367942269E36900633672 /* DetailViewController.swift */,
 				3D90632722438153007ED6B7 /* Info.plist */,
+				3D916AF2224CC3E100F2611A /* MyTableViewController.swift */,
+				3D916AF6224CC4D900F2611A /* ID.swift */,
+				3DC8D317224E051500C3170F /* IDListCell.swift */,
 			);
 			path = MinZzeungEE;
 			sourceTree = "<group>";
@@ -135,7 +147,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D916AF7224CC4D900F2611A /* ID.swift in Sources */,
 				3D90631E22438152007ED6B7 /* ViewController.swift in Sources */,
+				3D916AF3224CC3E100F2611A /* MyTableViewController.swift in Sources */,
+				3DC367952269E36900633672 /* DetailViewController.swift in Sources */,
+				3DC8D318224E051500C3170F /* IDListCell.swift in Sources */,
 				3D90631C22438152007ED6B7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
