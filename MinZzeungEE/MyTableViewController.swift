@@ -53,6 +53,7 @@ class MyTableViewController: UITableViewController{
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return idList.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,5 +76,10 @@ class MyTableViewController: UITableViewController{
             dest.id = item
         }
         else {return}
+    }
+    
+    //unwind Code 추가, add 시에 Modal에서 데이터를 전달받기 위한 Code
+    @IBAction func unwindToIDList(segue:UIStoryboardSegue){
+        print("unwind")
     }
 }
