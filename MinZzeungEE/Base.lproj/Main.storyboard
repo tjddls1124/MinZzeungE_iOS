@@ -45,7 +45,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="MainMenu" id="BXP-qi-0yQ">
-                        <barButtonItem key="backBarButtonItem" title="CP" id="nsk-Qo-OJ5"/>
+                        <barButtonItem key="backBarButtonItem" title="Main" id="nsk-Qo-OJ5"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -290,6 +290,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="신분증목록" id="jXr-y3-YJ4">
+                        <barButtonItem key="backBarButtonItem" title="ID_List" id="WWL-cG-39k"/>
                         <barButtonItem key="rightBarButtonItem" title="Add ID" id="oYp-7N-FMb">
                             <connections>
                                 <segue destination="Amy-UE-6De" kind="presentation" id="n3V-GJ-CC0"/>
@@ -304,7 +305,7 @@
         <!--Detail View Controller-->
         <scene sceneID="aaA-12-Dek">
             <objects>
-                <viewController id="bHo-hf-hG9" customClass="DetailViewController" customModule="MinZzeungEE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="bHo-hf-hG9" customClass="DetailViewController" customModule="MinZzeungEE" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CBn-Ks-dZi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -323,7 +324,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJ3-GN-vqi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3789.5999999999999" y="-109.35960591133005"/>
+            <point key="canvasLocation" x="3934" y="-92"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="p3v-oo-6HQ">
