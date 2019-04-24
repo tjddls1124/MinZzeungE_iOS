@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ColorPallet-->
+        <!--MainMenu-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MinZzeungEE" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,9 +19,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2PR-NH-HGP">
-                                <rect key="frame" x="291" y="183" width="51" height="19"/>
+                                <rect key="frame" x="148" y="182" width="79" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Next">
+                                <state key="normal" title="ID List">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -29,10 +29,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQd-uj-aNk">
-                                <rect key="frame" x="289" y="234" width="51" height="30"/>
+                                <rect key="frame" x="164" y="317" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                <state key="normal" title="Orange">
+                                <state key="normal" title="Menu2">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -44,7 +44,7 @@
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="ColorPallet" id="BXP-qi-0yQ">
+                    <navigationItem key="navigationItem" title="MainMenu" id="BXP-qi-0yQ">
                         <barButtonItem key="backBarButtonItem" title="CP" id="nsk-Qo-OJ5"/>
                     </navigationItem>
                 </viewController>
@@ -72,12 +72,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="130"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="130" id="73w-Oj-SGK"/>
-                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="EuY-fF-vaD"/>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="130" id="EuY-fF-vaD"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="nameLabel" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rc1-vL-Kmz">
                                             <rect key="frame" x="148" y="0.0" width="200" height="59"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <accessibility key="accessibilityConfiguration">
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
@@ -86,7 +86,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="kindLabel" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bg-Tj-yq8">
-                                            <rect key="frame" x="158" y="49" width="124" height="54"/>
+                                            <rect key="frame" x="148" y="48" width="200" height="54"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <accessibility key="accessibilityConfiguration" label="la"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -134,7 +134,7 @@
                         <viewLayoutGuide key="safeArea" id="UX2-BT-ioX"/>
                     </view>
                     <connections>
-                        <outlet property="idImageView" destination="3lT-q8-RGT" id="RiR-aP-m8h"/>
+                        <outlet property="idImageView" destination="3lT-q8-RGT" id="ysa-Rh-FRj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJ3-GN-vqi" userLabel="First Responder" sceneMemberID="firstResponder"/>

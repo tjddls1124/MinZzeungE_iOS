@@ -18,8 +18,8 @@ class MyTableViewController: UITableViewController{
         tableView.delegate = self
         
         //data insert
-        let personID  = ID.init(kind: idKind.ID_Card, name: "하니",idFirstNum: "930215",idLastNum: "1xxxxxx",enrollDate: "",imageFilePath: "idEx",isVaild: false)
-        let person2ID = ID.init(kind: idKind.DriverLicense, name: "Hong", idFirstNum: "930215", idLastNum: "1xxxxxx", enrollDate: "", imageFilePath: "lcguide02", isVaild: false)
+            let personID  = ID.init(kind: .ID_Card, name: "하니",idFirstNum: "930215",idLastNum: "1xxxxxx",enrollDate: "",imageFilePath: "idEx",isVaild: false)
+        let person2ID = ID.init(kind: ID.idKind.DriverLicense , name: "Hong", idFirstNum: "930215", idLastNum: "1xxxxxx", enrollDate: "", imageFilePath: "lcguide02", isVaild: false)
         idList.append(personID)
         idList.append(person2ID)
         
@@ -59,13 +59,9 @@ class MyTableViewController: UITableViewController{
         let row = idList[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "idListCell") as! IDListCell
         cell.idImageView.image = UIImage(named:row.imageFilePath)
-        var kindString : String
-        if row.kind == idKind.DriverLicense {
-            kindString = "분류 : 운전면허증"
-        }
-        else {
-            kindString = "분류 : 주민등록증"
-        }
+        var kindString = row.kind.idKind_korString
+        kindString = "분류 : \(kindString)"
+        
         cell.nameLabel.text = "이름 : \(row.name)"
         cell.kindLabel.text = "\(kindString)"
         
