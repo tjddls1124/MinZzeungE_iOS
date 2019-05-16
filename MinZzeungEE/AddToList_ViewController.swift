@@ -200,7 +200,7 @@ class AddToList_ViewController: UITableViewController {
             //추출된 정보 배열로 저장
             let extractedText = text.split(separator: "\n")
             
-            guard let idFirstNum = self.textField_idFirsttNum.text, let idLastNum = self.textField_idLastNum.text, let name = self.textField_name else { return }
+            guard let idFirstNum = self.textField_idFirsttNum.text, let idLastNum = self.textField_idLastNum.text, let name = self.textField_name.text else { return }
 
             //추출정보와 입력정보가 일치한지 확인
             for text in extractedText{
@@ -214,7 +214,7 @@ class AddToList_ViewController: UITableViewController {
                     // ref.child("idData/idLastNum").setValue("\(idLastNum)")
                     
                     // data 추가방법
-                    ref.childByAutoId().setValue(["name": name, "idFirstNum": idFirstNum, "idLastNum": idLastNum])
+                     ref.childByAutoId().setValue(["name": name, "idFirstNum": idFirstNum, "idLastNum": idLastNum])
                     
                     // data 읽어오기
 //                    ref.child("idData").observeSingleEvent(of: .value, with: {
