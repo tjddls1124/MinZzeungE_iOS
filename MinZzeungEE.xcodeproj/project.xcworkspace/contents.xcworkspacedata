@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:TextExtractor.xcodeproj">
+      location = "self:MinZzeungEE.xcodeproj">
    </FileRef>
 </Workspace>
