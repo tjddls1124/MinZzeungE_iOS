@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Extractor-->
+        <!--신분증 등록-->
         <scene sceneID="tvK-Ib-wX3">
             <objects>
                 <viewController id="qcd-ga-F3j" customClass="ViewController" customModule="TextExtractor" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,71 +18,86 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9P-Bj-1Yq">
-                                <rect key="frame" x="0.0" y="64" width="375" height="369"/>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r9P-Bj-1Yq">
+                                <rect key="frame" x="0.0" y="193" width="375" height="369"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CP1-aS-IKE">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="369"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CP1-aS-IKE">
+                                        <rect key="frame" x="0.0" y="98" width="418" height="271"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gKP-3d-kzw">
+                                        <rect key="frame" x="126" y="-14" width="97" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4L4-en-Eb3">
+                                        <rect key="frame" x="126" y="29" width="97" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aMg-Sl-r5k">
+                                        <rect key="frame" x="252" y="29" width="97" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="주민등록번호" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="S5E-x7-FkX">
+                                        <rect key="frame" x="31" y="29" width="87" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="이름" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Z0e-34-t3F">
+                                        <rect key="frame" x="80" y="-15" width="38" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.17254901959999999" green="0.17254901959999999" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="CP1-aS-IKE" firstAttribute="top" secondItem="r9P-Bj-1Yq" secondAttribute="top" id="45h-tt-XEI"/>
-                                    <constraint firstItem="CP1-aS-IKE" firstAttribute="leading" secondItem="r9P-Bj-1Yq" secondAttribute="leading" id="4Ze-JF-fE0"/>
-                                    <constraint firstAttribute="bottom" secondItem="CP1-aS-IKE" secondAttribute="bottom" id="Rvg-wA-FF0"/>
-                                    <constraint firstAttribute="trailing" secondItem="CP1-aS-IKE" secondAttribute="trailing" id="TFx-8C-SBN"/>
-                                </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTc-Og-vU8">
-                                <rect key="frame" x="71" y="601" width="87" height="32"/>
-                                <state key="normal" title="TAKE" image="menu-icon"/>
-                                <connections>
-                                    <action selector="libraryDidTouch:" destination="qcd-ga-F3j" eventType="touchUpInside" id="2eN-go-WYd"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fhs-dT-Zid">
-                                <rect key="frame" x="16" y="456" width="343" height="104"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fhs-dT-Zid">
+                                <rect key="frame" x="16" y="561" width="343" height="106"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0d-AV-fcW">
-                                <rect key="frame" x="246" y="594" width="101" height="46"/>
-                                <state key="normal" title="TAKE" image="camera-icon"/>
-                                <connections>
-                                    <action selector="cameraDidTouch:" destination="qcd-ga-F3j" eventType="touchUpInside" id="27C-Y0-qBG"/>
-                                </connections>
-                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="MM5-zM-biR">
+                                <rect key="frame" x="117" y="116" width="186" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="주민등록번호"/>
+                                    <segment title="운전면허증"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="t0d-AV-fcW" firstAttribute="top" secondItem="r9P-Bj-1Yq" secondAttribute="bottom" constant="161" id="1dE-Ek-uzh"/>
-                            <constraint firstItem="tTc-Og-vU8" firstAttribute="baseline" secondItem="t0d-AV-fcW" secondAttribute="baseline" id="3uS-6M-6a4"/>
-                            <constraint firstItem="t0d-AV-fcW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tTc-Og-vU8" secondAttribute="trailing" constant="8" symbolic="YES" id="G2V-cs-U6m"/>
-                            <constraint firstItem="tTc-Og-vU8" firstAttribute="leading" secondItem="PmF-qn-tPq" secondAttribute="leading" constant="71" id="HqN-zf-UL0"/>
-                            <constraint firstItem="t0d-AV-fcW" firstAttribute="top" secondItem="fhs-dT-Zid" secondAttribute="bottom" constant="34" id="RTa-qh-6LS"/>
-                            <constraint firstAttribute="trailing" secondItem="t0d-AV-fcW" secondAttribute="trailing" constant="28" id="ZlY-xb-XYB"/>
-                            <constraint firstItem="r9P-Bj-1Yq" firstAttribute="top" secondItem="PmF-qn-tPq" secondAttribute="top" id="ew0-5b-QVJ"/>
-                            <constraint firstItem="r9P-Bj-1Yq" firstAttribute="leading" secondItem="PHH-vA-lxR" secondAttribute="leading" id="jLf-dA-Hac"/>
-                            <constraint firstItem="fhs-dT-Zid" firstAttribute="top" secondItem="r9P-Bj-1Yq" secondAttribute="bottom" constant="21" id="lPn-1h-RGt"/>
-                            <constraint firstItem="fhs-dT-Zid" firstAttribute="leading" secondItem="PHH-vA-lxR" secondAttribute="leadingMargin" id="lqU-7Q-Wby"/>
-                            <constraint firstItem="fhs-dT-Zid" firstAttribute="centerX" secondItem="r9P-Bj-1Yq" secondAttribute="centerX" id="pyM-iS-i50"/>
-                            <constraint firstItem="tTc-Og-vU8" firstAttribute="top" secondItem="fhs-dT-Zid" secondAttribute="bottom" constant="41" id="r8S-Bc-SmZ"/>
-                            <constraint firstAttribute="trailing" secondItem="r9P-Bj-1Yq" secondAttribute="trailing" id="uV8-0k-xuq"/>
-                            <constraint firstItem="PmF-qn-tPq" firstAttribute="bottom" secondItem="t0d-AV-fcW" secondAttribute="bottom" constant="27" id="xwV-bW-EwC"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PmF-qn-tPq"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Extractor" id="NOF-zk-SnF"/>
+                    <navigationItem key="navigationItem" title="신분증 등록" id="NOF-zk-SnF">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="N53-gQ-YvK">
+                            <connections>
+                                <action selector="test:" destination="qcd-ga-F3j" id="u5x-Sm-tse"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="cameraButton" destination="t0d-AV-fcW" id="fjd-KI-qPt"/>
+                        <outlet property="idSegment" destination="MM5-zM-biR" id="XGP-jl-FJa"/>
                         <outlet property="imageView" destination="CP1-aS-IKE" id="Via-YR-NKU"/>
                         <outlet property="textView" destination="fhs-dT-Zid" id="Xs1-hZ-Im4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ia7-lU-evX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2969" y="-11"/>
+            <point key="canvasLocation" x="2968.8000000000002" y="-11.244377811094454"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dkT-2C-U66">
@@ -103,8 +118,4 @@
             <point key="canvasLocation" x="1845.5999999999999" y="76.911544227886068"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="camera-icon" width="58" height="46"/>
-        <image name="menu-icon" width="44" height="32"/>
-    </resources>
 </document>

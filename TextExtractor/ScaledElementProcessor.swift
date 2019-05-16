@@ -43,11 +43,8 @@ class ScaledElementProcessor {
                         featureFrame: element.frame,
                         imageSize: image.size,
                         viewFrame: imageView.frame)
-                        
-                   // let shapeLayer = self.createShapeLayer(frame: frame)
                     let scaledElement = ScaledElement(frame: frame)
-                        //, shapeLayer: shapeLayer)
-                        scaledElements.append(scaledElement)
+                    scaledElements.append(scaledElement)
                 }
             }
         }

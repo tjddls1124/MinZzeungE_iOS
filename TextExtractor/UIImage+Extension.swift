@@ -49,9 +49,9 @@ extension UIImage {
             bytesPerRow: 0,
             space: colorSpace,
             bitmapInfo: UInt32(cgImage.bitmapInfo.rawValue)
-            ) else {
+        ) else {
                 return nil
-        }
+            }
         
         context.concatenate(transform);
         
