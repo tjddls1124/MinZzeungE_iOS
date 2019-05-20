@@ -196,7 +196,7 @@ class AddToList_ViewController: UITableViewController {
     private func drawFeatures(in imageView: UIImageView, completion: (() -> Void)? = nil) {
         removeFrames()
         processor.process(in: imageView) { text, elements in
-            self.textView.text = text
+            //self.textView.text = text
             //추출된 정보 배열로 저장
             let extractedText = text.split(separator: "\n")
             

@@ -19,9 +19,11 @@ class MyTableViewController: UITableViewController{
         
         //data insert
             let personID  = ID.init(kind: .ID_Card, name: "하니",idFirstNum: "930215",idLastNum: "1xxxxxx",enrollDate: "",imageFilePath: "idEx",isVaild: false)
-        let person2ID = ID.init(kind: ID.idKind.DriverLicense , name: "Hong", idFirstNum: "930215", idLastNum: "1xxxxxx", enrollDate: "", imageFilePath: "lcguide02", isVaild: false)
+        let person2ID = ID.init(kind: ID.idKind.DriverLicense , name: "Hong", idFirstNum: "930215", idLastNum: "1xxxxxx", enrollDate: "", imageFilePath: "face", isVaild: false)
+        let person3ID = ID.init(kind: ID.idKind.DriverLicense , name: "Hong", idFirstNum: "930215", idLastNum: "1xxxxxx", enrollDate: "", imageFilePath: "authentication", isVaild: false)
         idList.append(personID)
         idList.append(person2ID)
+        idList.append(person3ID)
         
         
         //long click event
