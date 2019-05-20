@@ -210,8 +210,8 @@ class AddToList_ViewController: UITableViewController {
                     let ref = Database.database().reference()
                     
                     // data 수정
-                    // ref.child("idData/idFirstNum").setValue("\(idFirstNum)")
-                    // ref.child("idData/idLastNum").setValue("\(idLastNum)")
+                     ref.child("idData/idFirstNum").setValue("\(idFirstNum)")
+                     ref.child("idData/idLastNum").setValue("\(idLastNum)")
                     
                     // data 추가방법
                      ref.childByAutoId().setValue(["name": name, "idFirstNum": idFirstNum, "idLastNum": idLastNum])
@@ -228,7 +228,6 @@ class AddToList_ViewController: UITableViewController {
                     
                 }
             }
-            
             
             print(extractedText)
             completion?()

@@ -10,4 +10,6 @@ target 'MinZzeungEE' do
   pod 'Firebase/MLVision'
   pod 'Firebase/MLVisionTextModel'
   pod 'Firebase/Database'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 end

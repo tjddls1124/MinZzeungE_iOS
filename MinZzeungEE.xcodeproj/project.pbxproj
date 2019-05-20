@@ -18,10 +18,11 @@
 		3DAF85922270BC0100AB0462 /* AddToList_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF85912270BC0100AB0462 /* AddToList_ViewController.swift */; };
 		3DC367952269E36900633672 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC367942269E36900633672 /* DetailViewController.swift */; };
 		3DC8D318224E051500C3170F /* IDListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8D317224E051500C3170F /* IDListCell.swift */; };
-		8431E433228E437200EFA4E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8431E432228E437200EFA4E7 /* GoogleService-Info.plist */; };
+		8404580622925C1400861CE9 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404580522925C1400861CE9 /* MapsViewController.swift */; };
 		8434EDE2228D873F00BD93BF /* ScaledElementProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434EDDD228D873E00BD93BF /* ScaledElementProcessor.swift */; };
 		8434EDE3228D873F00BD93BF /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434EDDE228D873F00BD93BF /* UIImage+Extension.swift */; };
 		8434EDE5228D873F00BD93BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434EDE0228D873F00BD93BF /* AppDelegate.swift */; };
+		84CA6B2C229287F30023E5F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84CA6B2B229287F20023E5F1 /* GoogleService-Info.plist */; };
 		D41FA70CC13E83326A873C7C /* Pods_MinZzeungEE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E326192CF544CBCE013C142 /* Pods_MinZzeungEE.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,10 +41,11 @@
 		3DAF85912270BC0100AB0462 /* AddToList_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToList_ViewController.swift; sourceTree = "<group>"; };
 		3DC367942269E36900633672 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3DC8D317224E051500C3170F /* IDListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDListCell.swift; sourceTree = "<group>"; };
-		8431E432228E437200EFA4E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8404580522925C1400861CE9 /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		8434EDDD228D873E00BD93BF /* ScaledElementProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaledElementProcessor.swift; sourceTree = "<group>"; };
 		8434EDDE228D873F00BD93BF /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		8434EDE0228D873F00BD93BF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../../TextExtracted3.0/TextExtractor/AppDelegate.swift; sourceTree = "<group>"; };
+		84CA6B2B229287F20023E5F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../레퍼런스따로가능/MinZzeungEE/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B08AD6BAFB757D9F97B8D6DD /* Pods-MinZzeungEE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinZzeungEE.release.xcconfig"; path = "Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE.release.xcconfig"; sourceTree = "<group>"; };
 		F531F6A10A6D585160F0261E /* Pods-MinZzeungEE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinZzeungEE.debug.xcconfig"; path = "Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,19 +86,20 @@
 				3D86BC5722843941006A6657 /* AuthenticationViewController.swift */,
 				8434EDE0228D873F00BD93BF /* AppDelegate.swift */,
 				8434EDDD228D873E00BD93BF /* ScaledElementProcessor.swift */,
-				8431E432228E437200EFA4E7 /* GoogleService-Info.plist */,
 				8434EDDE228D873F00BD93BF /* UIImage+Extension.swift */,
 				3D90631F22438152007ED6B7 /* Main.storyboard */,
-				3D86BC5322841226006A6657 /* AddPhotoStoryboard.storyboard */,
+				84CA6B2B229287F20023E5F1 /* GoogleService-Info.plist */,
+				8404580522925C1400861CE9 /* MapsViewController.swift */,
+				3DAF85912270BC0100AB0462 /* AddToList_ViewController.swift */,
 				3D90632222438153007ED6B7 /* Assets.xcassets */,
 				3D86BC552284325F006A6657 /* Authenticate.storyboard */,
-				3DAF85912270BC0100AB0462 /* AddToList_ViewController.swift */,
 				3D90632422438153007ED6B7 /* LaunchScreen.storyboard */,
 				3DC367942269E36900633672 /* DetailViewController.swift */,
 				3D90632722438153007ED6B7 /* Info.plist */,
 				3D916AF2224CC3E100F2611A /* MyTableViewController.swift */,
 				3D916AF6224CC4D900F2611A /* ID.swift */,
 				3DC8D317224E051500C3170F /* IDListCell.swift */,
+				3D86BC5322841226006A6657 /* AddPhotoStoryboard.storyboard */,
 			);
 			path = MinZzeungEE;
 			sourceTree = "<group>";
@@ -184,7 +187,7 @@
 				3D86BC562284325F006A6657 /* Authenticate.storyboard in Resources */,
 				3D90632322438153007ED6B7 /* Assets.xcassets in Resources */,
 				3D90632122438152007ED6B7 /* Main.storyboard in Resources */,
-				8431E433228E437200EFA4E7 /* GoogleService-Info.plist in Resources */,
+				84CA6B2C229287F30023E5F1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +262,7 @@
 				3D916AF3224CC3E100F2611A /* MyTableViewController.swift in Sources */,
 				3DC367952269E36900633672 /* DetailViewController.swift in Sources */,
 				3D86BC5822843941006A6657 /* AuthenticationViewController.swift in Sources */,
+				8404580622925C1400861CE9 /* MapsViewController.swift in Sources */,
 				3DC8D318224E051500C3170F /* IDListCell.swift in Sources */,
 				8434EDE2228D873F00BD93BF /* ScaledElementProcessor.swift in Sources */,
 				8434EDE3228D873F00BD93BF /* UIImage+Extension.swift in Sources */,

@@ -24,6 +24,8 @@
 	<string>Text scanning from a camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Text scanning from a photo library</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>You can know restraunt place that allow our app</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

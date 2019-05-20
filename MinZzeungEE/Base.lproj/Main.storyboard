@@ -388,11 +388,11 @@
         <!--Second-->
         <scene sceneID="TNy-wA-DT0">
             <objects>
-                <viewController title="Second" id="FjC-58-d3M" sceneMemberID="viewController">
+                <viewController title="Second" id="FjC-58-d3M" customClass="MapsViewController" customModule="MinZzeungEE" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qsm-r3-nXV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="FAC-sQ-aAS"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" id="vBp-bf-VZc"/>
