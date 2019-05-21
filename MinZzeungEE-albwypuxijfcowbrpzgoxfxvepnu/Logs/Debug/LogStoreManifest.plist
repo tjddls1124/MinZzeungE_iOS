@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>10</integer>
+	<key>logs</key>
+	<dict>
+		<key>2E667C46-9DFD-4DDB-A030-D8D0D615E1BD</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>2E667C46-9DFD-4DDB-A030-D8D0D615E1BD.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>MinZzeungEE project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>MinZzeungEE</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Debug MinZzeungEE</string>
+			<key>timeStartedRecording</key>
+			<real>580123268.07503295</real>
+			<key>timeStoppedRecording</key>
+			<real>580123305.98983896</real>
+			<key>title</key>
+			<string>Debug MinZzeungEE</string>
+			<key>uniqueIdentifier</key>
+			<string>2E667C46-9DFD-4DDB-A030-D8D0D615E1BD</string>
+		</dict>
+		<key>789F283E-A09C-4E14-8112-3BF814BFC840</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>789F283E-A09C-4E14-8112-3BF814BFC840.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>MinZzeungEE project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>MinZzeungEE</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Debug MinZzeungEE</string>
+			<key>timeStartedRecording</key>
+			<real>580120023.26899898</real>
+			<key>timeStoppedRecording</key>
+			<real>580120070.18094003</real>
+			<key>title</key>
+			<string>Debug MinZzeungEE</string>
+			<key>uniqueIdentifier</key>
+			<string>789F283E-A09C-4E14-8112-3BF814BFC840</string>
+		</dict>
+		<key>ABED0A13-4F87-4D99-93E4-D0DE4C3B67F8</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>ABED0A13-4F87-4D99-93E4-D0DE4C3B67F8.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>MinZzeungEE project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>MinZzeungEE</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Debug MinZzeungEE</string>
+			<key>timeStartedRecording</key>
+			<real>580119332.09007895</real>
+			<key>timeStoppedRecording</key>
+			<real>580119384.30381799</real>
+			<key>title</key>
+			<string>Debug MinZzeungEE</string>
+			<key>uniqueIdentifier</key>
+			<string>ABED0A13-4F87-4D99-93E4-D0DE4C3B67F8</string>
+		</dict>
+		<key>F18F2E92-7BE1-436B-98FC-5C478C83B4B4</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>F18F2E92-7BE1-436B-98FC-5C478C83B4B4.xcactivitylog</string>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>MinZzeungEE project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>MinZzeungEE</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Debug MinZzeungEE</string>
+			<key>timeStartedRecording</key>
+			<real>580120131.19747603</real>
+			<key>timeStoppedRecording</key>
+			<real>580120155.67530203</real>
+			<key>title</key>
+			<string>Debug MinZzeungEE</string>
+			<key>uniqueIdentifier</key>
+			<string>F18F2E92-7BE1-436B-98FC-5C478C83B4B4</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
