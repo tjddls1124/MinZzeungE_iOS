@@ -80,7 +80,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="dnW-iw-GDM">
-                                                    <rect key="frame" x="76" y="0.0" width="257" height="29"/>
+                                                    <rect key="frame" x="71" y="0.0" width="257" height="29"/>
                                                     <segments>
                                                         <segment title="주민등록증"/>
                                                         <segment title="운전면허증"/>
@@ -368,14 +368,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="driver_license" translatesAutoresizingMaskIntoConstraints="NO" id="3lT-q8-RGT">
-                                        <rect key="frame" x="8" y="10" width="382" height="251"/>
+                                        <rect key="frame" x="8" y="10" width="372" height="251"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="frV-hF-NUR">
-                                <rect key="frame" x="-146" y="741" width="611" height="71"/>
+                                <rect key="frame" x="0.0" y="741" width="465" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.32286627480000002" green="0.73250709020000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>

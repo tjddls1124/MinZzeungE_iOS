@@ -159,7 +159,7 @@ class AddToList_ViewController: UITableViewController {
     
     @IBAction func test(_ sender: Any) {
         print("입력받음")
-        let alert =  UIAlertController(title: "원하는 타이틀", message: "원하는 메세지", preferredStyle: .actionSheet)
+        let alert =  UIAlertController(title: "신분증 사진을 선택해주세요", message: "(깨끗한 사진)", preferredStyle: .actionSheet)
         let library =  UIAlertAction(title: "사진앨범", style: .default) { (action) in self.openLibrary()
         }
         let camera =  UIAlertAction(title: "카메라", style: .default) { (action) in
