@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.0.0-beta.6)
   - Firebase/Core (5.15.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.4.0)
@@ -96,6 +97,7 @@ PODS:
   - GTMSessionFetcher/Core (1.2.1)
   - GTMSessionFetcher/Full (1.2.1):
     - GTMSessionFetcher/Core (= 1.2.1)
+  - Kanna (4.0.3)
   - leveldb-library (1.20)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -105,15 +107,18 @@ PODS:
   - Protobuf (3.6.1)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.0.0-beta.5)
   - Firebase/Core
   - Firebase/Database
   - Firebase/MLVision
   - Firebase/MLVisionTextModel
   - GoogleMaps
   - GooglePlaces
+  - Kanna (~> 4.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuthInterop
@@ -131,11 +136,13 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - GoogleUtilities
     - GTMSessionFetcher
+    - Kanna
     - leveldb-library
     - nanopb
     - Protobuf
 
 SPEC CHECKSUMS:
+  Alamofire: cd08a4402bd12cacd0c66f23fb12fec8d6b965e4
   Firebase: 8bb9268bff82374f2cbaaabb143e725743c316ae
   FirebaseAnalytics: c06f9d70577d79074214700a71fd5d39de5550fb
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
@@ -153,10 +160,11 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  Kanna: 0ebbdd0e7e3308f0aafbd569e79c8cadc5eb877c
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
 
-PODFILE CHECKSUM: 5651e9804e552eeaa7b1e5420e5c9cca44ee4367
+PODFILE CHECKSUM: 4181ecf61768be899263ceb8a1ceddf8b1a08493
 
 COCOAPODS: 1.7.0.rc.2

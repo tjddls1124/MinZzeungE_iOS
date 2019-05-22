@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>402763849023-rq2m93r5884g4h3ocod12k36e5f1p39i.apps.googleusercontent.com</string>
+	<string>275864519009-f4cca9katfos6tbca9j32a3rrb8ibb57.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.402763849023-rq2m93r5884g4h3ocod12k36e5f1p39i</string>
+	<string>com.googleusercontent.apps.275864519009-f4cca9katfos6tbca9j32a3rrb8ibb57</string>
 	<key>API_KEY</key>
-	<string>AIzaSyASiRH3Z-vrqcF-XbvHsPtIqdh-hDeqiD4</string>
+	<string>AIzaSyAzr0uMainzpd9leG_-rb06pJpPKMGCI78</string>
 	<key>GCM_SENDER_ID</key>
-	<string>402763849023</string>
+	<string>275864519009</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.company.MinZzeungE</string>
 	<key>PROJECT_ID</key>
-	<string>minzzeunge-50fb2</string>
+	<string>minzzeunge-240901</string>
 	<key>STORAGE_BUCKET</key>
-	<string>minzzeunge-50fb2.appspot.com</string>
+	<string>minzzeunge-240901.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:402763849023:ios:3b1238a0c6bb9d46</string>
+	<string>1:275864519009:ios:3b1238a0c6bb9d46</string>
 	<key>DATABASE_URL</key>
-	<string>https://minzzeunge-50fb2.firebaseio.com</string>
+	<string>https://minzzeunge-240901.firebaseio.com</string>
 </dict>
 </plist>

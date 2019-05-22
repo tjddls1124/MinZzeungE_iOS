@@ -12,4 +12,6 @@ target 'MinZzeungEE' do
   pod 'Firebase/Database'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+	pod 'Alamofire', '~> 5.0.0-beta.5'
+	pod 'Kanna', '~> 4.0.0'
 end
