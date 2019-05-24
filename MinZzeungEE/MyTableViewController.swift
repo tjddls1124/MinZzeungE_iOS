@@ -18,9 +18,9 @@ class MyTableViewController: UITableViewController{
         tableView.delegate = self
         
         //data insert
-            let personID  = ID.init(kind: .ID_Card, name: "하니",idFirstNum: "930215",idLastNum: "1xxxxxx",enrollDate: "",imageFilePath: "idEx",isVaild: false)
-        let person2ID = ID.init(kind: ID.idKind.DriverLicense , name: "Hong", idFirstNum: "930215", idLastNum: "1xxxxxx", enrollDate: "", imageFilePath: "face", isVaild: false)
-        let person3ID = ID.init(kind: ID.idKind.DriverLicense , name: "Hong", idFirstNum: "930215", idLastNum: "1xxxxxx", enrollDate: "", imageFilePath: "authentication", isVaild: false)
+        let personID  = ID.init(kind: .ID_Card, name: "하니",idFirstNum: "930215",idLastNum: "1xxxxxx",enrollDate: "",imageFilePath: UIImage(named: "idEx")!,isVaild: false)
+        let person2ID = ID.init(kind: ID.idKind.DriverLicense , name: "Hong", idFirstNum: "930215", idLastNum: "1xxxxxx", enrollDate: "", imageFilePath: UIImage(named: "face")!, isVaild: false)
+        let person3ID = ID.init(kind: ID.idKind.DriverLicense , name: "Hong", idFirstNum: "930215", idLastNum: "1xxxxxx", enrollDate: "", imageFilePath:  UIImage(named: "authentication")!, isVaild: false)
         idList.append(personID)
         idList.append(person2ID)
         idList.append(person3ID)
@@ -61,7 +61,7 @@ class MyTableViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = idList[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "idListCell") as! IDListCell
-        cell.idImageView.image = UIImage(named:row.imageFilePath)
+        cell.idImageView.image = row.imageFilePath
         var kindString = row.kind.idKind_korString
         kindString = "분류 : \(kindString)"
         
@@ -83,5 +83,9 @@ class MyTableViewController: UITableViewController{
     //unwind Code 추가, add 시에 Modal에서 데이터를 전달받기 위한 Code
     @IBAction func unwindToIDList(segue:UIStoryboardSegue){
         print("unwind")
+        print(self.idList)
+        self.tableView.reloadData()//refreshing View
+        
+        //TODO : Back 이후 Data 유지가 안됨 -> DB 사용할 것.
     }
 }

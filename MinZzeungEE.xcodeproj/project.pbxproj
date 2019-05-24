@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -443,8 +443,9 @@
 			baseConfigurationReference = 245B829307C536CC62B9A2A2 /* Pods-MinZzeungEE.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ACF3DZY2SU;
+				DEVELOPMENT_TEAM = 47ML72774B;
 				INFOPLIST_FILE = MinZzeungEE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -452,6 +453,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.company.MinZzeungE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -462,8 +464,9 @@
 			baseConfigurationReference = 3B322D05BD33A3855C85FB63 /* Pods-MinZzeungEE.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ACF3DZY2SU;
+				DEVELOPMENT_TEAM = 47ML72774B;
 				INFOPLIST_FILE = MinZzeungEE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -471,6 +474,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.company.MinZzeungE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

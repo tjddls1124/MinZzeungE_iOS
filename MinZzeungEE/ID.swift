@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct ID{
     var kind : idKind
@@ -14,7 +15,7 @@ struct ID{
     var idFirstNum : String
     var idLastNum : String
     var enrollDate : String
-    var imageFilePath : String
+    var imageFilePath : UIImage
     var isVaild : Bool
     
     enum idKind{

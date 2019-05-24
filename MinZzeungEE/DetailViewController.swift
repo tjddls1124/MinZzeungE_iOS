@@ -72,7 +72,7 @@ class DetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        idImageView?.image = UIImage(named:id!.imageFilePath)
+        idImageView?.image = id!.imageFilePath
     }
     
 

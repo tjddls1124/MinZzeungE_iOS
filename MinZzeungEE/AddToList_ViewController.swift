@@ -10,6 +10,7 @@ import UIKit
 import FirebaseDatabase
 
 class AddToList_ViewController: UITableViewController {
+    var idImage = UIImage(named:"driver_license")
     
     @IBOutlet weak var sc_idKind: UIView!
     @IBOutlet weak var textField_name: UITextField!
@@ -19,33 +20,42 @@ class AddToList_ViewController: UITableViewController {
     @IBAction func idKind_change(_ sender: Any) {
         //TODO : pick를 변경하면 view 종류에 맞는 view를 바꿔 띄워준다.
     }
-    @IBAction func addCardImage(_ sender:Any){
-        //TODO : imageView Click event 달기 -> use UITabGestureRecognizer
-    }
-    
     @IBAction func modalDismiss(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func AddComplete(_ sender: Any) {
-        //TODO : if 문으로 Obj들이 올바르게 들어오는지 체크할 것.
+        //TODO : if 문으로 Obj들이 올바르게 들어오는지 체크.
         //TODO : 올바르게 들어왓다면 List에 추가하고 modal을 dismiss
         //TODO : 아니라면 예외처리 후 다시 입력하라는 메시지 띄우기
-        self.dismiss(animated: true, completion: {print("ID_LIST에 신분증이 추가되었습니다.")}) //completion은 void 를 리턴하는 closure
         //TODO : console 출력 -> message 띄우기로 바꿀 것
         //TODO : unwind seg 를 이용하는 방식으로 변경. Don't use this func.
     }
     
-    func makeNewID() -> ID?{/*
-        guard let newID = ID.init() else{
+    func makeNewID(kind:ID.idKind, name:String, idFirst:String,idLast:String,img:UIImage) -> ID?{
+        guard let newID = ID.init(kind: kind, name: name, idFirstNum: idFirst, idLastNum: idLast, enrollDate: "", imageFilePath: img, isVaild: false) as ID! else{
             return nil
         }
         //TODO : make New ID by using self's field, fill into init()
         return newID
-        */
+ 
+        
+        
         return nil
     }
     
+    @IBAction func checkAndDone(_ sender: Any) {
+        // image valildation
+        if(idImage == UIImage(named:"driver_license")){ //사진이 변경되지 않았다면
+            let alert = UIAlertController(title: "사진 오류", message: "사진이 추가되지 않았습니다.\n 다시 확인해주세요", preferredStyle: UIAlertController.Style.alert)
+            let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            return
+        }else{
+            performSegue(withIdentifier: "Done", sender: nil)
+        }
+    }
     @objc
     func imageTapped(img: AnyObject){
         self.performSegue(withIdentifier: "addPhotoSegue", sender: nil)
@@ -139,10 +149,15 @@ class AddToList_ViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "addDone"{
+        if segue.identifier == "Done"{
             //adList가 완벽히 add 되어 seg가 올바르게 전송되었다면
             //self.IDList에 추가
-            guard let newID = makeNewID(), let idListController = segue.destination as? MyTableViewController else{
+            
+            let dest = segue.destination as! MyTableViewController
+            //TODO : kind check
+            //TODO : text field optional check
+            //TODO : check equality with parsed text
+            guard let newID = makeNewID(kind: ID.idKind.DriverLicense, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, img: self.idImage!), let idListController = segue.destination as? MyTableViewController else{
                 return
             }
             print("add Done!")
@@ -214,7 +229,8 @@ class AddToList_ViewController: UITableViewController {
                      ref.child("idData/idLastNum").setValue("\(idLastNum)")
                     
                     // data 추가방법
-                     ref.childByAutoId().setValue(["name": name, "idFirstNum": idFirstNum, "idLastNum": idLastNum])
+                    
+                  //  ref.childByAutoId().setValue(["name": name, "idFirstNum": idFirstNum, "idLastNum": idLastNum, "idImage": self.idImage]) //add image in DB
                     
                     // data 읽어오기
 //                    ref.child("idData").observeSingleEvent(of: .value, with: {
@@ -251,6 +267,7 @@ extension AddToList_ViewController: UIImagePickerControllerDelegate, UINavigatio
             let fixedImage = pickedImage.fixOrientation()
             imageView.image = fixedImage
             drawFeatures(in: imageView)
+            idImage = fixedImage
         }
         dismiss(animated: true, completion: nil)
     }

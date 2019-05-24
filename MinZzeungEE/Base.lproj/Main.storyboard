@@ -194,8 +194,17 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="46" id="9Fq-O8-OBM">
+                                        <rect key="frame" x="0.0" y="222" width="375" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Fq-O8-OBM" id="etq-eh-kY3">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.32286627480000002" green="0.73250709020000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="465" id="kqa-Ej-myw">
-                                        <rect key="frame" x="0.0" y="222" width="375" height="465"/>
+                                        <rect key="frame" x="0.0" y="268" width="375" height="465"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kqa-Ej-myw" id="Gei-17-iTl">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="465"/>
@@ -220,15 +229,6 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="46" id="9Fq-O8-OBM">
-                                        <rect key="frame" x="0.0" y="687" width="375" height="46"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Fq-O8-OBM" id="etq-eh-kY3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.32286627480000002" green="0.73250709020000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -241,12 +241,12 @@
                     <navigationItem key="navigationItem" title="신분증 추가" id="yN8-FX-HST">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="9cP-WI-HS5">
                             <connections>
-                                <action selector="modalDismiss:" destination="YnH-1O-zjH" id="ec4-bt-Jps"/>
+                                <action selector="modalDismiss:" destination="YnH-1O-zjH" id="X8m-hM-sxq"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="4JC-EE-QDF">
                             <connections>
-                                <segue destination="Vfj-fu-s9H" kind="unwind" identifier="addDone" unwindAction="unwindToIDListWithSegue:" id="Tvd-uQ-3QK"/>
+                                <action selector="checkAndDone:" destination="YnH-1O-zjH" id="I5D-mV-DYh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -259,6 +259,7 @@
                         <outlet property="textField_idLastNum" destination="3CZ-Nl-dcs" id="gIW-XD-RQL"/>
                         <outlet property="textField_name" destination="3Fe-i1-iR1" id="qLd-Th-LiV"/>
                         <segue destination="Ro6-vS-6xt" kind="show" identifier="addPhotoSegue" id="p9d-8k-fJ3"/>
+                        <segue destination="Vfj-fu-s9H" kind="unwind" identifier="Done" unwindAction="unwindToIDListWithSegue:" id="Bp3-Ha-n9U"/>
                     </connections>
                 </tableViewController>
                 <exit id="Vfj-fu-s9H" userLabel="Exit" sceneMemberID="exit"/>
