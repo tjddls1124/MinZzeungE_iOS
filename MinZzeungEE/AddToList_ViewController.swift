@@ -158,8 +158,7 @@ class AddToList_ViewController: UITableViewController {
     let processor = ScaledElementProcessor()
     
     @IBAction func test(_ sender: Any) {
-        print("입력받음")
-        let alert =  UIAlertController(title: "신분증 사진을 선택해주세요", message: "(깨끗한 사진)", preferredStyle: .actionSheet)
+        let alert =  UIAlertController(title: "신분증 사진을 선택해주세요", message: "선명한 사진 부탁드려요", preferredStyle: .actionSheet)
         let library =  UIAlertAction(title: "사진앨범", style: .default) { (action) in self.openLibrary()
         }
         let camera =  UIAlertAction(title: "카메라", style: .default) { (action) in
@@ -196,7 +195,7 @@ class AddToList_ViewController: UITableViewController {
     private func drawFeatures(in imageView: UIImageView, completion: (() -> Void)? = nil) {
         removeFrames()
         processor.process(in: imageView) { text, elements in
-            //self.textView.text = text
+//            self.textView.text = text
             //추출된 정보 배열로 저장
             let extractedText = text.split(separator: "\n")
             
