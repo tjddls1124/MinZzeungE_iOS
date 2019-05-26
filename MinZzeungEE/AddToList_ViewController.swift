@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseDatabase
+import Firebase
+import FirebaseStorage
 
 class AddToList_ViewController: UITableViewController {
     
@@ -158,7 +160,7 @@ class AddToList_ViewController: UITableViewController {
     let processor = ScaledElementProcessor()
     
     @IBAction func test(_ sender: Any) {
-        let alert =  UIAlertController(title: "신분증 사진을 선택해주세요", message: "선명한 사진 부탁드려요", preferredStyle: .actionSheet)
+        let alert =  UIAlertController(title: "신분증 사진을 선택해주세요", message: "선명한 사진으로~", preferredStyle: .actionSheet)
         let library =  UIAlertAction(title: "사진앨범", style: .default) { (action) in self.openLibrary()
         }
         let camera =  UIAlertAction(title: "카메라", style: .default) { (action) in
@@ -198,7 +200,6 @@ class AddToList_ViewController: UITableViewController {
 //            self.textView.text = text
             //추출된 정보 배열로 저장
             let extractedText = text.split(separator: "\n")
-            
             guard let idFirstNum = self.textField_idFirsttNum.text, let idLastNum = self.textField_idLastNum.text, let name = self.textField_name.text else { return }
 
             //추출정보와 입력정보가 일치한지 확인
@@ -232,6 +233,21 @@ class AddToList_ViewController: UITableViewController {
             completion?()
         }
     }
+    
+//    func uploadImageToFirebaseStorage(data: NSData){
+//        let storageRef = Storage.storage().reference(withPath: "tmp1.png")
+//        let uploadMetadata = StorageMetadata()
+//        uploadMetadata.contentType = "image/jpeg"
+//
+//        storageRef.putData(data as Data, metadata: uploadMetadata, completion: {(metadata, error) in
+//            if(error != nil){
+//                print("error /(error?.locaizedDescription)")
+//            }else{
+//                print("Upload Complete!")
+//            }
+//        })
+//
+//    }
 }
 
 extension AddToList_ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
