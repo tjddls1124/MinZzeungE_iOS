@@ -366,29 +366,20 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4rV-9E-2Pl">
-                                <rect key="frame" x="80" y="404" width="240" height="155"/>
+                                <rect key="frame" x="80" y="404" width="240" height="187"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ng-I5-NOQ">
-                                        <rect key="frame" x="80" y="14" width="81" height="62"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                        <state key="normal" image="authentication">
-                                            <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="authen:" destination="bHo-hf-hG9" eventType="touchUpInside" id="HCZ-AV-vVr"/>
-                                            <action selector="authen:" destination="J2q-WI-KoW" eventType="touchUpInside" id="z6s-xb-9HX"/>
-                                            <segue destination="VSG-wZ-syL" kind="show" identifier="authenSegue" id="SmH-Us-Pe2"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="진위 여부를 조회중입니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCn-vS-pbA">
-                                        <rect key="frame" x="8" y="78" width="224" height="69"/>
+                                        <rect key="frame" x="8" y="110" width="224" height="69"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="auth_loading" translatesAutoresizingMaskIntoConstraints="NO" id="0Pv-OV-cs5">
+                                        <rect key="frame" x="73" y="19" width="95" height="95"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
@@ -398,12 +389,11 @@
                     </view>
                     <connections>
                         <outlet property="authResult" destination="ZCn-vS-pbA" id="8kH-qe-7z4"/>
-                        <outlet property="autheenticateButton" destination="6Ng-I5-NOQ" id="pHj-aT-ZVa"/>
+                        <outlet property="authResultIcon" destination="0Pv-OV-cs5" id="pOc-oP-SYQ"/>
                         <outlet property="idImageView" destination="3lT-q8-RGT" id="ysa-Rh-FRj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJ3-GN-vqi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="J2q-WI-KoW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3933.5999999999999" y="-92.364532019704441"/>
         </scene>
@@ -480,7 +470,7 @@
     </scenes>
     <resources>
         <image name="addId2" width="818" height="700"/>
-        <image name="authentication" width="512" height="512"/>
+        <image name="auth_loading" width="100" height="100"/>
         <image name="driver_license" width="754" height="468"/>
         <image name="firstTab" width="30" height="30"/>
         <image name="secondTab" width="30" height="30"/>
