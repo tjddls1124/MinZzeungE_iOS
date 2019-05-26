@@ -29,6 +29,8 @@ class MapsViewController: UIViewController, CLLocationManagerDelegate {
     
     let defaultLocation = CLLocation(latitude: 37.561138, longitude: 127.039279)
     
+    var ref: DatabaseReference!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +51,42 @@ class MapsViewController: UIViewController, CLLocationManagerDelegate {
         
         self.view = mapView
         
+        ref = Database.database().reference()
+        
+        ref.child("stores").observe(.value, with: {(snapshot) in
+            let stores = snapshot.value as? [String: AnyObject] ?? [:]
+            
+            /*
+             * Request data of stores supports this application from Firebase DB
+             * bring them together, and use it in to generate marker
+             * CAUTIONS: the `snapshot` is volatile data; you can only use the data within this closure
+             */
+            
+            // Generate marker for each store
+            for store in stores {
+                let title = store.key
+                if let storeData = stores[store.key] as? [String: AnyObject],
+                    let location = storeData["gps"] as? [String: AnyObject] {
+                    // Preparing data to display in the marker
+                    // Datatype for data in Firebase DB is different from native datatype in Swift,
+                    // So it has to be converted to adequate types before using it
+                    let latitude = Double(truncating: location["latitude"]! as! NSNumber)
+                    let longitude = Double(truncating: location["longitude"]! as! NSNumber)
+                    
+                    let snippet = storeData["snippet"] as? String
+                    
+                    let store = GMSMarker()
+                    store.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                    store.title = title
+                    store.snippet = snippet
+                    store.map = self.mapView
+                }
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+
     }
     
     override func loadView() {
