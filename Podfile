@@ -10,6 +10,7 @@ target 'MinZzeungEE' do
   pod 'Firebase/MLVision'
   pod 'Firebase/MLVisionTextModel'
   pod 'Firebase/Database'
+  pod 'Firebase/Storage'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
 	pod 'Alamofire', '~> 5.0.0-beta.5'
