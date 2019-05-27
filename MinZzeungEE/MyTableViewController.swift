@@ -8,15 +8,49 @@
 
 import UIKit
 import Foundation
+import Firebase
 
 class MyTableViewController: UITableViewController{
     var idList = Array<ID>()
+    
+    func dataLoad(){
+        
+        //data load with Firebase
+        let ref = Database.database().reference()
+        var pk = ""
+        var refID = ref.child("idData")
+        var personID : ID?
+        refID.observeSingleEvent(of: .value, with: {
+            (snapshot) in
+            let value = snapshot.value as! [String : AnyObject?]
+            print(value)
+            for each in value{
+                pk = each.value?["pk"] as! String
+                personID = ID.init(idNum: pk)
+            }
+            self.idList.append(personID!)
+            //pk = value?["pk"] as! String
+        })
+        /*
+        refID.observe(.value){ snapshot in
+            for child in snapshot.children{
+                print(child)
+            }
+        }
+        //let personID = ID.init(idNum:pk)
+        idList.append(personID!)
+        */
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
         tableView.delegate = self
         
+        
+        dataLoad()
+        print(idList)
+        /*
         //data insert
         let personID  = ID.init(kind: .ID_Card, name: "하니",idFirstNum: "930215",idLastNum: "1xxxxxx",enrollDate: "",imageFilePath: UIImage(named: "idEx")!,isVaild: false)
         let person2ID = ID.init(kind: ID.idKind.DriverLicense , name: "Hong", idFirstNum: "930215", idLastNum: "1xxxxxx", enrollDate: "", imageFilePath: UIImage(named: "face")!, isVaild: false)
@@ -24,7 +58,7 @@ class MyTableViewController: UITableViewController{
         idList.append(personID)
         idList.append(person2ID)
         idList.append(person3ID)
-        
+        */
         
         //long click event
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))

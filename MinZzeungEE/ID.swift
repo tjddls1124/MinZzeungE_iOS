@@ -7,16 +7,55 @@
 //
 
 import Foundation
+import Firebase
 import UIKit
 
 struct ID{
-    var kind : idKind
-    var name : String
-    var idFirstNum : String
-    var idLastNum : String
-    var enrollDate : String
-    var imageFilePath : UIImage
-    var isVaild : Bool
+    init(idNum:String) {
+        var kindKor : String = ""
+        var isVaild : Bool = false
+        var name : String = ""
+        var enrollDate : String = ""
+        var image : UIImage?
+        let ref = Database.database().reference()
+        ref.child("idData").child("\(idNum)").observeSingleEvent(of: .value, with:{
+            (snapshot) in
+            let value = snapshot.value as! NSDictionary
+            kindKor = value["kind"] as! String
+             isVaild = value["isVaild"] as! Bool
+             name = value["name"] as! String
+            enrollDate = value["enrollDate"] as! String
+        }){(error) in
+            print (error.localizedDescription)
+        }
+        var kind = idKind.DriverLicense
+        kind = korString_toIdKind(korString: kindKor)
+        self.kind = kind
+        self.enrollDate = enrollDate
+        self.name = name
+        var idSp = idNum.split(separator: "-")
+        self.idFirstNum = String(idSp[0])
+        self.idLastNum = String(idSp[1])
+        self.isVaild = isVaild
+        
+        //Load UIImage
+        let imageRef = Storage.storage().reference().child("images/\(idNum).jpg")
+        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+        imageRef.getData(maxSize: 10 * 1024 * 1024) { data , error in
+            // Data for "images/island.jpg" is returned
+            image = UIImage(data: data!)!
+        }
+        self.imageFilePath = image
+    }
+    
+    
+    var kind : idKind! = idKind.DriverLicense
+    var name : String = ""
+    var idFirstNum : String = ""
+    var idLastNum : String = ""
+    var enrollDate : String = ""
+    var imageFilePath : UIImage?
+    var isVaild : Bool = false
     
     enum idKind{
         case ID_Card
@@ -49,6 +88,19 @@ struct ID{
                     }
                     return kind_korString
             }
+        }
+
+    }
+    func korString_toIdKind(korString : String) -> idKind{
+        switch korString {
+        case "운전면허증" :
+            return .DriverLicense
+        case "주민등록증" :
+            return .ID_Card
+        case "학생증":
+            return .StudentID_Card
+        default:
+            return .DriverLicense
         }
     }
 }

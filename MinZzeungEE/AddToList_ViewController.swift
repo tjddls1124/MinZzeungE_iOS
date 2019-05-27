@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import Firebase
 
 class AddToList_ViewController: UITableViewController {
     var idImage = UIImage(named:"driver_license")
@@ -31,18 +32,20 @@ class AddToList_ViewController: UITableViewController {
         //TODO : console 출력 -> message 띄우기로 바꿀 것
         //TODO : unwind seg 를 이용하는 방식으로 변경. Don't use this func.
     }
-    
+   /*
     func makeNewID(kind:ID.idKind, name:String, idFirst:String,idLast:String,img:UIImage) -> ID?{
         guard let newID = ID.init(kind: kind, name: name, idFirstNum: idFirst, idLastNum: idLast, enrollDate: "", imageFilePath: img, isVaild: false) as ID! else{
             return nil
         }
         //TODO : make New ID by using self's field, fill into init()
         return newID
- 
-        
-        
-        return nil
     }
+    */
+    
+    func appendToFirebase(){
+        
+    }
+    
     
     @IBAction func checkAndDone(_ sender: Any) {
         // image valildation
@@ -157,11 +160,26 @@ class AddToList_ViewController: UITableViewController {
             //TODO : kind check
             //TODO : text field optional check
             //TODO : check equality with parsed text
-            guard let newID = makeNewID(kind: ID.idKind.DriverLicense, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, img: self.idImage!), let idListController = segue.destination as? MyTableViewController else{
+            /*guard let newID = makeNewID(kind: ID.idKind.DriverLicense, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, img: self.idImage!), let idListController = segue.destination as? MyTableViewController else{
                 return
             }
-            print("add Done!")
             idListController.idList.append(newID)
+            */
+            
+            let idImgData = idImage?.pngData()
+            let uid = "\(self.textField_idLastNum.text ?? "")-\(self.textField_idLastNum.text ?? "Nil" )"
+            
+            // Create a child reference
+            // imagesRef now points to "images"
+            //let uid = Auth.auth().currentUser?.uid
+            var thisImageView = idImage
+            //storageRef = StorageReference.storage().reference()
+            let storageRef = Storage.storage().reference()
+            let imagesRef = storageRef.child("images")
+            let idImageRef = imagesRef.child("\(uid).jpg")
+            
+            let uploadTask = idImageRef.putData(idImgData!,metadata: nil)
+                
         }
     }
     
@@ -208,6 +226,7 @@ class AddToList_ViewController: UITableViewController {
     }
     
     // image에서 text정보 추출
+    //TODO : 등록번호(enroll number) parsing
     private func drawFeatures(in imageView: UIImageView, completion: (() -> Void)? = nil) {
         removeFrames()
         processor.process(in: imageView) { text, elements in
@@ -225,8 +244,8 @@ class AddToList_ViewController: UITableViewController {
                     let ref = Database.database().reference()
                     
                     // data 수정
-                     ref.child("idData/idFirstNum").setValue("\(idFirstNum)")
-                     ref.child("idData/idLastNum").setValue("\(idLastNum)")
+                     //ref.child("idData/idFirstNum").setValue("\(idFirstNum)")
+                     //ref.child("idData/idLastNum").setValue("\(idLastNum)")
                     
                     // data 추가방법
                     
