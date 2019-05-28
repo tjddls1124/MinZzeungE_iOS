@@ -54,7 +54,6 @@ class AddToList_ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.layer.cornerRadius = 300
         
         //imageView에 신분증 나타내기 + textView에 추출된 문자 나타내기
         if let idImage = imageView {

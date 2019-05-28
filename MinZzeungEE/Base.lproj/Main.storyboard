@@ -405,7 +405,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="비밀번호 불일치" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="y5M-jP-kDj">
-                                <rect key="frame" x="72" y="442" width="88" height="23"/>
+                                <rect key="frame" x="72" y="442" width="224" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" red="1" green="0.41073403780000001" blue="0.31317592960000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -418,7 +418,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="SMW-bn-NZf">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="o6o-cV-kqD"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="qlW-j1-MLH"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="qlW-j1-MLH">
+                            <connections>
+                                <action selector="checkPasswordSame:" destination="IwC-ea-bKc" id="etw-5T-epB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="password1" destination="067-jO-W0b" id="lan-fs-8bN"/>
