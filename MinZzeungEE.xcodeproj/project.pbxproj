@@ -19,6 +19,7 @@
 		3DC367952269E36900633672 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC367942269E36900633672 /* DetailViewController.swift */; };
 		3DC8D318224E051500C3170F /* IDListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8D317224E051500C3170F /* IDListCell.swift */; };
 		8404580622925C1400861CE9 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404580522925C1400861CE9 /* MapsViewController.swift */; };
+		840EDB09229D5DBD00801B03 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840EDB08229D5DBD00801B03 /* LockViewController.swift */; };
 		8434EDE2228D873F00BD93BF /* ScaledElementProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434EDDD228D873E00BD93BF /* ScaledElementProcessor.swift */; };
 		8434EDE3228D873F00BD93BF /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434EDDE228D873F00BD93BF /* UIImage+Extension.swift */; };
 		84B6FD7D2293FA5800ECF2F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6FD7C2293FA5800ECF2F0 /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 		3DC8D317224E051500C3170F /* IDListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDListCell.swift; sourceTree = "<group>"; };
 		62764E7C4639C4A8C5F9067A /* Pods_MinZzeungEE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MinZzeungEE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8404580522925C1400861CE9 /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
+		840EDB08229D5DBD00801B03 /* LockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewController.swift; sourceTree = "<group>"; };
 		8434EDDD228D873E00BD93BF /* ScaledElementProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaledElementProcessor.swift; sourceTree = "<group>"; };
 		8434EDDE228D873F00BD93BF /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		84B6FD7C2293FA5800ECF2F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				8404580522925C1400861CE9 /* MapsViewController.swift */,
 				84CA6B2F2292A0290023E5F1 /* Assets.xcassets */,
 				3DAF85912270BC0100AB0462 /* AddToList_ViewController.swift */,
+				840EDB08229D5DBD00801B03 /* LockViewController.swift */,
 				3D86BC552284325F006A6657 /* Authenticate.storyboard */,
 				3D90632422438153007ED6B7 /* LaunchScreen.storyboard */,
 				3DC367942269E36900633672 /* DetailViewController.swift */,
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B6FD7D2293FA5800ECF2F0 /* AppDelegate.swift in Sources */,
+				840EDB09229D5DBD00801B03 /* LockViewController.swift in Sources */,
 				3D916AF7224CC4D900F2611A /* ID.swift in Sources */,
 				3D916AF3224CC3E100F2611A /* MyTableViewController.swift in Sources */,
 				3DC367952269E36900633672 /* DetailViewController.swift in Sources */,

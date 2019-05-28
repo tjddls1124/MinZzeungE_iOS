@@ -12,7 +12,6 @@ import Firebase
 import FirebaseStorage
 
 class AddToList_ViewController: UITableViewController {
-    
     @IBOutlet weak var sc_idKind: UIView!
     @IBOutlet weak var textField_name: UITextField!
     @IBOutlet weak var textField_idFirsttNum: UITextField!
@@ -55,6 +54,7 @@ class AddToList_ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageView.layer.cornerRadius = 300
         
         //imageView에 신분증 나타내기 + textView에 추출된 문자 나타내기
         if let idImage = imageView {
@@ -270,3 +270,5 @@ extension AddToList_ViewController: UIImagePickerControllerDelegate, UINavigatio
         dismiss(animated: true, completion: nil)
     }
 }
+
+
