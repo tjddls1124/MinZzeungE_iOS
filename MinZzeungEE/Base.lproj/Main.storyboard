@@ -213,7 +213,7 @@
                                                     </accessibility>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7W-nO-8Fg">
-                                                    <rect key="frame" x="16" y="0.0" width="373" height="229"/>
+                                                    <rect key="frame" x="45" y="27" width="314" height="162"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Click here to add ID">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
