@@ -12,11 +12,14 @@ import Firebase
 import FirebaseStorage
 
 class AddToList_ViewController: UITableViewController {
+    @IBOutlet weak var selectedSegment: UISegmentedControl!
     @IBOutlet weak var sc_idKind: UIView!
     @IBOutlet weak var textField_name: UITextField!
     @IBOutlet weak var textField_idFirsttNum: UITextField!
     @IBOutlet weak var textField_idLastNum: UITextField!
     @IBOutlet weak var imageView_IDCard: UIImageView!
+    @IBOutlet weak var firstLisenceNumber: UITextField!
+    @IBOutlet weak var secondLisenceNumber: UITextField!
     @IBAction func idKind_change(_ sender: Any) {
         //TODO : pick를 변경하면 view 종류에 맞는 view를 바꿔 띄워준다.
     }
@@ -151,7 +154,6 @@ class AddToList_ViewController: UITableViewController {
         }
     }
     
-    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textView: UITextView!
     
@@ -247,6 +249,27 @@ class AddToList_ViewController: UITableViewController {
 //        })
 //
 //    }
+    
+    @IBAction func segmentControl(_ sender: Any) {
+        switch selectedSegment.selectedSegmentIndex{
+        case 0:
+            firstLisenceNumber.placeholder = "Don't"
+            secondLisenceNumber.placeholder = "fill in anything"
+            break
+        case 1:
+            firstLisenceNumber.placeholder = "Lis"
+            secondLisenceNumber.placeholder = "ence Number"
+            break
+        case 2:
+            firstLisenceNumber.placeholder = "Don't"
+            secondLisenceNumber.placeholder = "fill in anything"
+            break
+        default:
+            break
+        }
+    }
+    
+
 }
 
 extension AddToList_ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
@@ -269,5 +292,4 @@ extension AddToList_ViewController: UIImagePickerControllerDelegate, UINavigatio
         dismiss(animated: true, completion: nil)
     }
 }
-
 

@@ -44,6 +44,9 @@
                                                         <segment title="Driver Lisence"/>
                                                         <segment title="Passport"/>
                                                     </segments>
+                                                    <connections>
+                                                        <action selector="segmentControl:" destination="YnH-1O-zjH" eventType="valueChanged" id="N2V-UK-3qZ"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -61,7 +64,7 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QiL-AD-Ol0">
-                                                    <rect key="frame" x="85" y="7" width="242" height="30"/>
+                                                    <rect key="frame" x="76" y="7" width="260" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -78,7 +81,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rV5-Ux-8he">
-                                                    <rect key="frame" x="226" y="8" width="102" height="30"/>
+                                                    <rect key="frame" x="226" y="8" width="111" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -92,7 +95,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hqw-Cf-gm0">
-                                                    <rect key="frame" x="85" y="8" width="100" height="30"/>
+                                                    <rect key="frame" x="77" y="8" width="108" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -130,14 +133,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KUs-pX-srU">
-                                                    <rect key="frame" x="295" y="3" width="31" height="30"/>
+                                                    <rect key="frame" x="295" y="3" width="43" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lis" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JHB-XN-E1j">
-                                                    <rect key="frame" x="85" y="3" width="39" height="30"/>
+                                                    <rect key="frame" x="77" y="3" width="47" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -200,9 +203,12 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="firstLisenceNumber" destination="JHB-XN-E1j" id="e2f-B7-6ma"/>
                         <outlet property="imageView" destination="qyw-2R-Ben" id="udJ-3H-GRF"/>
                         <outlet property="imageView_IDCard" destination="qyw-2R-Ben" id="h1B-FK-RFm"/>
                         <outlet property="sc_idKind" destination="1Zb-qD-fAs" id="Zti-CK-C85"/>
+                        <outlet property="secondLisenceNumber" destination="bcL-3l-jiH" id="kcr-6B-XbZ"/>
+                        <outlet property="selectedSegment" destination="HSe-ni-FAv" id="JBm-RK-Uz8"/>
                         <outlet property="textField_idFirsttNum" destination="hqw-Cf-gm0" id="7Aa-EY-PV9"/>
                         <outlet property="textField_idLastNum" destination="rV5-Ux-8he" id="F3b-Kx-8rg"/>
                         <outlet property="textField_name" destination="QiL-AD-Ol0" id="iIo-fi-P6P"/>
@@ -412,10 +418,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="axV-b8-vaW">
+                                <rect key="frame" x="174" y="0.0" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Pr-ak-V92"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="SMW-bn-NZf">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="o6o-cV-kqD"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="qlW-j1-MLH">
@@ -424,6 +435,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="password1" destination="067-jO-W0b" id="lan-fs-8bN"/>
                         <outlet property="password2" destination="0uE-Ks-1vn" id="lRO-bJ-9nH"/>
