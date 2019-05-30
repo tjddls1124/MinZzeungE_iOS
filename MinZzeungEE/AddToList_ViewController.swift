@@ -161,7 +161,7 @@ class AddToList_ViewController: UITableViewController {
     let processor = ScaledElementProcessor()
     
     @IBAction func test(_ sender: Any) {
-        let alert =  UIAlertController(title: "신분증 사진을 선택해주세요", message: "선명한 사진으로~", preferredStyle: .actionSheet)
+        let alert =  UIAlertController(title: "신분증 사진을 선택해주세요", message: "", preferredStyle: .actionSheet)
         let library =  UIAlertAction(title: "사진앨범", style: .default) { (action) in self.openLibrary()
         }
         let camera =  UIAlertAction(title: "카메라", style: .default) { (action) in
@@ -181,7 +181,7 @@ class AddToList_ViewController: UITableViewController {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             presentImagePickerController(withSourceType: .camera)
         } else{
-            let alert = UIAlertController(title: "Camera Not Available", message: "A camera is not available. Please try picking an image from the image library instead.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Camera Not Available", message: "A camera is not available.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
