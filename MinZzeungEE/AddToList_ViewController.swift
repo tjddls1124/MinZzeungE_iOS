@@ -13,6 +13,7 @@ import Firebase
 class AddToList_ViewController: UITableViewController {
     var idImage = UIImage(named:"driver_license")
 
+    @IBOutlet weak var selectedSegment: UISegmentedControl!
     @IBOutlet weak var sc_idKind: UIView!
     @IBOutlet weak var textField_name: UITextField!
     @IBOutlet weak var textField_idFirsttNum: UITextField!

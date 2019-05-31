@@ -43,7 +43,7 @@ struct ID{
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
         imageRef.getData(maxSize: 10 * 1024 * 1024) { data , error in
             // Data for "images/island.jpg" is returned
-            image = UIImage(data: data!)!
+            //image = UIImage(data: data!)!
         }
         self.imageFilePath = image
     }

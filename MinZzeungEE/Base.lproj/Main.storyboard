@@ -230,7 +230,7 @@
                         <outlet property="imageView_IDCard" destination="qyw-2R-Ben" id="h1B-FK-RFm"/>
                         <outlet property="sc_idKind" destination="1Zb-qD-fAs" id="Zti-CK-C85"/>
                         <outlet property="secondLisenceNumber" destination="bcL-3l-jiH" id="kcr-6B-XbZ"/>
-                        <outlet property="selectedSegment" destination="HSe-ni-FAv" id="JBm-RK-Uz8"/>
+                        <outlet property="selectedSegment" destination="HSe-ni-FAv" id="MiU-YY-VfE"/>
                         <outlet property="textField_idFirsttNum" destination="hqw-Cf-gm0" id="7Aa-EY-PV9"/>
                         <outlet property="textField_idLastNum" destination="rV5-Ux-8he" id="F3b-Kx-8rg"/>
                         <outlet property="textField_name" destination="QiL-AD-Ol0" id="iIo-fi-P6P"/>
