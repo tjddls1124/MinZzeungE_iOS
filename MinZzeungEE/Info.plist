@@ -2,6 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>googlechromes</string>
+		<string>comgooglemaps</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -24,8 +29,10 @@
 	<string>Text scanning from a camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Text scanning from a photo library</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>The application will use your location information to show you nearby store supports our service</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>You can know restraunt place that allow our app</string>
+	<string>The application will show you nearby stores supports this service</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

@@ -19,7 +19,7 @@ import Kanna
 let parameters: Parameters = [
     "checkPage": 2,
     "flag": "searchPage",
-    "regYear": 1990,
+    "regYear": 1999,
     "regMonth": 01,
     "regDate": 01, // date should be 2-digit number
     "name": "홍길동",
@@ -35,7 +35,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var idImageView : UIImageView?
     var id : ID?
     
-    @IBOutlet weak var autheenticateButton: UIButton!
+    @IBOutlet weak var authResultIcon: UIImageView!
     
     @IBAction func authen(_ sender: Any) {
         performSegue(withIdentifier: "authenSegue", sender: nil)
@@ -64,6 +64,15 @@ class DetailViewController: UIViewController {
                     }
                     resultMsg = resultMsg + msgs[msgs.count-1]
                     self.authResult.text = resultMsg
+                    
+                    if self.authResult.text == "전산 자료와 일치 합니다.\n식별번호가 일치합니다." {
+                        print("success")
+                        self.authResultIcon.image = UIImage(named: "auth_success")
+                    } else {
+                        print("fail")
+                        self.authResultIcon.image = UIImage(named: "auth_fail")
+                    }
+                    
                 } catch {
 
                 }
