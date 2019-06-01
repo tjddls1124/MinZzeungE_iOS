@@ -10,10 +10,14 @@ import UIKit
 
 class LockViewController: UIViewController{
 
-    @IBOutlet weak var passwordIsSame: UITextView!
-    @IBOutlet weak var password2: UITextField!
-    @IBOutlet weak var password1: UITextField!
+    @IBOutlet weak var passwordMessage: UITextView!
+    @IBOutlet weak var newPassword: UITextField!
+    @IBOutlet weak var repeatedPassword: UITextField!
+    @IBOutlet weak var currentPassword: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     @IBAction func finishSetPassword(_ sender: Any) {
         let successAlert =  UIAlertController(title: "비밀번호 설정이 완료되었습니다.", message: "", preferredStyle: UIAlertController.Style.alert)
@@ -23,42 +27,32 @@ class LockViewController: UIViewController{
         successAlert.addAction(ok)
         failAlert.addAction(ok)
         
-        if(passwordIsSame.text == "비밀번호 일치합니다."){
+        //    var dbPassword: Int = 1234
+        //    if(currentPassword.text == dbPassword){
+        //          present(failAlert, animated: true, completion: nil)
+        //
+        //    }
+        
+        if(newPassword.text == repeatedPassword.text){
             present(successAlert, animated: true, completion: nil)
+            //비밀번호 db에 저장
         }else{
             present(failAlert, animated: true, completion: nil)
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        if(password1.text == password2.text){
-            passwordIsSame.text = "비밀번호가 일치합니다."
-            let attributedString = NSMutableAttributedString(string: passwordIsSame.text)
-            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.green, range: (passwordIsSame.text as NSString).range(of:passwordIsSame.text))
-            passwordIsSame.attributedText = attributedString
-           
+    @IBAction func checkPasswordSame(_ sender: Any) {
+        if(newPassword.text == repeatedPassword.text){
+            passwordMessage.text = "비밀번호가 일치합니다."
+            //35 163 32
+            
         }else{
-            passwordIsSame.text = "비밀번호가 일치하지 않습니다."
-            let attributedString = NSMutableAttributedString(string: passwordIsSame.text)
-            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: (passwordIsSame.text as NSString).range(of:passwordIsSame.text))
-            passwordIsSame.attributedText = attributedString
+            passwordMessage.text = "비밀번호가 일치하지 않습니다."
+            // 255 105 80
         }
-        
-        self.view.layoutIfNeeded()
-        // Do any additional setup after loading the view.
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
     }
     
-//    @IBAction func checkPasswordSame(_ sender: Any) {
-//        if(passwordIsSame.text.elementsEqual("비밀번호 일치(모달보려고 기입)")){
-//            //unwind
-//        }else{
-//            let alert =  UIAlertController(title: "비밀번호가 일치 하지 않습니다.", message: "비밀번호를 확인해주세요.", preferredStyle: UIAlertController.Style.alert)
-//
-//            let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-//            alert.addAction(ok)
-//
-//            present(alert, animated: true, completion: nil)
-//        }
-//    }
 }

@@ -131,26 +131,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="40" id="cSZ-tM-3uH">
-                                        <rect key="frame" x="0.0" y="420" width="375" height="40"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cSZ-tM-3uH" id="CaN-Wd-fRL">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="46" id="9Fq-O8-OBM">
-                                        <rect key="frame" x="0.0" y="460" width="375" height="46"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Fq-O8-OBM" id="etq-eh-kY3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.32286627480000002" green="0.73250709020000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="465" id="kqa-Ej-myq">
-                                        <rect key="frame" x="0.0" y="506" width="375" height="465"/>
+                                        <rect key="frame" x="0.0" y="420" width="375" height="465"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kqa-Ej-myq" id="Gei-17-iTo">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="465"/>
@@ -195,7 +177,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="17" id="C5U-o0-hd7">
-                                        <rect key="frame" x="0.0" y="971" width="375" height="17"/>
+                                        <rect key="frame" x="0.0" y="885" width="375" height="17"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C5U-o0-hd7" id="xes-mL-dvv">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="16.666666666666668"/>
@@ -225,6 +207,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addPhotoButton" destination="J7W-nO-8Fg" id="hqq-5G-aaG"/>
                         <outlet property="firstLisenceNumber" destination="JHB-XN-E1j" id="e2f-B7-6ma"/>
                         <outlet property="imageView" destination="qyw-2R-Ben" id="udJ-3H-GRF"/>
                         <outlet property="imageView_IDCard" destination="qyw-2R-Ben" id="h1B-FK-RFm"/>
@@ -412,44 +395,47 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fill in password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="067-jO-W0b">
-                                <rect key="frame" x="90" y="390" width="224" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fill in new password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="067-jO-W0b">
+                                <rect key="frame" x="93" y="419" width="224" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bN1-Kp-QPe">
+                                <rect key="frame" x="93" y="373" width="224" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="One more" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0uE-Ks-1vn">
-                                <rect key="frame" x="90" y="437" width="224" height="30"/>
+                                <rect key="frame" x="93" y="466" width="224" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="checkPasswordSame:" destination="IwC-ea-bKc" eventType="editingChanged" id="7MJ-E2-nGt"/>
+                                </connections>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="비밀번호 일치하지 않습니다." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="y5M-jP-kDj">
-                                <rect key="frame" x="90" y="468" width="224" height="23"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTq-EA-wNf">
+                                <rect key="frame" x="182" y="551" width="46" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="확인"/>
+                                <connections>
+                                    <action selector="finishSetPassword:" destination="IwC-ea-bKc" eventType="touchUpInside" id="BQ2-aY-hkf"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="비밀번호가 일치하지 않습니다." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7Lg-OL-L8T">
+                                <rect key="frame" x="93" y="497" width="224" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" red="1" green="0.41073403780000001" blue="0.31317592960000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J9r-8H-RWE">
-                                <rect key="frame" x="182" y="524" width="45" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTq-EA-wNf">
-                                <rect key="frame" x="182" y="523" width="46" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="확인"/>
-                                <connections>
-                                    <action selector="finishSetPassword:" destination="IwC-ea-bKc" eventType="touchUpInside" id="JvP-4u-BmF"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Pr-ak-V92"/>
@@ -458,9 +444,10 @@
                     <navigationItem key="navigationItem" title="Title" id="SMW-bn-NZf"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="password1" destination="067-jO-W0b" id="lan-fs-8bN"/>
-                        <outlet property="password2" destination="0uE-Ks-1vn" id="lRO-bJ-9nH"/>
-                        <outlet property="passwordIsSame" destination="y5M-jP-kDj" id="3AN-OB-xlC"/>
+                        <outlet property="currentPassword" destination="bN1-Kp-QPe" id="Avs-MQ-WvJ"/>
+                        <outlet property="newPassword" destination="067-jO-W0b" id="lZC-fj-cNR"/>
+                        <outlet property="passwordMessage" destination="7Lg-OL-L8T" id="c8h-42-3MO"/>
+                        <outlet property="repeatedPassword" destination="0uE-Ks-1vn" id="Xab-8O-QMi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W60-Og-gVd" userLabel="First Responder" sceneMemberID="firstResponder"/>

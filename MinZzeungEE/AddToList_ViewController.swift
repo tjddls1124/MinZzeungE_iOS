@@ -70,6 +70,7 @@ class AddToList_ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        addPhotoButton.isHidden = false
         //imageView에 신분증 나타내기 + textView에 추출된 문자 나타내기
         if let idImage = imageView {
             drawFeatures(in: idImage)
@@ -192,7 +193,9 @@ class AddToList_ViewController: UITableViewController {
     var frameSublayer = CALayer()
     let processor = ScaledElementProcessor()
 
+    @IBOutlet weak var addPhotoButton: UIButton!
     @IBAction func test(_ sender: Any) {
+        addPhotoButton.isHidden = true
         let alert =  UIAlertController(title: "신분증 사진을 선택해주세요", message: "", preferredStyle: .actionSheet)
         let library =  UIAlertAction(title: "사진앨범", style: .default) { (action) in self.openLibrary()
         }
@@ -322,6 +325,7 @@ extension AddToList_ViewController: UIImagePickerControllerDelegate, UINavigatio
             let fixedImage = pickedImage.fixOrientation()
             imageView.image = fixedImage
             drawFeatures(in: imageView)
+            
             idImage = fixedImage
         }
         dismiss(animated: true, completion: nil)
