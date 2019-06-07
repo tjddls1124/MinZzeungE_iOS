@@ -281,6 +281,15 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eD3-45-HyY">
+                                            <rect key="frame" x="305" y="38" width="54" height="52"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button" image="AuthenticateButton1"/>
+                                            <connections>
+                                                <action selector="AthenticateButton:" destination="Tky-rB-Hdv" eventType="touchUpInside" id="Qev-fj-o9a"/>
+                                                <segue destination="bHo-hf-hG9" kind="show" id="je8-ie-84C"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration" identifier="IDListCell">
@@ -310,6 +319,7 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yjf-J0-jRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Tky-rB-Hdv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2789.5999999999999" y="-109.35960591133005"/>
         </scene>
@@ -396,21 +406,14 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fill in new password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="067-jO-W0b">
-                                <rect key="frame" x="93" y="419" width="224" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bN1-Kp-QPe">
-                                <rect key="frame" x="93" y="373" width="224" height="30"/>
+                                <rect key="frame" x="93" y="372" width="224" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="One more" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0uE-Ks-1vn">
-                                <rect key="frame" x="93" y="466" width="224" height="30"/>
+                                <rect key="frame" x="93" y="419" width="224" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -420,7 +423,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTq-EA-wNf">
-                                <rect key="frame" x="182" y="551" width="46" height="31"/>
+                                <rect key="frame" x="182" y="504" width="46" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="확인"/>
@@ -429,7 +432,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="비밀번호가 일치하지 않습니다." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7Lg-OL-L8T">
-                                <rect key="frame" x="93" y="497" width="224" height="23"/>
+                                <rect key="frame" x="93" y="450" width="224" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" red="1" green="0.41073403780000001" blue="0.31317592960000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -444,7 +447,6 @@
                     <navigationItem key="navigationItem" title="Title" id="SMW-bn-NZf"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="currentPassword" destination="bN1-Kp-QPe" id="Avs-MQ-WvJ"/>
                         <outlet property="newPassword" destination="067-jO-W0b" id="lZC-fj-cNR"/>
                         <outlet property="passwordMessage" destination="7Lg-OL-L8T" id="c8h-42-3MO"/>
                         <outlet property="repeatedPassword" destination="0uE-Ks-1vn" id="Xab-8O-QMi"/>
@@ -538,6 +540,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AuthenticateButton1" width="40" height="40"/>
         <image name="auth_loading" width="100" height="100"/>
         <image name="authentication-2" width="512" height="512"/>
         <image name="driver_license" width="754" height="468"/>
@@ -546,4 +549,7 @@
         <image name="secondTab" width="30" height="30"/>
         <image name="unlock" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="je8-ie-84C"/>
+    </inferredMetricsTieBreakers>
 </document>

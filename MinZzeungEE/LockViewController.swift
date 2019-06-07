@@ -13,7 +13,6 @@ class LockViewController: UIViewController{
     @IBOutlet weak var passwordMessage: UITextView!
     @IBOutlet weak var newPassword: UITextField!
     @IBOutlet weak var repeatedPassword: UITextField!
-    @IBOutlet weak var currentPassword: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,15 +26,15 @@ class LockViewController: UIViewController{
         successAlert.addAction(ok)
         failAlert.addAction(ok)
         
-        //    var dbPassword: Int = 1234
-        //    if(currentPassword.text == dbPassword){
-        //          present(failAlert, animated: true, completion: nil)
-        //
-        //    }
-        
-        if(newPassword.text == repeatedPassword.text){
-            present(successAlert, animated: true, completion: nil)
-            //비밀번호 db에 저장
+        if(repeatedPassword.text != ""){
+            if(newPassword.text == repeatedPassword.text){
+                present(successAlert, animated: true, completion: nil)
+                //비밀번호 db에 저장
+                //setSucessful = true;
+                //setSucessful is true -> 인증버튼 클릭시 비밀번호 입력 모달창 나타나기
+            }else{
+                present(failAlert, animated: true, completion: nil)
+            }
         }else{
             present(failAlert, animated: true, completion: nil)
         }
@@ -44,10 +43,12 @@ class LockViewController: UIViewController{
     @IBAction func checkPasswordSame(_ sender: Any) {
         if(newPassword.text == repeatedPassword.text){
             passwordMessage.text = "비밀번호가 일치합니다."
+            passwordMessage.textColor = UIColor(red: 35/256, green: 163/256, blue: 32/256, alpha: 1.0)
             //35 163 32
             
         }else{
             passwordMessage.text = "비밀번호가 일치하지 않습니다."
+            passwordMessage.textColor = UIColor(red: 255/256, green: 105/256, blue: 80/256, alpha: 1.0)
             // 255 105 80
         }
     }

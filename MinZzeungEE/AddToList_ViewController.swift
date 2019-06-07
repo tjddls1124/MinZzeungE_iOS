@@ -306,7 +306,13 @@ class AddToList_ViewController: UITableViewController {
         }
     }
 
-
+//    @IBAction func AthenticateButton(_ sender: UIButton) {
+//        if(setPasswordSucess){
+//            모달 -> 인증화면
+//        }else{
+//            인증화면
+//        }
+//    }
 }
 
 extension AddToList_ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
