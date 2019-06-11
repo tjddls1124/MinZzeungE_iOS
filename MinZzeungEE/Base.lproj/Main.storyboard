@@ -394,7 +394,7 @@
                                 <rect key="frame" x="174" y="0.0" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="authentication-2" translatesAutoresizingMaskIntoConstraints="NO" id="kk7-CJ-po9">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="authenticationColor" translatesAutoresizingMaskIntoConstraints="NO" id="kk7-CJ-po9">
                                 <rect key="frame" x="146" y="151" width="119" height="111"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -542,7 +542,7 @@
     <resources>
         <image name="AuthenticateButton1" width="40" height="40"/>
         <image name="auth_loading" width="100" height="100"/>
-        <image name="authentication-2" width="512" height="512"/>
+        <image name="authenticationColor" width="512" height="512"/>
         <image name="driver_license" width="754" height="468"/>
         <image name="face-2" width="512" height="512"/>
         <image name="firstTab" width="30" height="30"/>
