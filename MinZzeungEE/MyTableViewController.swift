@@ -9,12 +9,14 @@
 import UIKit
 import Foundation
 import Firebase
+var idList = Array<ID>()
 
 class MyTableViewController: UITableViewController{
-    var idList = Array<ID>()
     
     func dataLoad(){
         
+        
+        /*
         //data load with Firebase
         let ref = Database.database().reference()
         var pk = ""
@@ -28,18 +30,24 @@ class MyTableViewController: UITableViewController{
                 pk = each.value?["pk"] as! String
                 personID = ID.init(idNum: pk)
             }
-            self.idList.append(personID!)
-            //pk = value?["pk"] as! String
-        })
-        /*
-        refID.observe(.value){ snapshot in
-            for child in snapshot.children{
-                print(child)
+            
+            //Load UIImage
+            let imageRef = Storage.storage().reference().child("images/\(pk).jpg")
+            // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+            imageRef.getData(maxSize: 15 * 1024 * 1024) { data, error in
+                if let error = error {
+                    // Uh-oh, an error occurred!
+                    print(error.localizedDescription)
+                } else {
+                    // Data for "images/island.jpg" is returned
+                    personID?.imageFilePath = UIImage(data: data!)!
+                    idList.append(personID!)
+                    self.tableView.reloadData()
+                }
             }
-        }
-        //let personID = ID.init(idNum:pk)
-        idList.append(personID!)
-        */
+            //pk = value?["pk"] as! String
+        })*/
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,7 +116,7 @@ class MyTableViewController: UITableViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "DetailSeg"){
             let dest = segue.destination as! DetailViewController
-            let item = self.idList[self.tableView.indexPathForSelectedRow!.row]
+            let item = idList[self.tableView.indexPathForSelectedRow!.row]
             dest.id = item
         }
         else {return}
@@ -116,10 +124,16 @@ class MyTableViewController: UITableViewController{
     
     //unwind Code 추가, add 시에 Modal에서 데이터를 전달받기 위한 Code
     @IBAction func unwindToIDList(segue:UIStoryboardSegue){
-        print("unwind")
-        print(self.idList)
+        //print("unwind")
+        //print(idList)
         self.tableView.reloadData()//refreshing View
         
         //TODO : Back 이후 Data 유지가 안됨 -> DB 사용할 것.
     }
+    
+    public func reload(id : ID){
+        idList.append(id)
+        self.tableView.reloadData()
+    }
+    
 }

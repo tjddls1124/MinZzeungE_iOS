@@ -11,6 +11,16 @@ import Firebase
 import UIKit
 
 struct ID{
+    init(kindKor:String,name:String,idFirstNum:String,idLastNum:String,enrollDate:String,image:UIImage, valid:Bool){
+        self.kind = korString_toIdKind(korString: kindKor)
+        self.name = name
+        self.idFirstNum = idFirstNum
+        self.idLastNum = idLastNum
+        self.enrollDate = enrollDate
+        self.imageFilePath = image
+        self.isVaild = valid
+    }
+    //make id from sqlite DB
     init(idNum:String) {
         var kindKor : String = ""
         var isVaild : Bool = false
@@ -37,15 +47,8 @@ struct ID{
         self.idFirstNum = String(idSp[0])
         self.idLastNum = String(idSp[1])
         self.isVaild = isVaild
-        
-        //Load UIImage
-        let imageRef = Storage.storage().reference().child("images/\(idNum).jpg")
-        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-        imageRef.getData(maxSize: 10 * 1024 * 1024) { data , error in
-            // Data for "images/island.jpg" is returned
-            image = UIImage(data: data!)!
-        }
-        self.imageFilePath = image
+
+        self.imageFilePath = image ?? UIImage(named:"driver_license")!
     }
     
     
@@ -54,7 +57,7 @@ struct ID{
     var idFirstNum : String = ""
     var idLastNum : String = ""
     var enrollDate : String = ""
-    var imageFilePath : UIImage?
+    var imageFilePath : UIImage = UIImage(named:"driver_license")!
     var isVaild : Bool = false
     
     enum idKind{

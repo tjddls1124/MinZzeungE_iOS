@@ -30,17 +30,18 @@ class AddToList_ViewController: UITableViewController {
         //TODO : 올바르게 들어왓다면 List에 추가하고 modal을 dismiss
         //TODO : 아니라면 예외처리 후 다시 입력하라는 메시지 띄우기
         //TODO : console 출력 -> message 띄우기로 바꿀 것
-        //TODO : unwind seg 를 이용하는 방식으로 변경. Don't use this func.
+        //TODO : unwind seg 를 이용하는 방식으로 변경.
+        //Don't use this func.
     }
-   /*
-    func makeNewID(kind:ID.idKind, name:String, idFirst:String,idLast:String,img:UIImage) -> ID?{
-        guard let newID = ID.init(kind: kind, name: name, idFirstNum: idFirst, idLastNum: idLast, enrollDate: "", imageFilePath: img, isVaild: false) as ID! else{
+   
+    func makeNewID(kind:String, name:String, idFirst:String,idLast:String,enrollDate : String,img:UIImage, valid:Bool) -> ID?{
+        guard let newID = ID.init(kindKor: kind, name: name, idFirstNum: idFirst, idLastNum: idLast, enrollDate: enrollDate, image: img, valid: valid) as ID! else{
             return nil
         }
         //TODO : make New ID by using self's field, fill into init()
         return newID
     }
-    */
+ 
     
     func appendToFirebase(){
         
@@ -160,13 +161,13 @@ class AddToList_ViewController: UITableViewController {
             //TODO : kind check
             //TODO : text field optional check
             //TODO : check equality with parsed text
-            /*guard let newID = makeNewID(kind: ID.idKind.DriverLicense, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, img: self.idImage!), let idListController = segue.destination as? MyTableViewController else{
+            guard let newID = makeNewID(kind: ID.idKind.DriverLicense, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, enrollDate: <#String#>, img: self.idImage!), let idListController = segue.destination as? MyTableViewController else{
                 return
             }
             idListController.idList.append(newID)
-            */
+ 
             
-            let idImgData = idImage?.pngData()
+            let idImgData = idImage?.jpegData(compressionQuality: 0.9)
             let uid = "\(self.textField_idLastNum.text ?? "")-\(self.textField_idLastNum.text ?? "Nil" )"
             
             // Create a child reference
@@ -179,7 +180,21 @@ class AddToList_ViewController: UITableViewController {
             let idImageRef = imagesRef.child("\(uid).jpg")
             
             let uploadTask = idImageRef.putData(idImgData!,metadata: nil)
-                
+            
+            // data 수정
+            let ref = Database.database().reference()
+            let idRef = ref.child("idData/\(textField_idFirsttNum.text!)-\(textField_idLastNum.text!)")
+            idRef.child("pk").setValue("")
+            idRef.child("name").setValue("\(textField_name.text)")
+            idRef.child("kind").setValue("\(sc_idKind.accessibilityIdentifier)")
+            idRef.child("enrollDate").setValue("") //TODO :add enroll date
+            idRef.child("isVaild").setValue(false) //TODO : check Vaildation
+            
+            
+            // data 추가방법
+            
+            //  ref.childByAutoId().setValue(["name": name, "idFirstNum": idFirstNum, "idLastNum": idLastNum, "idImage": self.idImage]) //add image in DB
+            
         }
     }
     
@@ -241,7 +256,6 @@ class AddToList_ViewController: UITableViewController {
                 let idNum = idFirstNum + "-" + idLastNum
                 if(String(text) == idNum){
                     print("주민등록번호가 일치합니다")
-                    let ref = Database.database().reference()
                     
                     // data 수정
                      //ref.child("idData/idFirstNum").setValue("\(idFirstNum)")
