@@ -55,7 +55,7 @@ struct ID{
             // Data for "images/island.jpg" is returned
             image = UIImage(data: data!)!
         }
-        self.imageFilePath = image
+        self.imageFilePath = image!
     }
     
     
@@ -71,10 +71,13 @@ struct ID{
         case ID_Card
         case DriverLicense
         case StudentID_Card
+        case Passport
         var idKindString : String{ //Enum Type을 이용하여 String Value를 구해줌. Computed Property, 메모리를 가지고 있지 않다가 계산후에 부여해줌.
             get{
                 let kindString : String
                 switch self {
+                case .Passport:
+                    kindString = "Passport"
                 case .ID_Card:
                     kindString = "ID Card"
                 case .DriverLicense:
@@ -89,6 +92,8 @@ struct ID{
             get{
                 let kind_korString : String
                     switch self {
+                    case .Passport :
+                        kind_korString = "여권"
                     case .DriverLicense:
                         kind_korString = "운전면허증"
                     case .ID_Card:
@@ -103,6 +108,8 @@ struct ID{
     }
     func korString_toIdKind(korString : String) -> idKind{
         switch korString {
+        case "여권":
+            return .Passport
         case "운전면허증" :
             return .DriverLicense
         case "주민등록증" :

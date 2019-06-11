@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import Firebase
+import SQLite3
 
 class AddToList_ViewController: UITableViewController {
     var idImage = UIImage(named:"driver_license")
@@ -44,7 +45,7 @@ class AddToList_ViewController: UITableViewController {
         //TODO : make New ID by using self's field, fill into init()
         return newID
     }
-    */
+    
     
     func appendToFirebase(){
 
@@ -152,6 +153,43 @@ class AddToList_ViewController: UITableViewController {
 
 /
 */
+    //insert
+    func insertIDtoDB(id : ID) {
+        var insertStatement: OpaquePointer? = nil
+        var validInt = 0
+        if(id.isVaild){
+            validInt = 1
+        }
+        
+        let insertStatementString = "INSERT INTO ID (Kind, Name, IdFirstNum, IdLastNum, EnrollDate, imagePath, valid) VALUES (?, ?, ?, ?, ?, ?, ?);"
+        //print(insertStatementString)
+        if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
+            let idKindString = id.kind.idKindString as NSString
+            let idName = id.name as NSString
+            let idFirstNum = id.idFirstNum as NSString
+            let idLastNum = id.idLastNum as NSString
+            let enrollD = id.enrollDate as NSString
+            let ipath = "\(id.idFirstNum)-\(id.idLastNum)-\(id.kind.idKindString)" as NSString
+            sqlite3_bind_text(insertStatement, 1, idKindString.utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 2, idName.utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 3, idFirstNum.utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 4, idLastNum.utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 5, enrollD.utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 6, ipath.utf8String, -1, nil)
+            sqlite3_bind_int(insertStatement, 7, Int32(validInt))
+
+            
+            
+            if sqlite3_step(insertStatement) == SQLITE_DONE {
+                print("Successfully inserted row.")
+            } else {
+                print("Could not insert row.")
+            }
+        } else {
+            print("INSERT statement could not be prepared.")
+        }
+        sqlite3_finalize(insertStatement)
+    }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -165,15 +203,33 @@ class AddToList_ViewController: UITableViewController {
             //TODO : kind check
             //TODO : text field optional check
             //TODO : check equality with parsed text
-            guard let newID = makeNewID(kind: ID.idKind.DriverLicense, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, enrollDate: <#String#>, img: self.idImage!), let idListController = segue.destination as? MyTableViewController else{
+            var kindString = ""
+            switch selectedSegment.selectedSegmentIndex {
+            case 0 : kindString = "주민등록증"
+            case 1 : kindString = "운전면허증"
+            case 2 : kindString = "여권"
+            default:
+                kindString = "운전면허증"
+            }
+            guard let newID = makeNewID(kind: kindString, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, enrollDate: "\(self.firstLisenceNumber.text!)-\(self.secondLisenceNumber.text!)", img: self.idImage!, valid: false), let _ = segue.destination as? MyTableViewController else{
                 return
             }
-            idListController.idList.append(newID)
-            */
+            idList.append(newID)
             
-            let idImgData = idImage?.pngData()
-            let uid = "\(self.textField_idLastNum.text ?? "")-\(self.textField_idLastNum.text ?? "Nil" )"
-
+            
+            //save data to sqlite db
+            insertIDtoDB(id: newID)
+            let uid = "\(newID.idFirstNum)-\(newID.idLastNum)-\(newID.kind.idKindString)"
+            //이미지를 로컬에 저장
+            if let image = idImage {
+                if let data = image.pngData() {
+                    let filename = getDocumentsDirectory().appendingPathComponent("\(uid).png")
+                    try? data.write(to: filename)
+                }
+            }
+            
+            
+            /*
             // Create a child reference
             // imagesRef now points to "images"
             //let uid = Auth.auth().currentUser?.uid
@@ -184,10 +240,21 @@ class AddToList_ViewController: UITableViewController {
             let idImageRef = imagesRef.child("\(uid).jpg")
 
             let uploadTask = idImageRef.putData(idImgData!,metadata: nil)
-                
+            */
         }
     }
-
+    
+    
+    
+    
+    /**
+     현재 directory url을 가져옴.
+     */
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textView: UITextView!
 
@@ -245,7 +312,7 @@ class AddToList_ViewController: UITableViewController {
                 let idNum = idFirstNum + "-" + idLastNum
                 if(String(text) == idNum){
                     print("주민등록번호가 일치합니다")
-                    let ref = Database.database().reference()
+                    //let ref = Database.database().reference()
                     
                     // data 수정
                      //ref.child("idData/idFirstNum").setValue("\(idFirstNum)")

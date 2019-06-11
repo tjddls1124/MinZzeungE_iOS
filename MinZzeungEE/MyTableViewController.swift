@@ -9,11 +9,115 @@
 import UIKit
 import Foundation
 import Firebase
+import SQLite3
+
 var idList = Array<ID>()
+var db : OpaquePointer? = nil
 
 class MyTableViewController: UITableViewController{
+    /**
+     SQL CRUD FUNC
+     */
+    
+    //db connect
+    func openDatabase() -> OpaquePointer? {
+        let dbPath = getDocumentsDirectory().appendingPathComponent("sqlDB").path
+        var db: OpaquePointer? = nil
+        if sqlite3_open(dbPath, &db) == SQLITE_OK {
+            print("Successfully opened connection to database at \(dbPath)")
+            return db
+        } else {
+            print("Unable to open database. Verify that you created the directory described " +
+                "in the Getting Started section.")
+        }
+        return nil
+    }
+    
+    //create table
+    func createTable() {
+        let createTableString = """
+ CREATE TABLE ID(Kind CHAR(20) , Name CHAR(20), IdFirstNum CHAR(20) , IdLastNum CHAR(20), EnrollDate Char(30), imagePath Char(255) PRIMARY KEY NOT NULL , valid INTEGER);
+ """
+        var createTableStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK {
+            if sqlite3_step(createTableStatement) == SQLITE_DONE {
+                print("Contact table created.")
+            } else {
+                print("Contact table could not be created.")
+            }
+        } else {
+            print("CREATE TABLE statement could not be prepared.")
+        }
+        sqlite3_finalize(createTableStatement)
+    }
+    
+
+
+    //read
+    func selectQuery() {
+        let queryStatementString = "SELECT * FROM ID;"
+        var queryStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
+            while sqlite3_step(queryStatement) == SQLITE_ROW {
+                let queryResultCol1 = sqlite3_column_text(queryStatement, 0)
+                let kind = String(cString: queryResultCol1!)
+                let queryResultCol2 = sqlite3_column_text(queryStatement, 1)
+                let name = String(cString: queryResultCol2!)
+                let queryResultCol3 = sqlite3_column_text(queryStatement, 2)
+                let idFirstNum = String(cString: queryResultCol3!)
+                let queryResultCol4 = sqlite3_column_text(queryStatement, 3)
+                let idLastNum = String(cString: queryResultCol4!)
+                let queryResultCol5 = sqlite3_column_text(queryStatement, 4)
+                let enrollDate = String(cString: queryResultCol5!)
+                let queryResultCol6 = sqlite3_column_text(queryStatement, 5)
+                let imgPath = String(cString: queryResultCol6!)
+                let queryResultCol7 = sqlite3_column_text(queryStatement, 6)
+                let valid = sqlite3_column_int(queryStatement, 7)
+                print("Query Result:")
+                print("\(name)")
+                
+                //image file load
+                let curPath = getDocumentsDirectory()
+                let fileURL = curPath.appendingPathComponent("\(imgPath).png")
+                let data = try? Data(contentsOf: fileURL)
+                let img = UIImage(data: data!)!
+                var val : Bool = true
+                if (valid == 0){
+                    val = false
+                }
+                idList.append(
+                    ID.init(kindKor: kind, name: name, idFirstNum: idFirstNum, idLastNum: idLastNum, enrollDate: enrollDate, image: img, valid: val)
+                )
+            }
+        }
+        sqlite3_finalize(queryStatement)
+    }
+    //delete
+    func delete( pk : String ) {
+        let deleteStatementStirng = "DELETE FROM ID WHERE imagePath = '\(pk)';"
+        var deleteStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, deleteStatementStirng, -1, &deleteStatement, nil) == SQLITE_OK {
+            if sqlite3_step(deleteStatement) == SQLITE_DONE {
+                print("Successfully deleted row.")
+            } else {
+                print("Could not delete row.")
+            }
+        } else {
+            print("DELETE statement could not be prepared")
+        }
+        
+        sqlite3_finalize(deleteStatement)
+    }
+    
     
     func dataLoad(){
+        //Only When first strat,
+        if(idList.count==0){
+            db = openDatabase()
+            createTable()
+            //delete()
+            selectQuery()
+        }
         
         
         /*
@@ -76,6 +180,9 @@ class MyTableViewController: UITableViewController{
     
     //Swipe in order to delete
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let id = idList[indexPath.row]
+        let pk = "\(id.idFirstNum)-\(id.idLastNum)-\(id.kind.idKindString)"
+        delete(pk: pk)
         idList.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         
@@ -95,6 +202,13 @@ class MyTableViewController: UITableViewController{
     }
     
     
+    /**
+     현재 directory url을 가져옴.
+     */
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -104,6 +218,9 @@ class MyTableViewController: UITableViewController{
         let row = idList[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "idListCell") as! IDListCell
         cell.idImageView.image = row.imageFilePath
+        
+
+        
         var kindString = row.kind.idKind_korString
         kindString = "분류 : \(kindString)"
         

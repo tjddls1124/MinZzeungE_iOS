@@ -201,7 +201,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="4JC-EE-QDF">
                             <connections>
-                                <action selector="checkAndDone:" destination="YnH-1O-zjH" id="I5D-mV-DYh"/>
+                                <action selector="checkAndDone:" destination="YnH-1O-zjH" id="Dd2-ze-mCe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -218,9 +218,11 @@
                         <outlet property="textField_idLastNum" destination="rV5-Ux-8he" id="F3b-Kx-8rg"/>
                         <outlet property="textField_name" destination="QiL-AD-Ol0" id="iIo-fi-P6P"/>
                         <segue destination="Ro6-vS-6xt" kind="show" identifier="addPhotoSegue" id="p9d-8k-fJ3"/>
+                        <segue destination="fci-2c-fQa" kind="unwind" identifier="Done" unwindAction="unwindToIDListWithSegue:" id="2vP-yq-rqv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Stk-pM-VPt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="fci-2c-fQa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3989.5999999999999" y="-1112.0689655172414"/>
         </scene>
