@@ -14,14 +14,15 @@ import GoogleMaps
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
-    override init() {
-        FirebaseApp.configure()
-    }
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
+        // init Google Maps API
         GMSServices.provideAPIKey("AIzaSyA_xbj87-urox0E6yQHBzBtEz3D4smfSgk")
         GMSPlacesClient.provideAPIKey("AIzaSyA_xbj87-urox0E6yQHBzBtEz3D4smfSgk")
-        //
+        
+        // init Firebase connection
+        FirebaseApp.configure()
+        
         return true
     }
 }

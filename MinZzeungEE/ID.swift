@@ -47,8 +47,15 @@ struct ID{
         self.idFirstNum = String(idSp[0])
         self.idLastNum = String(idSp[1])
         self.isVaild = isVaild
-
-        self.imageFilePath = image ?? UIImage(named:"driver_license")!
+        
+        //Load UIImage
+        let imageRef = Storage.storage().reference().child("images/\(idNum).jpg")
+        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+        imageRef.getData(maxSize: 10 * 1024 * 1024) { data , error in
+            // Data for "images/island.jpg" is returned
+            image = UIImage(data: data!)!
+        }
+        self.imageFilePath = image
     }
     
     

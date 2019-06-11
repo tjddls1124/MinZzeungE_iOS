@@ -12,19 +12,22 @@ import Firebase
 
 class AddToList_ViewController: UITableViewController {
     var idImage = UIImage(named:"driver_license")
-    
+
+    @IBOutlet weak var selectedSegment: UISegmentedControl!
     @IBOutlet weak var sc_idKind: UIView!
     @IBOutlet weak var textField_name: UITextField!
     @IBOutlet weak var textField_idFirsttNum: UITextField!
     @IBOutlet weak var textField_idLastNum: UITextField!
     @IBOutlet weak var imageView_IDCard: UIImageView!
+    @IBOutlet weak var firstLisenceNumber: UITextField!
+    @IBOutlet weak var secondLisenceNumber: UITextField!
     @IBAction func idKind_change(_ sender: Any) {
         //TODO : pick를 변경하면 view 종류에 맞는 view를 바꿔 띄워준다.
     }
     @IBAction func modalDismiss(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     @IBAction func AddComplete(_ sender: Any) {
         //TODO : if 문으로 Obj들이 올바르게 들어오는지 체크.
         //TODO : 올바르게 들어왓다면 List에 추가하고 modal을 dismiss
@@ -41,13 +44,13 @@ class AddToList_ViewController: UITableViewController {
         //TODO : make New ID by using self's field, fill into init()
         return newID
     }
- 
+    */
     
     func appendToFirebase(){
-        
+
     }
-    
-    
+
+
     @IBAction func checkAndDone(_ sender: Any) {
         // image valildation
         if(idImage == UIImage(named:"driver_license")){ //사진이 변경되지 않았다면
@@ -64,17 +67,18 @@ class AddToList_ViewController: UITableViewController {
     func imageTapped(img: AnyObject){
         self.performSegue(withIdentifier: "addPhotoSegue", sender: nil)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        addPhotoButton.isHidden = false
         //imageView에 신분증 나타내기 + textView에 추출된 문자 나타내기
         if let idImage = imageView {
             drawFeatures(in: idImage)
         }
-        
+
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped(img:)))
-        
+
         imageView_IDCard.isUserInteractionEnabled = true
         imageView_IDCard.addGestureRecognizer(tapGestureRecognizer)
         // Uncomment the following line to preserve selection between presentations
@@ -122,7 +126,7 @@ class AddToList_ViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     */
 
@@ -144,11 +148,11 @@ class AddToList_ViewController: UITableViewController {
 
     // MARK: - Navigation
 
-    
+
 
 /
 */
-    
+
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -156,7 +160,7 @@ class AddToList_ViewController: UITableViewController {
         if segue.identifier == "Done"{
             //adList가 완벽히 add 되어 seg가 올바르게 전송되었다면
             //self.IDList에 추가
-            
+
             let dest = segue.destination as! MyTableViewController
             //TODO : kind check
             //TODO : text field optional check
@@ -165,11 +169,11 @@ class AddToList_ViewController: UITableViewController {
                 return
             }
             idListController.idList.append(newID)
- 
+            */
             
-            let idImgData = idImage?.jpegData(compressionQuality: 0.9)
+            let idImgData = idImage?.pngData()
             let uid = "\(self.textField_idLastNum.text ?? "")-\(self.textField_idLastNum.text ?? "Nil" )"
-            
+
             // Create a child reference
             // imagesRef now points to "images"
             //let uid = Auth.auth().currentUser?.uid
@@ -178,43 +182,29 @@ class AddToList_ViewController: UITableViewController {
             let storageRef = Storage.storage().reference()
             let imagesRef = storageRef.child("images")
             let idImageRef = imagesRef.child("\(uid).jpg")
-            
+
             let uploadTask = idImageRef.putData(idImgData!,metadata: nil)
-            
-            // data 수정
-            let ref = Database.database().reference()
-            let idRef = ref.child("idData/\(textField_idFirsttNum.text!)-\(textField_idLastNum.text!)")
-            idRef.child("pk").setValue("")
-            idRef.child("name").setValue("\(textField_name.text)")
-            idRef.child("kind").setValue("\(sc_idKind.accessibilityIdentifier)")
-            idRef.child("enrollDate").setValue("") //TODO :add enroll date
-            idRef.child("isVaild").setValue(false) //TODO : check Vaildation
-            
-            
-            // data 추가방법
-            
-            //  ref.childByAutoId().setValue(["name": name, "idFirstNum": idFirstNum, "idLastNum": idLastNum, "idImage": self.idImage]) //add image in DB
-            
+                
         }
     }
-    
-    
+
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textView: UITextView!
-    
+
     var frameSublayer = CALayer()
     let processor = ScaledElementProcessor()
-    
+
+    @IBOutlet weak var addPhotoButton: UIButton!
     @IBAction func test(_ sender: Any) {
-        print("입력받음")
-        let alert =  UIAlertController(title: "신분증 사진을 선택해주세요", message: "(깨끗한 사진)", preferredStyle: .actionSheet)
+        addPhotoButton.isHidden = true
+        let alert =  UIAlertController(title: "신분증 사진을 선택해주세요", message: "", preferredStyle: .actionSheet)
         let library =  UIAlertAction(title: "사진앨범", style: .default) { (action) in self.openLibrary()
         }
         let camera =  UIAlertAction(title: "카메라", style: .default) { (action) in
             self.openCamera()
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        
+
         alert.addAction(library)
         alert.addAction(camera)
         alert.addAction(cancel)
@@ -227,28 +217,27 @@ class AddToList_ViewController: UITableViewController {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             presentImagePickerController(withSourceType: .camera)
         } else{
-            let alert = UIAlertController(title: "Camera Not Available", message: "A camera is not available. Please try picking an image from the image library instead.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Camera Not Available", message: "A camera is not available.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
     }
-    
+
     private func removeFrames() {
         guard let sublayers = frameSublayer.sublayers else { return }
         for sublayer in sublayers {
             sublayer.removeFromSuperlayer()
         }
     }
-    
+
     // image에서 text정보 추출
     //TODO : 등록번호(enroll number) parsing
     private func drawFeatures(in imageView: UIImageView, completion: (() -> Void)? = nil) {
         removeFrames()
         processor.process(in: imageView) { text, elements in
-            //self.textView.text = text
+//            self.textView.text = text
             //추출된 정보 배열로 저장
             let extractedText = text.split(separator: "\n")
-            
             guard let idFirstNum = self.textField_idFirsttNum.text, let idLastNum = self.textField_idLastNum.text, let name = self.textField_name.text else { return }
 
             //추출정보와 입력정보가 일치한지 확인
@@ -256,15 +245,16 @@ class AddToList_ViewController: UITableViewController {
                 let idNum = idFirstNum + "-" + idLastNum
                 if(String(text) == idNum){
                     print("주민등록번호가 일치합니다")
+                    let ref = Database.database().reference()
                     
                     // data 수정
                      //ref.child("idData/idFirstNum").setValue("\(idFirstNum)")
                      //ref.child("idData/idLastNum").setValue("\(idLastNum)")
-                    
+
                     // data 추가방법
-                    
+
                   //  ref.childByAutoId().setValue(["name": name, "idFirstNum": idFirstNum, "idLastNum": idLastNum, "idImage": self.idImage]) //add image in DB
-                    
+
                     // data 읽어오기
 //                    ref.child("idData").observeSingleEvent(of: .value, with: {
 //                        (snapsot) in if let idData = snapsot.value as? [String:Any]{
@@ -274,14 +264,56 @@ class AddToList_ViewController: UITableViewController {
 //                        }
 //                    })
                     // https://firebase.google.com/docs/database/ios/read-and-write?hl=ko
-                    
+
                 }
             }
-            
+
             print(extractedText)
             completion?()
         }
     }
+
+//    func uploadImageToFirebaseStorage(data: NSData){
+//        let storageRef = Storage.storage().reference(withPath: "tmp1.png")
+//        let uploadMetadata = StorageMetadata()
+//        uploadMetadata.contentType = "image/jpeg"
+//
+//        storageRef.putData(data as Data, metadata: uploadMetadata, completion: {(metadata, error) in
+//            if(error != nil){
+//                print("error /(error?.locaizedDescription)")
+//            }else{
+//                print("Upload Complete!")
+//            }
+//        })
+//
+//    }
+
+    @IBAction func segmentControl(_ sender: Any) {
+        switch selectedSegment.selectedSegmentIndex{
+        case 0:
+            firstLisenceNumber.placeholder = "Don't"
+            secondLisenceNumber.placeholder = "fill in anything"
+            break
+        case 1:
+            firstLisenceNumber.placeholder = "Lis"
+            secondLisenceNumber.placeholder = "ence Number"
+            break
+        case 2:
+            firstLisenceNumber.placeholder = "Don't"
+            secondLisenceNumber.placeholder = "fill in anything"
+            break
+        default:
+            break
+        }
+    }
+
+//    @IBAction func AthenticateButton(_ sender: UIButton) {
+//        if(setPasswordSucess){
+//            모달 -> 인증화면
+//        }else{
+//            인증화면
+//        }
+//    }
 }
 
 extension AddToList_ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
@@ -292,7 +324,7 @@ extension AddToList_ViewController: UIImagePickerControllerDelegate, UINavigatio
         picker.sourceType = sourceType
         present(picker, animated: true, completion: nil)
     }
-    
+
     // 카메라or사진첩에서 가져온 image를 화면에 출력
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
@@ -300,6 +332,7 @@ extension AddToList_ViewController: UIImagePickerControllerDelegate, UINavigatio
             let fixedImage = pickedImage.fixOrientation()
             imageView.image = fixedImage
             drawFeatures(in: imageView)
+            
             idImage = fixedImage
         }
         dismiss(animated: true, completion: nil)

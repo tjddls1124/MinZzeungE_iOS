@@ -11,6 +11,7 @@ target 'MinZzeungEE' do
   pod 'Firebase/MLVision'
   pod 'Firebase/MLVisionTextModel'
   pod 'Firebase/Database'
+  pod 'Firebase/Storage'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'Firebase/Messaging'
