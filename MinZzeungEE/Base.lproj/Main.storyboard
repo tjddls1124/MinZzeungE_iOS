@@ -353,10 +353,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="auth_loading" translatesAutoresizingMaskIntoConstraints="NO" id="0Pv-OV-cs5">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Pv-OV-cs5">
                                         <rect key="frame" x="73" y="19" width="95" height="95"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wZY-zo-Gg0">
+                                        <rect key="frame" x="110" y="56" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
@@ -368,6 +372,7 @@
                         <outlet property="authResult" destination="ZCn-vS-pbA" id="8kH-qe-7z4"/>
                         <outlet property="authResultIcon" destination="0Pv-OV-cs5" id="pOc-oP-SYQ"/>
                         <outlet property="idImageView" destination="3lT-q8-RGT" id="ysa-Rh-FRj"/>
+                        <outlet property="spinner" destination="wZY-zo-Gg0" id="yaK-hx-Rhb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJ3-GN-vqi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -541,7 +546,6 @@
     </scenes>
     <resources>
         <image name="AuthenticateButton1" width="40" height="40"/>
-        <image name="auth_loading" width="100" height="100"/>
         <image name="authentication-2" width="512" height="512"/>
         <image name="driver_license" width="754" height="468"/>
         <image name="face-2" width="512" height="512"/>

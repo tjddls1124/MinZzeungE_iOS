@@ -36,6 +36,7 @@ class DetailViewController: UIViewController {
     var id : ID?
     
     @IBOutlet weak var authResultIcon: UIImageView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     @IBAction func authen(_ sender: Any) {
         performSegue(withIdentifier: "authenSegue", sender: nil)
@@ -44,6 +45,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.spinner.startAnimating()
         /* To allow custom request by Alamofire, you should add `App Transport Security Settings` option in info.plist */
         AF.request("http://www.efine.go.kr/licen/truth/licenTruth.do?subMenuLv=010100", method: .post, parameters: parameters, encoding: URLEncoding.httpBody)
             .responseString{ response in
@@ -64,6 +66,7 @@ class DetailViewController: UIViewController {
                     }
                     resultMsg = resultMsg + msgs[msgs.count-1]
                     self.authResult.text = resultMsg
+                    self.spinner.stopAnimating()
                     
                     if self.authResult.text == "전산 자료와 일치 합니다.\n식별번호가 일치합니다." {
                         print("success")
