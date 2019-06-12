@@ -12,6 +12,7 @@ import Firebase
 import SQLite3
 
 class AddToList_ViewController: UITableViewController {
+    var modIndex : Int = -1
     var idImage = UIImage(named:"driver_license")
 
     @IBOutlet weak var selectedSegment: UISegmentedControl!
@@ -50,17 +51,94 @@ class AddToList_ViewController: UITableViewController {
     func appendToFirebase(){
 
     }
+    
+    //read
+    func selectQuery(pk : String) -> ID?{
+        let queryStatementString = "SELECT * FROM ID Where imagePath = '\(pk)';"
+        var queryStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
+            if sqlite3_step(queryStatement) == SQLITE_ROW {
+                let queryResultCol1 = sqlite3_column_text(queryStatement, 0)
+                let kind = String(cString: queryResultCol1!)
+                let queryResultCol2 = sqlite3_column_text(queryStatement, 1)
+                let name = String(cString: queryResultCol2!)
+                let queryResultCol3 = sqlite3_column_text(queryStatement, 2)
+                let idFirstNum = String(cString: queryResultCol3!)
+                let queryResultCol4 = sqlite3_column_text(queryStatement, 3)
+                let idLastNum = String(cString: queryResultCol4!)
+                let queryResultCol5 = sqlite3_column_text(queryStatement, 4)
+                let enrollDate = String(cString: queryResultCol5!)
+                let queryResultCol6 = sqlite3_column_text(queryStatement, 5)
+                let imgPath = String(cString: queryResultCol6!)
+                let queryResultCol7 = sqlite3_column_text(queryStatement, 6)
+                let valid = sqlite3_column_int(queryStatement, 7)
+                print("Query Result:")
+                print("\(name)")
+                
+                //image file load
+                let curPath = getDocumentsDirectory()
+                let fileURL = curPath.appendingPathComponent("\(imgPath).png")
+                let data = try? Data(contentsOf: fileURL)
+                let img = UIImage(data: data!)!
+                var val : Bool = true
+                if (valid == 0){
+                    val = false
+                }
+                sqlite3_finalize(queryStatement)
+                return ID.init(kindKor: kind, name: name, idFirstNum: idFirstNum, idLastNum: idLastNum, enrollDate: enrollDate, image: img, valid: val)
+                
+            }
+            else{
+                print("select : no result")
+                sqlite3_finalize(queryStatement)
+                return nil
+            }
+        }
+        sqlite3_finalize(queryStatement)
+        return nil
+    }
 
-
+    //중복된 데이터가 있는지 확인
+    func checkDup(imgPath : String) -> Bool {
+        let id = selectQuery(pk: imgPath)
+        return selectQuery(pk: imgPath) != nil
+    }
+    
     @IBAction func checkAndDone(_ sender: Any) {
         // image valildation
         if(idImage == UIImage(named:"driver_license")){ //사진이 변경되지 않았다면
             let alert = UIAlertController(title: "사진 오류", message: "사진이 추가되지 않았습니다.\n 다시 확인해주세요", preferredStyle: UIAlertController.Style.alert)
             let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+            
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
             return
-        }else{
+        }
+        let uid = "\(self.textField_idFirsttNum.text!)-\(self.textField_idLastNum.text! )-\(getKindString(index: self.selectedSegment.selectedSegmentIndex))"
+        
+        
+        if(checkDup(imgPath: uid)){
+            let alert = UIAlertController(title: "신분증 중복 오류", message: "이미 같은 주민등록번호로 등록된 같은종류의 신분증이 있습니다!\n 해당 신분증을 수정해주세요.", preferredStyle: UIAlertController.Style.alert)
+            let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+            //let disAction = UIAlertAction(title:"취소", style: .default, handler: nil)
+            alert.addAction(action)
+            //alert.addAction(disAction)
+            present(alert, animated: true, completion: nil)
+        }
+            
+        else if(modIndex != -1){
+            let alert = UIAlertController(title: "신분증 수정", message: "해당 신분증의 내용을\n 수정하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
+            let action = UIAlertAction(title: "확인", style: .default, handler: {
+                (action) in
+                self.performSegue(withIdentifier: "Modify", sender: nil)
+            })
+            let disAction = UIAlertAction(title:"취소", style: .default, handler: nil)
+            alert.addAction(action)
+            alert.addAction(disAction)
+            present(alert, animated: true, completion: nil)
+        }
+        
+        else{
             performSegue(withIdentifier: "Done", sender: nil)
         }
     }
@@ -82,6 +160,24 @@ class AddToList_ViewController: UITableViewController {
 
         imageView_IDCard.isUserInteractionEnabled = true
         imageView_IDCard.addGestureRecognizer(tapGestureRecognizer)
+        
+        //if modify
+        if(self.modIndex != -1){
+            let id = idList[modIndex]
+            self.imageView.image = id.imageFilePath
+            self.idImage = id.imageFilePath
+            self.textField_name.text = id.name
+            self.textField_idLastNum.text = id.idLastNum
+            self.textField_idFirsttNum.text = id.idFirstNum
+            let s = id.enrollDate.split(separator: "-")
+            if(s.count >= 2){
+                self.firstLisenceNumber.text = String(s[0])
+                self.secondLisenceNumber.text = String(s[1])
+            }
+            
+            //TODO : Modify seleceted segment index
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -153,6 +249,34 @@ class AddToList_ViewController: UITableViewController {
 
 /
 */
+    //update
+    //CREATE TABLE ID(Kind CHAR(20) , Name CHAR(20), IdFirstNum CHAR(20) , IdLastNum CHAR(20), EnrollDate Char(30), imagePath Char(255) PRIMARY KEY NOT NULL , valid INTEGER);
+    func update(pk : String, id : ID) {
+        let idKindString = id.kind.idKindString //as NSString
+        let idName = id.name //as NSString
+        let idFirstNum = id.idFirstNum// as NSString
+        let idLastNum = id.idLastNum //as NSString
+        let enrollD = id.enrollDate //as NSString
+        let ipath = "\(id.idFirstNum)-\(id.idLastNum)-\(id.kind.idKindString)" //as NSString
+        var validInt = 0
+        if(id.isVaild){
+            validInt = 1
+        }
+        
+        let updateStatementString = "UPDATE ID SET kind = '\(idKindString)', Name = '\(idName)', IdFirstNum = '\(idFirstNum)', IdLastNum = '\(idLastNum)' , EnrollDate = '\(enrollD)', imagePath = '\(ipath)', vaild = \(validInt) WHERE imagePath = '\(pk)';"
+        var updateStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
+            if sqlite3_step(updateStatement) == SQLITE_DONE {
+                print("Successfully updated row.")
+            } else {
+                print("Could not update row.")
+            }
+        } else {
+            print("UPDATE statement could not be prepared")
+        }
+        sqlite3_finalize(updateStatement)
+    }
+    
     //insert
     func insertIDtoDB(id : ID) {
         var insertStatement: OpaquePointer? = nil
@@ -191,10 +315,35 @@ class AddToList_ViewController: UITableViewController {
         sqlite3_finalize(insertStatement)
     }
 
+    
+    func getKindString(index : Int) ->String{
+        var kindString = ""
+        switch index {
+        case 0 : kindString = "ID Card"
+        case 1 : kindString = "Driver License"
+        case 2 : kindString = "Passport"
+        default:
+            kindString = "Driver License"
+        }
+        return kindString
+    }
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "Modify"{
+            //create NewID
+            let uid = "\(self.textField_idFirsttNum.text!)-\(self.textField_idLastNum.text! )-\(getKindString(index: self.selectedSegment.selectedSegmentIndex))"
+            var kindString = ""
+            kindString = getKindString(index: selectedSegment.selectedSegmentIndex)
+            guard let newID = makeNewID(kind: kindString, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, enrollDate: "\(self.firstLisenceNumber.text!)-\(self.secondLisenceNumber.text!)", img: self.idImage!, valid: false), let _ = segue.destination as? MyTableViewController else{
+                return
+            }
+            //modify list
+            idList[modIndex] = newID
+            //modify DB
+            update(pk: uid, id: newID)
+        }
         if segue.identifier == "Done"{
             //adList가 완벽히 add 되어 seg가 올바르게 전송되었다면
             //self.IDList에 추가
@@ -204,13 +353,7 @@ class AddToList_ViewController: UITableViewController {
             //TODO : text field optional check
             //TODO : check equality with parsed text
             var kindString = ""
-            switch selectedSegment.selectedSegmentIndex {
-            case 0 : kindString = "주민등록증"
-            case 1 : kindString = "운전면허증"
-            case 2 : kindString = "여권"
-            default:
-                kindString = "운전면허증"
-            }
+            kindString = getKindString(index: selectedSegment.selectedSegmentIndex)
             guard let newID = makeNewID(kind: kindString, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, enrollDate: "\(self.firstLisenceNumber.text!)-\(self.secondLisenceNumber.text!)", img: self.idImage!, valid: false), let _ = segue.destination as? MyTableViewController else{
                 return
             }

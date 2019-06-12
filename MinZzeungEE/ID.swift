@@ -116,6 +116,14 @@ struct ID{
             return .ID_Card
         case "학생증":
             return .StudentID_Card
+        case "Driver License":
+            return .DriverLicense
+        case "ID Card":
+            return .ID_Card
+        case "Passport" :
+            return .Passport
+        case "StudentID Card":
+            return .StudentID_Card
         default:
             return .DriverLicense
         }

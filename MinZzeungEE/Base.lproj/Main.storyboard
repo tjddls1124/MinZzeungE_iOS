@@ -219,6 +219,7 @@
                         <outlet property="textField_name" destination="QiL-AD-Ol0" id="iIo-fi-P6P"/>
                         <segue destination="Ro6-vS-6xt" kind="show" identifier="addPhotoSegue" id="p9d-8k-fJ3"/>
                         <segue destination="fci-2c-fQa" kind="unwind" identifier="Done" unwindAction="unwindToIDListWithSegue:" id="2vP-yq-rqv"/>
+                        <segue destination="fci-2c-fQa" kind="unwind" identifier="Modify" unwindAction="unwindToIDListWithSegue:" id="xkO-ik-d8r"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Stk-pM-VPt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -329,6 +330,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Amy-UE-6De" kind="modal" identifier="ModifySegue" id="aHh-h9-nk3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yjf-J0-jRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Tky-rB-Hdv" userLabel="Exit" sceneMemberID="exit"/>
@@ -562,6 +566,7 @@
         <image name="unlock" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="je8-ie-84C"/>
+        <segue reference="5g7-C6-ZZs"/>
+        <segue reference="aHh-h9-nk3"/>
     </inferredMetricsTieBreakers>
 </document>

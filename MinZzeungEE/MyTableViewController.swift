@@ -19,6 +19,7 @@ class MyTableViewController: UITableViewController{
      SQL CRUD FUNC
      */
     
+    var index : Int? = -1
     //db connect
     func openDatabase() -> OpaquePointer? {
         let dbPath = getDocumentsDirectory().appendingPathComponent("sqlDB").path
@@ -92,6 +93,22 @@ class MyTableViewController: UITableViewController{
         }
         sqlite3_finalize(queryStatement)
     }
+    
+    func deleteAll(){
+        let deleteStatementStirng = "DELETE FROM ID;"
+        var deleteStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, deleteStatementStirng, -1, &deleteStatement, nil) == SQLITE_OK {
+            if sqlite3_step(deleteStatement) == SQLITE_DONE {
+                print("Successfully deleted row.")
+            } else {
+                print("Could not delete row.")
+            }
+        } else {
+            print("DELETE statement could not be prepared")
+        }
+        
+        sqlite3_finalize(deleteStatement)
+    }
     //delete
     func delete( pk : String ) {
         let deleteStatementStirng = "DELETE FROM ID WHERE imagePath = '\(pk)';"
@@ -115,7 +132,7 @@ class MyTableViewController: UITableViewController{
         if(idList.count==0){
             db = openDatabase()
             createTable()
-            //delete()
+            //deleteAll()
             selectQuery()
         }
         
@@ -161,7 +178,7 @@ class MyTableViewController: UITableViewController{
         
         
         dataLoad()
-        print(idList)
+        //print(idList)
         /*
         //data insert
         let personID  = ID.init(kind: .ID_Card, name: "하니",idFirstNum: "930215",idLastNum: "1xxxxxx",enrollDate: "",imageFilePath: UIImage(named: "idEx")!,isVaild: false)
@@ -190,15 +207,20 @@ class MyTableViewController: UITableViewController{
     
     //longclick event handle
     @objc func handleLongPress(sender : UILongPressGestureRecognizer){
-            let alret : UIAlertController = UIAlertController(title: "신분증 수정", message: "해당 신분증을 수정하시겠습니까?", preferredStyle: .alert)
-            self.present(alret, animated: true, completion: nil)
-        let confirmAction : UIAlertAction = UIAlertAction(title: "수정", style: .default, handler: {
-            result in // TODO : modifying
-        })
-        let cancleAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        if sender.state == UIGestureRecognizer.State.began {
+                let alret : UIAlertController = UIAlertController(title: "신분증 수정", message: "해당 신분증을 수정하시겠습니까?", preferredStyle: .alert)
+                self.present(alret, animated: true, completion: nil)
+                index = self.tableView.indexPathForRow(at: sender.location(in: self.tableView))!.row
+            let confirmAction : UIAlertAction = UIAlertAction(title: "수정", style: .default, handler: {
+                    //modifying segue
+                (confirmAction) in self.performSegue(withIdentifier: "ModifySegue", sender: sender)
+                })
+                let cancleAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+                
+                alret.addAction(cancleAction)
+                alret.addAction(confirmAction)
+        }
         
-        alret.addAction(cancleAction)
-        alret.addAction(confirmAction)
     }
     
     
@@ -235,6 +257,11 @@ class MyTableViewController: UITableViewController{
             let dest = segue.destination as! DetailViewController
             let item = idList[self.tableView.indexPathForSelectedRow!.row]
             dest.id = item
+        }
+        if(segue.identifier == "ModifySegue"){
+            let nav = segue.destination as! UINavigationController
+            let dest = nav.topViewController as! AddToList_ViewController
+            dest.modIndex = index!
         }
         else {return}
     }
