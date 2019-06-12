@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		115B664119653D2804335EA5 /* Pods_MinZzeungEE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62764E7C4639C4A8C5F9067A /* Pods_MinZzeungEE.framework */; };
 		3D86BC5422841226006A6657 /* AddPhotoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D86BC5322841226006A6657 /* AddPhotoStoryboard.storyboard */; };
 		3D86BC562284325F006A6657 /* Authenticate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D86BC552284325F006A6657 /* Authenticate.storyboard */; };
 		3D86BC5822843941006A6657 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D86BC5722843941006A6657 /* AuthenticationViewController.swift */; };
@@ -18,6 +17,7 @@
 		3DAF85922270BC0100AB0462 /* AddToList_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF85912270BC0100AB0462 /* AddToList_ViewController.swift */; };
 		3DC367952269E36900633672 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC367942269E36900633672 /* DetailViewController.swift */; };
 		3DC8D318224E051500C3170F /* IDListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8D317224E051500C3170F /* IDListCell.swift */; };
+		45524E7DB783A1EC38340808 /* Pods_MinZzeungEE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9A56AEC2D8FA4CB229A433 /* Pods_MinZzeungEE.framework */; };
 		8404580622925C1400861CE9 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404580522925C1400861CE9 /* MapsViewController.swift */; };
 		840EDB09229D5DBD00801B03 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840EDB08229D5DBD00801B03 /* LockViewController.swift */; };
 		8434EDE2228D873F00BD93BF /* ScaledElementProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434EDDD228D873E00BD93BF /* ScaledElementProcessor.swift */; };
@@ -28,8 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		245B829307C536CC62B9A2A2 /* Pods-MinZzeungEE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinZzeungEE.debug.xcconfig"; path = "Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE.debug.xcconfig"; sourceTree = "<group>"; };
-		3B322D05BD33A3855C85FB63 /* Pods-MinZzeungEE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinZzeungEE.release.xcconfig"; path = "Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE.release.xcconfig"; sourceTree = "<group>"; };
+		1E9A56AEC2D8FA4CB229A433 /* Pods_MinZzeungEE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MinZzeungEE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D86BC5322841226006A6657 /* AddPhotoStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddPhotoStoryboard.storyboard; sourceTree = "<group>"; };
 		3D86BC552284325F006A6657 /* Authenticate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authenticate.storyboard; sourceTree = "<group>"; };
 		3D86BC5722843941006A6657 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
@@ -42,7 +41,7 @@
 		3DAF85912270BC0100AB0462 /* AddToList_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToList_ViewController.swift; sourceTree = "<group>"; };
 		3DC367942269E36900633672 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3DC8D317224E051500C3170F /* IDListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDListCell.swift; sourceTree = "<group>"; };
-		62764E7C4639C4A8C5F9067A /* Pods_MinZzeungEE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MinZzeungEE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		577C1BAA1BA515A2A918D92C /* Pods-MinZzeungEE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinZzeungEE.release.xcconfig"; path = "Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE.release.xcconfig"; sourceTree = "<group>"; };
 		8404580522925C1400861CE9 /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		840EDB08229D5DBD00801B03 /* LockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewController.swift; sourceTree = "<group>"; };
 		8434EDDD228D873E00BD93BF /* ScaledElementProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaledElementProcessor.swift; sourceTree = "<group>"; };
@@ -50,6 +49,7 @@
 		84B6FD7C2293FA5800ECF2F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84CA6B2B229287F20023E5F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84CA6B2F2292A0290023E5F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		96AD27929875E12580B9140E /* Pods-MinZzeungEE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinZzeungEE.debug.xcconfig"; path = "Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				115B664119653D2804335EA5 /* Pods_MinZzeungEE.framework in Frameworks */,
+				45524E7DB783A1EC38340808 /* Pods_MinZzeungEE.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +70,7 @@
 				3D90631A22438152007ED6B7 /* MinZzeungEE */,
 				3D90631922438152007ED6B7 /* Products */,
 				8C3FCCF50389BB2EB3F9EAB8 /* Pods */,
-				F4F31B0EBC2659A4DA22A475 /* Frameworks */,
+				D54E36F3A367008D0B30018C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,16 +110,16 @@
 		8C3FCCF50389BB2EB3F9EAB8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				245B829307C536CC62B9A2A2 /* Pods-MinZzeungEE.debug.xcconfig */,
-				3B322D05BD33A3855C85FB63 /* Pods-MinZzeungEE.release.xcconfig */,
+				96AD27929875E12580B9140E /* Pods-MinZzeungEE.debug.xcconfig */,
+				577C1BAA1BA515A2A918D92C /* Pods-MinZzeungEE.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		F4F31B0EBC2659A4DA22A475 /* Frameworks */ = {
+		D54E36F3A367008D0B30018C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				62764E7C4639C4A8C5F9067A /* Pods_MinZzeungEE.framework */,
+				1E9A56AEC2D8FA4CB229A433 /* Pods_MinZzeungEE.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -131,12 +131,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3D90632A22438153007ED6B7 /* Build configuration list for PBXNativeTarget "MinZzeungEE" */;
 			buildPhases = (
-				32EA16EEDD62AEA8659985CE /* [CP] Check Pods Manifest.lock */,
+				185024D5A8A5731871162286 /* [CP] Check Pods Manifest.lock */,
 				3D90631422438152007ED6B7 /* Sources */,
 				3D90631522438152007ED6B7 /* Frameworks */,
 				3D90631622438152007ED6B7 /* Resources */,
-				D675593B1A0CACF0FFF097A3 /* [CP] Embed Pods Frameworks */,
-				6392B16EC68F4D85E3AE0925 /* [CP] Copy Pods Resources */,
+				C2F20656E00712818FBF4A47 /* [CP] Embed Pods Frameworks */,
+				F38995A49AFCA48717DF4544 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -197,7 +197,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		32EA16EEDD62AEA8659985CE /* [CP] Check Pods Manifest.lock */ = {
+		185024D5A8A5731871162286 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -219,24 +219,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6392B16EC68F4D85E3AE0925 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D675593B1A0CACF0FFF097A3 /* [CP] Embed Pods Frameworks */ = {
+		C2F20656E00712818FBF4A47 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -251,6 +234,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F38995A49AFCA48717DF4544 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -414,12 +414,11 @@
 		};
 		3D90632B22438153007ED6B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 245B829307C536CC62B9A2A2 /* Pods-MinZzeungEE.debug.xcconfig */;
+			baseConfigurationReference = 96AD27929875E12580B9140E /* Pods-MinZzeungEE.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4HMLMW8X99;
 				DEVELOPMENT_TEAM = 47ML72774B;
 				INFOPLIST_FILE = MinZzeungEE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -436,12 +435,11 @@
 		};
 		3D90632C22438153007ED6B7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B322D05BD33A3855C85FB63 /* Pods-MinZzeungEE.release.xcconfig */;
+			baseConfigurationReference = 577C1BAA1BA515A2A918D92C /* Pods-MinZzeungEE.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4HMLMW8X99;
 				DEVELOPMENT_TEAM = 47ML72774B;
 				INFOPLIST_FILE = MinZzeungEE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
