@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyA_xbj87-urox0E6yQHBzBtEz3D4smfSgk")
         GMSPlacesClient.provideAPIKey("AIzaSyA_xbj87-urox0E6yQHBzBtEz3D4smfSgk")
         
+        //Thread.sleep(forTimeInterval: 2.0)
         // init Firebase connection
         FirebaseApp.configure()
         
