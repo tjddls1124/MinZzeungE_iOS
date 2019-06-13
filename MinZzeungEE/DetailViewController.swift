@@ -66,6 +66,7 @@ class DetailViewController: UIViewController {
                     self.authResult.text = resultMsg
                     
                     if self.authResult.text == "전산 자료와 일치 합니다.\n식별번호가 일치합니다." {
+                        //TODO : id valid 변경할 것
                         print("success")
                         self.authResultIcon.image = UIImage(named: "auth_success")
                     } else {
