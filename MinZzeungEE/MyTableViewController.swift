@@ -36,7 +36,18 @@ class MyTableViewController: UITableViewController{
     
     //create
     func createPwTable() {
-        let createTableString = "Create Table PW(pw char(30) primary key not null)"
+        let createTableString = "Create Table Password (pw char(30) primary key not null)"
+        var createTableStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK {
+            if sqlite3_step(createTableStatement) == SQLITE_DONE {
+                print("Password table created.")
+            } else {
+                print("Password table could not be created.")
+            }
+        } else {
+            print("Password TABLE statement could not be prepared.")
+        }
+        sqlite3_finalize(createTableStatement)
     }
     
     //create table

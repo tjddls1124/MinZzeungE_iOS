@@ -490,14 +490,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uQS-Ry-Nqz">
-                                <rect key="frame" x="93" y="352" width="224" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="비밀번호 설정"/>
-                                    <segment title="비밀번호 변경"/>
-                                </segments>
-                            </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="current password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dyn-Yf-CUQ">
                                 <rect key="frame" x="93" y="402" width="224" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -513,6 +505,8 @@
                     <navigationItem key="navigationItem" title="Title" id="SMW-bn-NZf"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="currentPassword" destination="dyn-Yf-CUQ" id="de1-Hp-5Ww"/>
+                        <outlet property="doneButton" destination="tTq-EA-wNf" id="cp6-uQ-ii4"/>
                         <outlet property="newPassword" destination="067-jO-W0b" id="lZC-fj-cNR"/>
                         <outlet property="passwordMessage" destination="7Lg-OL-L8T" id="c8h-42-3MO"/>
                         <outlet property="repeatedPassword" destination="0uE-Ks-1vn" id="Xab-8O-QMi"/>
