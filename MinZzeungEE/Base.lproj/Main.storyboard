@@ -365,6 +365,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Amy-UE-6De" kind="modal" identifier="ModifySegue" id="LDo-pk-NeE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yjf-J0-jRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Tky-rB-Hdv" userLabel="Exit" sceneMemberID="exit"/>
@@ -618,4 +621,7 @@
         <image name="secondTab" width="30" height="30"/>
         <image name="unlock" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="LDo-pk-NeE"/>
+    </inferredMetricsTieBreakers>
 </document>
