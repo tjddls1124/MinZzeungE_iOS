@@ -14,6 +14,7 @@ import SQLite3
 class AddToList_ViewController: UITableViewController {
     var modIndex : Int = -1
     var idImage = UIImage(named:"driver_license")
+    var validValue : Bool = false
 
     @IBOutlet weak var selectedSegment: UISegmentedControl!
     @IBOutlet weak var sc_idKind: UIView!
@@ -23,8 +24,26 @@ class AddToList_ViewController: UITableViewController {
     @IBOutlet weak var imageView_IDCard: UIImageView!
     @IBOutlet weak var firstLisenceNumber: UITextField!
     @IBOutlet weak var secondLisenceNumber: UITextField!
+    
+    @IBOutlet weak var secondEnrolllLabel: UILabel!
+    @IBOutlet weak var firstEnrollLabel: UILabel!
+    @IBOutlet weak var thirdLisenceNumber: UITextField!
     @IBAction func idKind_change(_ sender: Any) {
         //TODO : pick를 변경하면 view 종류에 맞는 view를 바꿔 띄워준다.
+        if(self.selectedSegment.selectedSegmentIndex == 1){
+            self.firstLisenceNumber.isHidden = false
+            self.secondLisenceNumber.isHidden = false
+            self.thirdLisenceNumber.isHidden = false
+            self.firstEnrollLabel.isHidden = false
+            self.secondEnrolllLabel.isHidden = false
+        }
+        else{
+            self.firstLisenceNumber.isHidden = true
+            self.secondLisenceNumber.isHidden = true
+            self.thirdLisenceNumber.isHidden = true
+            self.firstEnrollLabel.isHidden = true
+            self.secondEnrolllLabel.isHidden = true
+        }
     }
     @IBAction func modalDismiss(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -103,8 +122,14 @@ class AddToList_ViewController: UITableViewController {
         let id = selectQuery(pk: imgPath)
         return selectQuery(pk: imgPath) != nil
     }
+    func checkEqual() -> Bool{
+        return false
+    }
     
     @IBAction func checkAndDone(_ sender: Any) {
+        
+        let uid = "\(self.textField_idFirsttNum.text!)-\(self.textField_idLastNum.text! )-\(getKindString(index: self.selectedSegment.selectedSegmentIndex))"
+        
         // image valildation
         if(idImage == UIImage(named:"driver_license")){ //사진이 변경되지 않았다면
             let alert = UIAlertController(title: "사진 오류", message: "사진이 추가되지 않았습니다.\n 다시 확인해주세요", preferredStyle: UIAlertController.Style.alert)
@@ -114,10 +139,16 @@ class AddToList_ViewController: UITableViewController {
             present(alert, animated: true, completion: nil)
             return
         }
-        let uid = "\(self.textField_idFirsttNum.text!)-\(self.textField_idLastNum.text! )-\(getKindString(index: self.selectedSegment.selectedSegmentIndex))"
         
-        
-        if(checkDup(imgPath: uid)){
+        else if(checkEqual()){
+            let alert = UIAlertController(title: "주민등록번호 오류", message: "신분증 정보가 올바르게 입력되지 않았습니다.\n 다시 확인해주세요.", preferredStyle: UIAlertController.Style.alert)
+            let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+            //let disAction = UIAlertAction(title:"취소", style: .default, handler: nil)
+            alert.addAction(action)
+            //alert.addAction(disAction)
+            present(alert, animated: true, completion: nil)
+        }
+        else if(checkDup(imgPath: uid)){
             let alert = UIAlertController(title: "신분증 중복 오류", message: "이미 같은 주민등록번호로 등록된 같은종류의 신분증이 있습니다!\n 해당 신분증을 수정해주세요.", preferredStyle: UIAlertController.Style.alert)
             let action = UIAlertAction(title: "확인", style: .default, handler: nil)
             //let disAction = UIAlertAction(title:"취소", style: .default, handler: nil)
@@ -170,9 +201,10 @@ class AddToList_ViewController: UITableViewController {
             self.textField_idLastNum.text = id.idLastNum
             self.textField_idFirsttNum.text = id.idFirstNum
             let s = id.enrollDate.split(separator: "-")
-            if(s.count >= 2){
+            if(s.count >= 3){
                 self.firstLisenceNumber.text = String(s[0])
                 self.secondLisenceNumber.text = String(s[1])
+                self.thirdLisenceNumber.text = String(s[2])
             }
             
             //TODO : Modify seleceted segment index
@@ -336,7 +368,7 @@ class AddToList_ViewController: UITableViewController {
             let uid = "\(self.textField_idFirsttNum.text!)-\(self.textField_idLastNum.text! )-\(getKindString(index: self.selectedSegment.selectedSegmentIndex))"
             var kindString = ""
             kindString = getKindString(index: selectedSegment.selectedSegmentIndex)
-            guard let newID = makeNewID(kind: kindString, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, enrollDate: "\(self.firstLisenceNumber.text!)-\(self.secondLisenceNumber.text!)", img: self.idImage!, valid: false), let _ = segue.destination as? MyTableViewController else{
+            guard let newID = makeNewID(kind: kindString, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, enrollDate: "\(self.firstLisenceNumber.text!)-\(self.secondLisenceNumber.text!)-\(self.thirdLisenceNumber)", img: self.idImage!, valid: false), let _ = segue.destination as? MyTableViewController else{
                 return
             }
             //modify list
@@ -441,20 +473,25 @@ class AddToList_ViewController: UITableViewController {
     }
 
     // image에서 text정보 추출
-    //TODO : 등록번호(enroll number) parsing
     private func drawFeatures(in imageView: UIImageView, completion: (() -> Void)? = nil) {
         removeFrames()
         processor.process(in: imageView) { text, elements in
 //            self.textView.text = text
             //추출된 정보 배열로 저장
             let extractedText = text.split(separator: "\n")
-            guard let idFirstNum = self.textField_idFirsttNum.text, let idLastNum = self.textField_idLastNum.text, let name = self.textField_name.text else { return }
+            guard let idFirstNum = self.textField_idFirsttNum.text else{
+                return
+            }
+            guard let idLastNum = self.textField_idLastNum.text, let name = self.textField_name.text else {return}
+            guard let enrollFirstD = self.firstLisenceNumber.text, let enrollSecondD =  self.secondLisenceNumber.text , let enrollThirdD = self.thirdLisenceNumber.text else { return }
 
             //추출정보와 입력정보가 일치한지 확인
             for text in extractedText{
+                print("text :\(text)")
                 let idNum = idFirstNum + "-" + idLastNum
                 if(String(text) == idNum){
                     print("주민등록번호가 일치합니다")
+                    
                     //let ref = Database.database().reference()
                     
                     // data 수정
@@ -476,6 +513,11 @@ class AddToList_ViewController: UITableViewController {
                     // https://firebase.google.com/docs/database/ios/read-and-write?hl=ko
 
                 }
+                let enrollD = enrollFirstD + "-" + enrollSecondD + "-" + enrollThirdD
+                if(String(text) == enrollD){
+                    print("등록번호가 일치합니다")
+                }
+                
             }
 
             print(extractedText)
