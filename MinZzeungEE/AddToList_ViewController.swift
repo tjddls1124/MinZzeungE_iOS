@@ -9,10 +9,15 @@
 import UIKit
 import FirebaseDatabase
 import Firebase
+import SQLite3
 
 class AddToList_ViewController: UITableViewController {
+    var modIndex : Int = -1
     var idImage = UIImage(named:"driver_license")
-
+    var idNumValid : Bool = false
+    var enrollNumVaild : Bool = false
+    var extractedText : [Substring]?
+    
     @IBOutlet weak var selectedSegment: UISegmentedControl!
     @IBOutlet weak var sc_idKind: UIView!
     @IBOutlet weak var textField_name: UITextField!
@@ -21,9 +26,29 @@ class AddToList_ViewController: UITableViewController {
     @IBOutlet weak var imageView_IDCard: UIImageView!
     @IBOutlet weak var firstLisenceNumber: UITextField!
     @IBOutlet weak var secondLisenceNumber: UITextField!
+    
+    @IBOutlet weak var secondEnrolllLabel: UILabel!
+    @IBOutlet weak var firstEnrollLabel: UILabel!
+    @IBOutlet weak var thirdLisenceNumber: UITextField!
     @IBAction func idKind_change(_ sender: Any) {
-        //TODO : pick를 변경하면 view 종류에 맞는 view를 바꿔 띄워준다.
+        if(self.selectedSegment.selectedSegmentIndex == 1){
+                viewChangeBySeg(isHide: false)
+        }
+        else{
+            viewChangeBySeg(isHide: true)
+        }
     }
+    func viewChangeBySeg(isHide : Bool){
+        //pick를 변경하면 view 종류에 맞는 view를 바꿔 띄워준다.
+        self.firstLisenceNumber.isHidden = isHide
+        self.secondLisenceNumber.isHidden = isHide
+        self.thirdLisenceNumber.isHidden = isHide
+        self.firstEnrollLabel.isHidden = isHide
+        self.secondEnrolllLabel.isHidden = isHide
+        
+    }
+    
+    
     @IBAction func modalDismiss(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -33,32 +58,178 @@ class AddToList_ViewController: UITableViewController {
         //TODO : 올바르게 들어왓다면 List에 추가하고 modal을 dismiss
         //TODO : 아니라면 예외처리 후 다시 입력하라는 메시지 띄우기
         //TODO : console 출력 -> message 띄우기로 바꿀 것
-        //TODO : unwind seg 를 이용하는 방식으로 변경. Don't use this func.
+        //TODO : unwind seg 를 이용하는 방식으로 변경.
+        //Don't use this func.
     }
-   /*
-    func makeNewID(kind:ID.idKind, name:String, idFirst:String,idLast:String,img:UIImage) -> ID?{
-        guard let newID = ID.init(kind: kind, name: name, idFirstNum: idFirst, idLastNum: idLast, enrollDate: "", imageFilePath: img, isVaild: false) as ID! else{
+   
+    func makeNewID(kind:String, name:String, idFirst:String,idLast:String,enrollDate : String,img:UIImage, valid:Bool) -> ID?{
+        guard let newID = ID.init(kindKor: kind, name: name, idFirstNum: idFirst, idLastNum: idLast, enrollDate: enrollDate, image: img, valid: valid) as ID! else{
             return nil
         }
         //TODO : make New ID by using self's field, fill into init()
         return newID
     }
-    */
-
+    
+    
     func appendToFirebase(){
 
     }
+    
+    //read
+    func selectQuery(pk : String) -> ID?{
+        let queryStatementString = "SELECT * FROM ID Where imagePath = '\(pk)';"
+        var queryStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
+            if sqlite3_step(queryStatement) == SQLITE_ROW {
+                let queryResultCol1 = sqlite3_column_text(queryStatement, 0)
+                let kind = String(cString: queryResultCol1!)
+                let queryResultCol2 = sqlite3_column_text(queryStatement, 1)
+                let name = String(cString: queryResultCol2!)
+                let queryResultCol3 = sqlite3_column_text(queryStatement, 2)
+                let idFirstNum = String(cString: queryResultCol3!)
+                let queryResultCol4 = sqlite3_column_text(queryStatement, 3)
+                let idLastNum = String(cString: queryResultCol4!)
+                let queryResultCol5 = sqlite3_column_text(queryStatement, 4)
+                let enrollDate = String(cString: queryResultCol5!)
+                let queryResultCol6 = sqlite3_column_text(queryStatement, 5)
+                let imgPath = String(cString: queryResultCol6!)
+                let queryResultCol7 = sqlite3_column_text(queryStatement, 6)
+                let valid = sqlite3_column_int(queryStatement, 7)
+                print("Query Result:")
+                print("\(name)")
+                
+                //image file load
+                let curPath = getDocumentsDirectory()
+                let fileURL = curPath.appendingPathComponent("\(imgPath).png")
+                let data = try? Data(contentsOf: fileURL)
+                let img = UIImage(data: data!)!
+                var val : Bool = true
+                if (valid == 0){
+                    val = false
+                }
+                sqlite3_finalize(queryStatement)
+                return ID.init(kindKor: kind, name: name, idFirstNum: idFirstNum, idLastNum: idLastNum, enrollDate: enrollDate, image: img, valid: val)
+                
+            }
+            else{
+                print("select : no result")
+                sqlite3_finalize(queryStatement)
+                return nil
+            }
+        }
+        sqlite3_finalize(queryStatement)
+        return nil
+    }
 
+    //중복된 데이터가 있는지 확인
+    func checkDup(imgPath : String) -> Bool {
+        let id = selectQuery(pk: imgPath)
+        return selectQuery(pk: imgPath) != nil
+    }
+    
+    func checkVaild() -> Bool{
+        guard let idFirstNum = self.textField_idFirsttNum.text else{ return true }
+        guard let idLastNum = self.textField_idLastNum.text, let name = self.textField_name.text else {return true}
+        guard let enrollFirstD = self.firstLisenceNumber.text, let enrollSecondD =  self.secondLisenceNumber.text , let enrollThirdD = self.thirdLisenceNumber.text else { return true}
+        
+        //추출정보와 입력정보가 일치한지 확인
+        for text in self.extractedText!{
+            print("text :\(text)")
+            let idNum = idFirstNum + "-" + idLastNum
+            if(String(text) == idNum){
+                self.idNumValid = true
+                print("주민등록번호가 일치합니다")
+                
+                //let ref = Database.database().reference()
+                
+                // data 수정
+                //ref.child("idData/idFirstNum").setValue("\(idFirstNum)")
+                //ref.child("idData/idLastNum").setValue("\(idLastNum)")
+                
+                // data 추가방법
+                
+                //  ref.childByAutoId().setValue(["name": name, "idFirstNum": idFirstNum, "idLastNum": idLastNum, "idImage": self.idImage]) //add image in DB
+                
+                // data 읽어오기
+                //                    ref.child("idData").observeSingleEvent(of: .value, with: {
+                //                        (snapsot) in if let idData = snapsot.value as? [String:Any]{
+                //                            print(idData["name"]!)
+                //                            print(idData["idFirstNum"]!)
+                //                            print(idData["idLastNum"]!)
+                //                        }
+                //                    })
+                // https://firebase.google.com/docs/database/ios/read-and-write?hl=ko
+                
+            }
+            let enrollD = enrollFirstD + "-" + enrollSecondD + "-" + enrollThirdD
+            if(String(text) == enrollD){
+                self.enrollNumVaild = true
+                print("등록번호가 일치합니다")
+            }
+            
+        }
 
+        
+        if(self.selectedSegment.selectedSegmentIndex == 1){
+            if(idNumValid && enrollNumVaild){
+                return false
+            }
+            else{
+                return true
+            }
+        }
+        else if(idNumValid){
+            return false
+        }
+        
+        
+        return true
+    }
+    
     @IBAction func checkAndDone(_ sender: Any) {
+        
+        let uid = "\(self.textField_idFirsttNum.text!)-\(self.textField_idLastNum.text! )-\(getKindString(index: self.selectedSegment.selectedSegmentIndex))"
+        
         // image valildation
         if(idImage == UIImage(named:"driver_license")){ //사진이 변경되지 않았다면
             let alert = UIAlertController(title: "사진 오류", message: "사진이 추가되지 않았습니다.\n 다시 확인해주세요", preferredStyle: UIAlertController.Style.alert)
             let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+            
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
             return
-        }else{
+        }
+        
+        else if(checkVaild()){
+            let alert = UIAlertController(title: "신분증 정보 오류", message: "신분증 정보가 사진과 다르거나 올바르게 입력되지 않았습니다.\n 다시 확인해주세요.", preferredStyle: UIAlertController.Style.alert)
+            let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+            //let disAction = UIAlertAction(title:"취소", style: .default, handler: nil)
+            alert.addAction(action)
+            //alert.addAction(disAction)
+            present(alert, animated: true, completion: nil)
+        }
+        else if(checkDup(imgPath: uid)){
+            let alert = UIAlertController(title: "신분증 중복 오류", message: "이미 같은 주민등록번호로 등록된 같은종류의 신분증이 있습니다!\n 해당 신분증을 수정해주세요.", preferredStyle: UIAlertController.Style.alert)
+            let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+            //let disAction = UIAlertAction(title:"취소", style: .default, handler: nil)
+            alert.addAction(action)
+            //alert.addAction(disAction)
+            present(alert, animated: true, completion: nil)
+        }
+            
+        else if(modIndex != -1){
+            let alert = UIAlertController(title: "신분증 수정", message: "해당 신분증의 내용을\n 수정하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
+            let action = UIAlertAction(title: "확인", style: .default, handler: {
+                (action) in
+                self.performSegue(withIdentifier: "Modify", sender: nil)
+            })
+            let disAction = UIAlertAction(title:"취소", style: .default, handler: nil)
+            alert.addAction(action)
+            alert.addAction(disAction)
+            present(alert, animated: true, completion: nil)
+        }
+        
+        else{
             performSegue(withIdentifier: "Done", sender: nil)
         }
     }
@@ -69,7 +240,7 @@ class AddToList_ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         addPhotoButton.isHidden = false
         //imageView에 신분증 나타내기 + textView에 추출된 문자 나타내기
         if let idImage = imageView {
@@ -80,6 +251,38 @@ class AddToList_ViewController: UITableViewController {
 
         imageView_IDCard.isUserInteractionEnabled = true
         imageView_IDCard.addGestureRecognizer(tapGestureRecognizer)
+        
+        //if modify
+        if(self.modIndex != -1){
+            let id = idList[modIndex]
+            switch id.kind {
+            case .DriverLicense?: self.selectedSegment.selectedSegmentIndex = 1
+            case .ID_Card?: self.selectedSegment.selectedSegmentIndex = 0
+            case .Passport?: self.selectedSegment.selectedSegmentIndex = 2
+            //default : Driver License
+            case .none:
+                self.selectedSegment.selectedSegmentIndex = 1
+            case .some(.StudentID_Card):
+                self.selectedSegment.selectedSegmentIndex = 1
+            }
+            self.imageView.image = id.imageFilePath
+            self.idImage = id.imageFilePath
+            self.textField_name.text = id.name
+            self.textField_idLastNum.text = id.idLastNum
+            self.textField_idFirsttNum.text = id.idFirstNum
+            let s = id.enrollDate.split(separator: "-")
+            if(s.count >= 3){
+                self.firstLisenceNumber.text = String(s[0])
+                self.secondLisenceNumber.text = String(s[1])
+                self.thirdLisenceNumber.text = String(s[2])
+            }
+            else{
+                viewChangeBySeg(isHide: true)
+            }
+            
+            //TODO : Modify seleceted segment index
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -151,11 +354,101 @@ class AddToList_ViewController: UITableViewController {
 
 /
 */
+    //update
+    //CREATE TABLE ID(Kind CHAR(20) , Name CHAR(20), IdFirstNum CHAR(20) , IdLastNum CHAR(20), EnrollDate Char(30), imagePath Char(255) PRIMARY KEY NOT NULL , valid INTEGER);
+    func update(pk : String, id : ID) {
+        let idKindString = id.kind.idKindString //as NSString
+        let idName = id.name //as NSString
+        let idFirstNum = id.idFirstNum// as NSString
+        let idLastNum = id.idLastNum //as NSString
+        let enrollD = id.enrollDate //as NSString
+        let ipath = "\(id.idFirstNum)-\(id.idLastNum)-\(id.kind.idKindString)" //as NSString
+        var validInt = 0
+        if(id.isVaild){
+            validInt = 1
+        }
+        
+        let updateStatementString = "UPDATE ID SET kind = '\(idKindString)', Name = '\(idName)', IdFirstNum = '\(idFirstNum)', IdLastNum = '\(idLastNum)' , EnrollDate = '\(enrollD)', imagePath = '\(ipath)', vaild = \(validInt) WHERE imagePath = '\(pk)';"
+        var updateStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
+            if sqlite3_step(updateStatement) == SQLITE_DONE {
+                print("Successfully updated row.")
+            } else {
+                print("Could not update row.")
+            }
+        } else {
+            print("UPDATE statement could not be prepared")
+        }
+        sqlite3_finalize(updateStatement)
+    }
+    
+    //insert
+    func insertIDtoDB(id : ID) {
+        var insertStatement: OpaquePointer? = nil
+        var validInt = 0
+        if(id.isVaild){
+            validInt = 1
+        }
+        
+        let insertStatementString = "INSERT INTO ID (Kind, Name, IdFirstNum, IdLastNum, EnrollDate, imagePath, valid) VALUES (?, ?, ?, ?, ?, ?, ?);"
+        //print(insertStatementString)
+        if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
+            let idKindString = id.kind.idKindString as NSString
+            let idName = id.name as NSString
+            let idFirstNum = id.idFirstNum as NSString
+            let idLastNum = id.idLastNum as NSString
+            let enrollD = id.enrollDate as NSString
+            let ipath = "\(id.idFirstNum)-\(id.idLastNum)-\(id.kind.idKindString)" as NSString
+            sqlite3_bind_text(insertStatement, 1, idKindString.utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 2, idName.utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 3, idFirstNum.utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 4, idLastNum.utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 5, enrollD.utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 6, ipath.utf8String, -1, nil)
+            sqlite3_bind_int(insertStatement, 7, Int32(validInt))
 
+            
+            
+            if sqlite3_step(insertStatement) == SQLITE_DONE {
+                print("Successfully inserted row.")
+            } else {
+                print("Could not insert row.")
+            }
+        } else {
+            print("INSERT statement could not be prepared.")
+        }
+        sqlite3_finalize(insertStatement)
+    }
+
+    
+    func getKindString(index : Int) ->String{
+        var kindString = ""
+        switch index {
+        case 0 : kindString = "ID Card"
+        case 1 : kindString = "Driver License"
+        case 2 : kindString = "Passport"
+        default:
+            kindString = "Driver License"
+        }
+        return kindString
+    }
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "Modify"{
+            //create NewID
+            let uid = "\(self.textField_idFirsttNum.text!)-\(self.textField_idLastNum.text! )-\(getKindString(index: self.selectedSegment.selectedSegmentIndex))"
+            var kindString = ""
+            kindString = getKindString(index: selectedSegment.selectedSegmentIndex)
+            guard let newID = makeNewID(kind: kindString, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, enrollDate: "\(self.firstLisenceNumber.text!)-\(self.secondLisenceNumber.text!)-\(self.thirdLisenceNumber)", img: self.idImage!, valid: false), let _ = segue.destination as? MyTableViewController else{
+                return
+            }
+            //modify list
+            idList[modIndex] = newID
+            //modify DB
+            update(pk: uid, id: newID)
+        }
         if segue.identifier == "Done"{
             //adList가 완벽히 add 되어 seg가 올바르게 전송되었다면
             //self.IDList에 추가
@@ -164,15 +457,27 @@ class AddToList_ViewController: UITableViewController {
             //TODO : kind check
             //TODO : text field optional check
             //TODO : check equality with parsed text
-            /*guard let newID = makeNewID(kind: ID.idKind.DriverLicense, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, img: self.idImage!), let idListController = segue.destination as? MyTableViewController else{
+            var kindString = ""
+            kindString = getKindString(index: selectedSegment.selectedSegmentIndex)
+            guard let newID = makeNewID(kind: kindString, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, enrollDate: "\(self.firstLisenceNumber.text!)-\(self.secondLisenceNumber.text!)", img: self.idImage!, valid: false), let _ = segue.destination as? MyTableViewController else{
                 return
             }
-            idListController.idList.append(newID)
-            */
-
-            let idImgData = idImage?.pngData()
-            let uid = "\(self.textField_idLastNum.text ?? "")-\(self.textField_idLastNum.text ?? "Nil" )"
-
+            idList.append(newID)
+            
+            
+            //save data to sqlite db
+            insertIDtoDB(id: newID)
+            let uid = "\(newID.idFirstNum)-\(newID.idLastNum)-\(newID.kind.idKindString)"
+            //이미지를 로컬에 저장
+            if let image = idImage {
+                if let data = image.pngData() {
+                    let filename = getDocumentsDirectory().appendingPathComponent("\(uid).png")
+                    try? data.write(to: filename)
+                }
+            }
+            
+            
+            /*
             // Create a child reference
             // imagesRef now points to "images"
             //let uid = Auth.auth().currentUser?.uid
@@ -183,10 +488,21 @@ class AddToList_ViewController: UITableViewController {
             let idImageRef = imagesRef.child("\(uid).jpg")
 
             let uploadTask = idImageRef.putData(idImgData!,metadata: nil)
-
+            */
         }
     }
-
+    
+    
+    
+    
+    /**
+     현재 directory url을 가져옴.
+     */
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textView: UITextView!
 
@@ -230,44 +546,13 @@ class AddToList_ViewController: UITableViewController {
     }
 
     // image에서 text정보 추출
-    //TODO : 등록번호(enroll number) parsing
     private func drawFeatures(in imageView: UIImageView, completion: (() -> Void)? = nil) {
         removeFrames()
         processor.process(in: imageView) { text, elements in
 //            self.textView.text = text
             //추출된 정보 배열로 저장
-            let extractedText = text.split(separator: "\n")
-            guard let idFirstNum = self.textField_idFirsttNum.text, let idLastNum = self.textField_idLastNum.text, let name = self.textField_name.text else { return }
-
-            //추출정보와 입력정보가 일치한지 확인
-            for text in extractedText{
-                let idNum = idFirstNum + "-" + idLastNum
-                if(String(text) == idNum){
-                    print("주민등록번호가 일치합니다")
-                    let ref = Database.database().reference()
-
-                    // data 수정
-                     //ref.child("idData/idFirstNum").setValue("\(idFirstNum)")
-                     //ref.child("idData/idLastNum").setValue("\(idLastNum)")
-
-                    // data 추가방법
-
-                  //  ref.childByAutoId().setValue(["name": name, "idFirstNum": idFirstNum, "idLastNum": idLastNum, "idImage": self.idImage]) //add image in DB
-
-                    // data 읽어오기
-//                    ref.child("idData").observeSingleEvent(of: .value, with: {
-//                        (snapsot) in if let idData = snapsot.value as? [String:Any]{
-//                            print(idData["name"]!)
-//                            print(idData["idFirstNum"]!)
-//                            print(idData["idLastNum"]!)
-//                        }
-//                    })
-                    // https://firebase.google.com/docs/database/ios/read-and-write?hl=ko
-
-                }
-            }
-
-            print(extractedText)
+            self.extractedText = text.split(separator: "\n")
+ 
             completion?()
         }
     }
