@@ -34,6 +34,11 @@ class MyTableViewController: UITableViewController{
         return nil
     }
     
+    //create
+    func createPwTable() {
+        let createTableString = "Create Table PW(pw char(30) primary key not null)"
+    }
+    
     //create table
     func createTable() {
         let createTableString = """

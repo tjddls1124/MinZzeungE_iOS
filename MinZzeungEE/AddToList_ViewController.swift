@@ -31,22 +31,24 @@ class AddToList_ViewController: UITableViewController {
     @IBOutlet weak var firstEnrollLabel: UILabel!
     @IBOutlet weak var thirdLisenceNumber: UITextField!
     @IBAction func idKind_change(_ sender: Any) {
-        //TODO : pick를 변경하면 view 종류에 맞는 view를 바꿔 띄워준다.
         if(self.selectedSegment.selectedSegmentIndex == 1){
-            self.firstLisenceNumber.isHidden = false
-            self.secondLisenceNumber.isHidden = false
-            self.thirdLisenceNumber.isHidden = false
-            self.firstEnrollLabel.isHidden = false
-            self.secondEnrolllLabel.isHidden = false
+                viewChangeBySeg(isHide: false)
         }
         else{
-            self.firstLisenceNumber.isHidden = true
-            self.secondLisenceNumber.isHidden = true
-            self.thirdLisenceNumber.isHidden = true
-            self.firstEnrollLabel.isHidden = true
-            self.secondEnrolllLabel.isHidden = true
+            viewChangeBySeg(isHide: true)
         }
     }
+    func viewChangeBySeg(isHide : Bool){
+        //pick를 변경하면 view 종류에 맞는 view를 바꿔 띄워준다.
+        self.firstLisenceNumber.isHidden = isHide
+        self.secondLisenceNumber.isHidden = isHide
+        self.thirdLisenceNumber.isHidden = isHide
+        self.firstEnrollLabel.isHidden = isHide
+        self.secondEnrolllLabel.isHidden = isHide
+        
+    }
+    
+    
     @IBAction func modalDismiss(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -199,7 +201,7 @@ class AddToList_ViewController: UITableViewController {
         }
         
         else if(checkVaild()){
-            let alert = UIAlertController(title: "주민등록번호 오류", message: "신분증 정보가 사진과 다르거나 올바르게 입력되지 않았습니다.\n 다시 확인해주세요.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "신분증 정보 오류", message: "신분증 정보가 사진과 다르거나 올바르게 입력되지 않았습니다.\n 다시 확인해주세요.", preferredStyle: UIAlertController.Style.alert)
             let action = UIAlertAction(title: "확인", style: .default, handler: nil)
             //let disAction = UIAlertAction(title:"취소", style: .default, handler: nil)
             alert.addAction(action)
@@ -238,7 +240,7 @@ class AddToList_ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         addPhotoButton.isHidden = false
         //imageView에 신분증 나타내기 + textView에 추출된 문자 나타내기
         if let idImage = imageView {
@@ -273,6 +275,9 @@ class AddToList_ViewController: UITableViewController {
                 self.firstLisenceNumber.text = String(s[0])
                 self.secondLisenceNumber.text = String(s[1])
                 self.thirdLisenceNumber.text = String(s[2])
+            }
+            else{
+                viewChangeBySeg(isHide: true)
             }
             
             //TODO : Modify seleceted segment index
