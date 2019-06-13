@@ -14,8 +14,10 @@ import SQLite3
 class AddToList_ViewController: UITableViewController {
     var modIndex : Int = -1
     var idImage = UIImage(named:"driver_license")
-    var validValue : Bool = false
-
+    var idNumValid : Bool = false
+    var enrollNumVaild : Bool = false
+    var extractedText : [Substring]?
+    
     @IBOutlet weak var selectedSegment: UISegmentedControl!
     @IBOutlet weak var sc_idKind: UIView!
     @IBOutlet weak var textField_name: UITextField!
@@ -122,8 +124,64 @@ class AddToList_ViewController: UITableViewController {
         let id = selectQuery(pk: imgPath)
         return selectQuery(pk: imgPath) != nil
     }
-    func checkEqual() -> Bool{
-        return false
+    
+    func checkVaild() -> Bool{
+        guard let idFirstNum = self.textField_idFirsttNum.text else{ return true }
+        guard let idLastNum = self.textField_idLastNum.text, let name = self.textField_name.text else {return true}
+        guard let enrollFirstD = self.firstLisenceNumber.text, let enrollSecondD =  self.secondLisenceNumber.text , let enrollThirdD = self.thirdLisenceNumber.text else { return true}
+        
+        //추출정보와 입력정보가 일치한지 확인
+        for text in self.extractedText!{
+            print("text :\(text)")
+            let idNum = idFirstNum + "-" + idLastNum
+            if(String(text) == idNum){
+                self.idNumValid = true
+                print("주민등록번호가 일치합니다")
+                
+                //let ref = Database.database().reference()
+                
+                // data 수정
+                //ref.child("idData/idFirstNum").setValue("\(idFirstNum)")
+                //ref.child("idData/idLastNum").setValue("\(idLastNum)")
+                
+                // data 추가방법
+                
+                //  ref.childByAutoId().setValue(["name": name, "idFirstNum": idFirstNum, "idLastNum": idLastNum, "idImage": self.idImage]) //add image in DB
+                
+                // data 읽어오기
+                //                    ref.child("idData").observeSingleEvent(of: .value, with: {
+                //                        (snapsot) in if let idData = snapsot.value as? [String:Any]{
+                //                            print(idData["name"]!)
+                //                            print(idData["idFirstNum"]!)
+                //                            print(idData["idLastNum"]!)
+                //                        }
+                //                    })
+                // https://firebase.google.com/docs/database/ios/read-and-write?hl=ko
+                
+            }
+            let enrollD = enrollFirstD + "-" + enrollSecondD + "-" + enrollThirdD
+            if(String(text) == enrollD){
+                self.enrollNumVaild = true
+                print("등록번호가 일치합니다")
+            }
+            
+        }
+
+        
+        if(self.selectedSegment.selectedSegmentIndex == 1){
+            if(idNumValid && enrollNumVaild){
+                return false
+            }
+            else{
+                return true
+            }
+        }
+        else if(idNumValid){
+            return false
+        }
+        
+        
+        return true
     }
     
     @IBAction func checkAndDone(_ sender: Any) {
@@ -140,8 +198,8 @@ class AddToList_ViewController: UITableViewController {
             return
         }
         
-        else if(checkEqual()){
-            let alert = UIAlertController(title: "주민등록번호 오류", message: "신분증 정보가 올바르게 입력되지 않았습니다.\n 다시 확인해주세요.", preferredStyle: UIAlertController.Style.alert)
+        else if(checkVaild()){
+            let alert = UIAlertController(title: "주민등록번호 오류", message: "신분증 정보가 사진과 다르거나 올바르게 입력되지 않았습니다.\n 다시 확인해주세요.", preferredStyle: UIAlertController.Style.alert)
             let action = UIAlertAction(title: "확인", style: .default, handler: nil)
             //let disAction = UIAlertAction(title:"취소", style: .default, handler: nil)
             alert.addAction(action)
@@ -195,6 +253,16 @@ class AddToList_ViewController: UITableViewController {
         //if modify
         if(self.modIndex != -1){
             let id = idList[modIndex]
+            switch id.kind {
+            case .DriverLicense?: self.selectedSegment.selectedSegmentIndex = 1
+            case .ID_Card?: self.selectedSegment.selectedSegmentIndex = 0
+            case .Passport?: self.selectedSegment.selectedSegmentIndex = 2
+            //default : Driver License
+            case .none:
+                self.selectedSegment.selectedSegmentIndex = 1
+            case .some(.StudentID_Card):
+                self.selectedSegment.selectedSegmentIndex = 1
+            }
             self.imageView.image = id.imageFilePath
             self.idImage = id.imageFilePath
             self.textField_name.text = id.name
@@ -478,49 +546,8 @@ class AddToList_ViewController: UITableViewController {
         processor.process(in: imageView) { text, elements in
 //            self.textView.text = text
             //추출된 정보 배열로 저장
-            let extractedText = text.split(separator: "\n")
-            guard let idFirstNum = self.textField_idFirsttNum.text else{
-                return
-            }
-            guard let idLastNum = self.textField_idLastNum.text, let name = self.textField_name.text else {return}
-            guard let enrollFirstD = self.firstLisenceNumber.text, let enrollSecondD =  self.secondLisenceNumber.text , let enrollThirdD = self.thirdLisenceNumber.text else { return }
-
-            //추출정보와 입력정보가 일치한지 확인
-            for text in extractedText{
-                print("text :\(text)")
-                let idNum = idFirstNum + "-" + idLastNum
-                if(String(text) == idNum){
-                    print("주민등록번호가 일치합니다")
-                    
-                    //let ref = Database.database().reference()
-                    
-                    // data 수정
-                     //ref.child("idData/idFirstNum").setValue("\(idFirstNum)")
-                     //ref.child("idData/idLastNum").setValue("\(idLastNum)")
-
-                    // data 추가방법
-
-                  //  ref.childByAutoId().setValue(["name": name, "idFirstNum": idFirstNum, "idLastNum": idLastNum, "idImage": self.idImage]) //add image in DB
-
-                    // data 읽어오기
-//                    ref.child("idData").observeSingleEvent(of: .value, with: {
-//                        (snapsot) in if let idData = snapsot.value as? [String:Any]{
-//                            print(idData["name"]!)
-//                            print(idData["idFirstNum"]!)
-//                            print(idData["idLastNum"]!)
-//                        }
-//                    })
-                    // https://firebase.google.com/docs/database/ios/read-and-write?hl=ko
-
-                }
-                let enrollD = enrollFirstD + "-" + enrollSecondD + "-" + enrollThirdD
-                if(String(text) == enrollD){
-                    print("등록번호가 일치합니다")
-                }
-                
-            }
-
-            print(extractedText)
+            self.extractedText = text.split(separator: "\n")
+ 
             completion?()
         }
     }
