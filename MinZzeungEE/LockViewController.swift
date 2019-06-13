@@ -20,17 +20,22 @@ class LockViewController: UIViewController{
     @IBOutlet weak var currentPassword: UITextField!
     
     @IBOutlet weak var doneButton: UIButton!
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    override func viewWillAppear(_ animated: Bool) {
         //check existing Password
-        if(selectPwQuery() == nil){
+        let pw = selectPwQuery()
+        if( pw == nil){
             self.currentPassword.isHidden = true
             doneButton.setTitle("확인", for: .normal)
         }
         else{
-            
+            modifyMode = true
+            currentPw = pw
             doneButton.setTitle("변경", for: .normal)
         }
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
     
     
@@ -42,8 +47,7 @@ class LockViewController: UIViewController{
             if sqlite3_step(queryStatement) == SQLITE_ROW {
                 let queryResultCol1 = sqlite3_column_text(queryStatement, 0)
                 let pw = String(cString: queryResultCol1!)
-                print("Query Result:")
-                print("\(pw)")
+                print("select Query Result: \(pw)")
                 
                 sqlite3_finalize(queryStatement)
                 return pw
@@ -53,6 +57,9 @@ class LockViewController: UIViewController{
                 sqlite3_finalize(queryStatement)
                 return nil
             }
+        }
+        else{
+            print("select err")
         }
         sqlite3_finalize(queryStatement)
         return nil

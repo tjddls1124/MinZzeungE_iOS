@@ -148,6 +148,7 @@ class MyTableViewController: UITableViewController{
         if(idList.count==0){
             db = openDatabase()
             createTable()
+            createPwTable()
             //deleteAll()
             selectQuery()
         }
