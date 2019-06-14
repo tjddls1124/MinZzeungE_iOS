@@ -38,6 +38,7 @@ class LockViewController: UIViewController{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        //deleteAll()
     }
     
     
@@ -65,6 +66,23 @@ class LockViewController: UIViewController{
         }
         sqlite3_finalize(queryStatement)
         return nil
+    }
+    
+    //delete all
+    func deleteAll(){
+        let deleteStatementStirng = "DELETE FROM Password;"
+        var deleteStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, deleteStatementStirng, -1, &deleteStatement, nil) == SQLITE_OK {
+            if sqlite3_step(deleteStatement) == SQLITE_DONE {
+                print("Successfully deleted row.")
+            } else {
+                print("Could not delete row.")
+            }
+        } else {
+            print("DELETE statement could not be prepared")
+        }
+        
+        sqlite3_finalize(deleteStatement)
     }
     
     

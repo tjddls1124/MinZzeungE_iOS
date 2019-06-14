@@ -20,54 +20,6 @@ class MyTableViewController: UITableViewController{
      */
     
     var index : Int? = -1
-    //db connect
-    func openDatabase() -> OpaquePointer? {
-        let dbPath = getDocumentsDirectory().appendingPathComponent("sqlDB").path
-        var db: OpaquePointer? = nil
-        if sqlite3_open(dbPath, &db) == SQLITE_OK {
-            print("Successfully opened connection to database at \(dbPath)")
-            return db
-        } else {
-            print("Unable to open database. Verify that you created the directory described " +
-                "in the Getting Started section.")
-        }
-        return nil
-    }
-    
-    //create
-    func createPwTable() {
-        let createTableString = "Create Table Password (pw char(30) primary key not null)"
-        var createTableStatement: OpaquePointer? = nil
-        if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK {
-            if sqlite3_step(createTableStatement) == SQLITE_DONE {
-                print("Password table created.")
-            } else {
-                print("Password table could not be created.")
-            }
-        } else {
-            print("Password TABLE statement could not be prepared.")
-        }
-        sqlite3_finalize(createTableStatement)
-    }
-    
-    //create table
-    func createTable() {
-        let createTableString = """
- CREATE TABLE ID(Kind CHAR(20) , Name CHAR(20), IdFirstNum CHAR(20) , IdLastNum CHAR(20), EnrollDate Char(30), imagePath Char(255) PRIMARY KEY NOT NULL , valid INTEGER);
- """
-        var createTableStatement: OpaquePointer? = nil
-        if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK {
-            if sqlite3_step(createTableStatement) == SQLITE_DONE {
-                print("Contact table created.")
-            } else {
-                print("Contact table could not be created.")
-            }
-        } else {
-            print("CREATE TABLE statement could not be prepared.")
-        }
-        sqlite3_finalize(createTableStatement)
-    }
-    
 
 
     //read
@@ -110,6 +62,15 @@ class MyTableViewController: UITableViewController{
         sqlite3_finalize(queryStatement)
     }
     
+    /**
+     현재 directory url을 가져옴.
+     */
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    
     func deleteAll(){
         let deleteStatementStirng = "DELETE FROM ID;"
         var deleteStatement: OpaquePointer? = nil
@@ -146,9 +107,6 @@ class MyTableViewController: UITableViewController{
     func dataLoad(){
         //Only When first strat,
         if(idList.count==0){
-            db = openDatabase()
-            createTable()
-            createPwTable()
             //deleteAll()
             selectQuery()
         }
@@ -241,13 +199,7 @@ class MyTableViewController: UITableViewController{
     }
     
     
-    /**
-     현재 directory url을 가져옴.
-     */
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
+
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         

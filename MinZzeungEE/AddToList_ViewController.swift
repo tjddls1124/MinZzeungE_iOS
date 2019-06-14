@@ -124,7 +124,7 @@ class AddToList_ViewController: UITableViewController {
     //중복된 데이터가 있는지 확인
     func checkDup(imgPath : String) -> Bool {
         let id = selectQuery(pk: imgPath)
-        return selectQuery(pk: imgPath) != nil
+        return id != nil
     }
     
     func checkVaild() -> Bool{
@@ -453,7 +453,7 @@ class AddToList_ViewController: UITableViewController {
             //adList가 완벽히 add 되어 seg가 올바르게 전송되었다면
             //self.IDList에 추가
 
-            let dest = segue.destination as! MyTableViewController
+            //let dest = segue.destination as! MyTableViewController
             //TODO : kind check
             //TODO : text field optional check
             //TODO : check equality with parsed text

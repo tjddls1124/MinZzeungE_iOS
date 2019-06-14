@@ -17,7 +17,7 @@
 		3DAF85922270BC0100AB0462 /* AddToList_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF85912270BC0100AB0462 /* AddToList_ViewController.swift */; };
 		3DC367952269E36900633672 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC367942269E36900633672 /* DetailViewController.swift */; };
 		3DC8D318224E051500C3170F /* IDListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8D317224E051500C3170F /* IDListCell.swift */; };
-		45524E7DB783A1EC38340808 /* Pods_MinZzeungEE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9A56AEC2D8FA4CB229A433 /* Pods_MinZzeungEE.framework */; };
+		5AF5C0276CE4FD4FD851C302 /* Pods_MinZzeungEE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D8E1470D23D1530320E1F8 /* Pods_MinZzeungEE.framework */; };
 		8404580622925C1400861CE9 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404580522925C1400861CE9 /* MapsViewController.swift */; };
 		840EDB09229D5DBD00801B03 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840EDB08229D5DBD00801B03 /* LockViewController.swift */; };
 		8434EDE2228D873F00BD93BF /* ScaledElementProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434EDDD228D873E00BD93BF /* ScaledElementProcessor.swift */; };
@@ -28,7 +28,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E9A56AEC2D8FA4CB229A433 /* Pods_MinZzeungEE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MinZzeungEE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D86BC5322841226006A6657 /* AddPhotoStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddPhotoStoryboard.storyboard; sourceTree = "<group>"; };
 		3D86BC552284325F006A6657 /* Authenticate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authenticate.storyboard; sourceTree = "<group>"; };
 		3D86BC5722843941006A6657 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
@@ -41,7 +40,8 @@
 		3DAF85912270BC0100AB0462 /* AddToList_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToList_ViewController.swift; sourceTree = "<group>"; };
 		3DC367942269E36900633672 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3DC8D317224E051500C3170F /* IDListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDListCell.swift; sourceTree = "<group>"; };
-		577C1BAA1BA515A2A918D92C /* Pods-MinZzeungEE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinZzeungEE.release.xcconfig"; path = "Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE.release.xcconfig"; sourceTree = "<group>"; };
+		67ED21462F1FF81CF6CA1849 /* Pods-MinZzeungEE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinZzeungEE.release.xcconfig"; path = "Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE.release.xcconfig"; sourceTree = "<group>"; };
+		74D8E1470D23D1530320E1F8 /* Pods_MinZzeungEE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MinZzeungEE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8404580522925C1400861CE9 /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		840EDB08229D5DBD00801B03 /* LockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewController.swift; sourceTree = "<group>"; };
 		8434EDDD228D873E00BD93BF /* ScaledElementProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaledElementProcessor.swift; sourceTree = "<group>"; };
@@ -49,7 +49,7 @@
 		84B6FD7C2293FA5800ECF2F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84CA6B2B229287F20023E5F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84CA6B2F2292A0290023E5F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		96AD27929875E12580B9140E /* Pods-MinZzeungEE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinZzeungEE.debug.xcconfig"; path = "Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE.debug.xcconfig"; sourceTree = "<group>"; };
+		C6DCD77B53E2CB83EC384616 /* Pods-MinZzeungEE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinZzeungEE.debug.xcconfig"; path = "Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45524E7DB783A1EC38340808 /* Pods_MinZzeungEE.framework in Frameworks */,
+				5AF5C0276CE4FD4FD851C302 /* Pods_MinZzeungEE.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +70,7 @@
 				3D90631A22438152007ED6B7 /* MinZzeungEE */,
 				3D90631922438152007ED6B7 /* Products */,
 				8C3FCCF50389BB2EB3F9EAB8 /* Pods */,
-				D54E36F3A367008D0B30018C /* Frameworks */,
+				54DF42F0FD368FA374449626 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,21 +107,21 @@
 			path = MinZzeungEE;
 			sourceTree = "<group>";
 		};
+		54DF42F0FD368FA374449626 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				74D8E1470D23D1530320E1F8 /* Pods_MinZzeungEE.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8C3FCCF50389BB2EB3F9EAB8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				96AD27929875E12580B9140E /* Pods-MinZzeungEE.debug.xcconfig */,
-				577C1BAA1BA515A2A918D92C /* Pods-MinZzeungEE.release.xcconfig */,
+				C6DCD77B53E2CB83EC384616 /* Pods-MinZzeungEE.debug.xcconfig */,
+				67ED21462F1FF81CF6CA1849 /* Pods-MinZzeungEE.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		D54E36F3A367008D0B30018C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1E9A56AEC2D8FA4CB229A433 /* Pods_MinZzeungEE.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,12 +131,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3D90632A22438153007ED6B7 /* Build configuration list for PBXNativeTarget "MinZzeungEE" */;
 			buildPhases = (
-				185024D5A8A5731871162286 /* [CP] Check Pods Manifest.lock */,
+				D2C27E0A785F8E9E498A40D3 /* [CP] Check Pods Manifest.lock */,
 				3D90631422438152007ED6B7 /* Sources */,
 				3D90631522438152007ED6B7 /* Frameworks */,
 				3D90631622438152007ED6B7 /* Resources */,
-				C2F20656E00712818FBF4A47 /* [CP] Embed Pods Frameworks */,
-				F38995A49AFCA48717DF4544 /* [CP] Copy Pods Resources */,
+				43E54C92AA72581E1E0F9EC7 /* [CP] Embed Pods Frameworks */,
+				176E895EE31F689199E5A9C1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -197,7 +197,41 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		185024D5A8A5731871162286 /* [CP] Check Pods Manifest.lock */ = {
+		176E895EE31F689199E5A9C1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		43E54C92AA72581E1E0F9EC7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2C27E0A785F8E9E498A40D3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -217,40 +251,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C2F20656E00712818FBF4A47 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F38995A49AFCA48717DF4544 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -414,7 +414,7 @@
 		};
 		3D90632B22438153007ED6B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96AD27929875E12580B9140E /* Pods-MinZzeungEE.debug.xcconfig */;
+			baseConfigurationReference = C6DCD77B53E2CB83EC384616 /* Pods-MinZzeungEE.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -435,7 +435,7 @@
 		};
 		3D90632C22438153007ED6B7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 577C1BAA1BA515A2A918D92C /* Pods-MinZzeungEE.release.xcconfig */;
+			baseConfigurationReference = 67ED21462F1FF81CF6CA1849 /* Pods-MinZzeungEE.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
