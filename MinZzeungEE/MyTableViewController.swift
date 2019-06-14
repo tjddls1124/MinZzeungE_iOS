@@ -297,33 +297,4 @@ class MyTableViewController: UITableViewController{
         self.tableView.reloadData()
     }
     
-    @IBAction func AutenticateButton(_ sender: Any) {
-        let fillInPassword =  UIAlertController(title: "비밀번호를 입력해주세요.", message: "", preferredStyle: UIAlertController.Style.alert)
-        let cancel = UIAlertAction(title: "Cancel", style: .default)
-        let ok = UIAlertAction(title: "OK", style: .default) { (ok) in
-            if(fillInPassword.textFields?[0].text == "database의 비밀번호"){
-                //인증화면으로 전환
-            }else{
-                // present(fillInPassword, animated: true, completion: nil)
-                fillInPassword.textFields?[0].placeholder = "비밀번호를 다시 입력주세요."
-            }
-        }
-        
-        fillInPassword.addAction(cancel)
-        fillInPassword.addAction(ok)
-        fillInPassword.addTextField { (myTextField) in
-            myTextField.placeholder = "password"
-        }
-        
-        var doSetPassword = false;
-        //database에 비밀번호를 설정했을시
-        doSetPassword = true
-        
-        if(doSetPassword){
-            present(fillInPassword, animated: true, completion: nil)
-        }else{
-            //인증화면으로 전환
-        }
-        
-    }
 }

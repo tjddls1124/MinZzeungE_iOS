@@ -27,11 +27,13 @@ class LockViewController: UIViewController{
         if( pw == nil){
             self.currentPassword.isHidden = true
             doneButton.setTitle("확인", for: .normal)
+            currentPassword.isHidden = true
         }
         else{
             modifyMode = true
             currentPw = pw
             doneButton.setTitle("변경", for: .normal)
+            currentPassword.isHidden = false
         }
     }
     override func viewDidLoad() {
