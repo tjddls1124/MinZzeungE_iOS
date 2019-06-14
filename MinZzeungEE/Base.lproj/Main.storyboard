@@ -18,12 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <textView key="tableFooterView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="HyS-ig-mH3">
-                            <rect key="frame" x="0.0" y="479" width="414" height="111"/>
+                        <textView key="tableFooterView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="형법 제225조 제225조(공문서등의 위조·변조) 행사할 목적으로 공무원 또는 공무소의 문서 또는 도화를 위조 또는 변조한 자는 10년 이하의 징역에 처한다." textAlignment="natural" id="HyS-ig-mH3">
+                            <rect key="frame" x="0.0" y="546" width="414" height="73"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <string key="text"> 
-형법 제225조 제225조(공문서등의 위조·변조) 행사할 목적으로 공무원 또는 공무소의 문서 또는 도화를 위조 또는 변조한 자는 10년 이하의 징역에 처한다.</string>
+                            <color key="backgroundColor" red="0.81550757289999998" green="0.85823667560000005" blue="0.93074194789999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
@@ -223,11 +221,19 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="17" id="C5U-o0-hd7">
-                                        <rect key="frame" x="0.0" y="462" width="414" height="17"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="42" id="MUg-Vi-DkE">
+                                        <rect key="frame" x="0.0" y="462" width="414" height="42"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C5U-o0-hd7" id="xes-mL-dvv">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="17"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MUg-Vi-DkE" id="IrA-Aq-SMI">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="42" id="MgG-CN-LL9">
+                                        <rect key="frame" x="0.0" y="504" width="414" height="42"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MgG-CN-LL9" id="ZX3-Q8-urh">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -405,40 +411,48 @@
                                 <rect key="frame" x="8" y="96" width="398" height="263"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="driver_license" translatesAutoresizingMaskIntoConstraints="NO" id="3lT-q8-RGT">
-                                        <rect key="frame" x="7.6878246067482277" y="6.2939104849088423" width="476.4629508123428" height="240.90823355694914"/>
+                                        <rect key="frame" x="8" y="8" width="382" height="247"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="3lT-q8-RGT" firstAttribute="top" secondItem="Uzd-fD-mSt" secondAttribute="top" constant="8" id="ObS-5N-RZI"/>
                                     <constraint firstItem="3lT-q8-RGT" firstAttribute="leading" secondItem="Uzd-fD-mSt" secondAttribute="leading" constant="8" id="TAd-B1-9Tr"/>
+                                    <constraint firstAttribute="bottom" secondItem="3lT-q8-RGT" secondAttribute="bottom" constant="8" id="faV-PP-nZF"/>
                                     <constraint firstAttribute="trailing" secondItem="3lT-q8-RGT" secondAttribute="trailing" constant="8" id="hga-HB-VqK"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Pv-OV-cs5">
-                                <rect key="frame" x="160" y="495" width="94" height="0.0"/>
+                                <rect key="frame" x="159" y="388" width="94" height="94"/>
                             </imageView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wZY-zo-Gg0">
-                                <rect key="frame" x="160" y="438" width="94" height="20"/>
+                                <rect key="frame" x="160" y="404" width="94" height="20"/>
                             </activityIndicatorView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rg3-J2-U6r" userLabel="Text View1">
-                                <rect key="frame" x="20" y="601" width="374" height="132"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JQV-Sq-GFp">
+                                <rect key="frame" x="13" y="573" width="381" height="209"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rg3-J2-U6r" userLabel="Text View1">
+                                <rect key="frame" x="20" y="586" width="374" height="145"/>
+                                <color key="backgroundColor" red="0.81550757285276076" green="0.85823667561349692" blue="0.93074194785276076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <string key="text">총리령 제1309호(2016년 8월 2일)
 식품위생법 시행규칙 일부개정령을 이에 공포한다.  청소년에게 주류를 제공하는 행위를 한 식품접객업자가 청소년의 신분증 위조ㆍ변조 또는 도용으로 청소년인 사실을 알지 못하였거나 폭행 또는 협박으로 인하여 청소년임을 확인하지 못한 사정이 인정되면 행정처분을 받지 아니한다.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="=&gt; 신분증 위조를 한 청소년만 처벌을 받습니다." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mvc-ZZ-YBJ" userLabel="Text View2">
-                                <rect key="frame" x="20" y="736" width="374" height="46"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="=&gt; 점주님은 처벌받지 않습니다." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mvc-ZZ-YBJ" userLabel="Text View2">
+                                <rect key="frame" x="20" y="756" width="374" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="R1a-4M-tce"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.5" blue="0.25775587746993867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="진위 여부를 조회중입니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCn-vS-pbA">
-                                <rect key="frame" x="100" y="503" width="214" height="18"/>
+                                <rect key="frame" x="100" y="490" width="214" height="18"/>
+                                <color key="backgroundColor" red="0.81550757289999998" green="0.85823667560000005" blue="0.93074194789999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -448,21 +462,22 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Uzd-fD-mSt" secondAttribute="trailing" constant="8" id="6YM-9C-tQJ"/>
                             <constraint firstItem="UX2-BT-ioX" firstAttribute="trailing" secondItem="mvc-ZZ-YBJ" secondAttribute="trailing" constant="20" id="B1S-My-zUY"/>
+                            <constraint firstItem="mvc-ZZ-YBJ" firstAttribute="top" secondItem="Rg3-J2-U6r" secondAttribute="bottom" constant="25" id="B5h-Yq-L2K"/>
                             <constraint firstItem="UX2-BT-ioX" firstAttribute="trailing" secondItem="Rg3-J2-U6r" secondAttribute="trailing" constant="20" id="F6G-xX-5Ga"/>
                             <constraint firstItem="ZCn-vS-pbA" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="100" id="LAY-qj-5fq"/>
+                            <constraint firstItem="0Pv-OV-cs5" firstAttribute="top" secondItem="3lT-q8-RGT" secondAttribute="bottom" constant="37" id="PqQ-Tq-fHA"/>
                             <constraint firstItem="mvc-ZZ-YBJ" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="20" id="Qw8-s7-kaG"/>
                             <constraint firstItem="wZY-zo-Gg0" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="160" id="Ujs-xQ-LBO"/>
-                            <constraint firstItem="UX2-BT-ioX" firstAttribute="trailing" secondItem="0Pv-OV-cs5" secondAttribute="trailing" constant="160" id="V6N-3B-Tt9"/>
-                            <constraint firstItem="0Pv-OV-cs5" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="160" id="WWf-pa-ht9"/>
-                            <constraint firstItem="ZCn-vS-pbA" firstAttribute="top" secondItem="wZY-zo-Gg0" secondAttribute="bottom" constant="45" id="Wf3-Ww-Q1s"/>
-                            <constraint firstItem="0Pv-OV-cs5" firstAttribute="top" secondItem="3lT-q8-RGT" secondAttribute="bottom" constant="150" id="ct2-er-01h"/>
-                            <constraint firstItem="wZY-zo-Gg0" firstAttribute="top" secondItem="Uzd-fD-mSt" secondAttribute="bottom" constant="79" id="dje-Mo-Z9F"/>
+                            <constraint firstItem="UX2-BT-ioX" firstAttribute="trailing" secondItem="0Pv-OV-cs5" secondAttribute="trailing" constant="161" id="V6N-3B-Tt9"/>
+                            <constraint firstItem="0Pv-OV-cs5" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="159" id="WWf-pa-ht9"/>
+                            <constraint firstItem="ZCn-vS-pbA" firstAttribute="top" secondItem="wZY-zo-Gg0" secondAttribute="bottom" constant="66" id="Wf3-Ww-Q1s"/>
+                            <constraint firstItem="0Pv-OV-cs5" firstAttribute="top" secondItem="3lT-q8-RGT" secondAttribute="bottom" constant="37" id="ct2-er-01h"/>
+                            <constraint firstItem="wZY-zo-Gg0" firstAttribute="top" secondItem="Uzd-fD-mSt" secondAttribute="bottom" constant="45" id="dje-Mo-Z9F"/>
                             <constraint firstItem="Rg3-J2-U6r" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="20" id="eHq-MC-2YL"/>
                             <constraint firstItem="UX2-BT-ioX" firstAttribute="top" secondItem="Uzd-fD-mSt" secondAttribute="bottom" constant="-271" id="lAB-Sd-2Fa"/>
-                            <constraint firstItem="Rg3-J2-U6r" firstAttribute="top" secondItem="ZCn-vS-pbA" secondAttribute="bottom" constant="80" id="osx-Jr-BmD"/>
-                            <constraint firstItem="UX2-BT-ioX" firstAttribute="bottom" secondItem="mvc-ZZ-YBJ" secondAttribute="bottom" constant="80" id="pW6-LM-3GV"/>
+                            <constraint firstItem="Rg3-J2-U6r" firstAttribute="top" secondItem="ZCn-vS-pbA" secondAttribute="bottom" constant="78" id="osx-Jr-BmD"/>
+                            <constraint firstItem="UX2-BT-ioX" firstAttribute="bottom" secondItem="mvc-ZZ-YBJ" secondAttribute="bottom" constant="60" id="pW6-LM-3GV"/>
                             <constraint firstItem="UX2-BT-ioX" firstAttribute="trailing" secondItem="ZCn-vS-pbA" secondAttribute="trailing" constant="100" id="rCN-3Y-gAa"/>
-                            <constraint firstItem="mvc-ZZ-YBJ" firstAttribute="top" secondItem="Rg3-J2-U6r" secondAttribute="bottom" constant="3" id="sJd-g3-XDL"/>
                             <constraint firstItem="ZCn-vS-pbA" firstAttribute="top" secondItem="0Pv-OV-cs5" secondAttribute="bottom" constant="8" id="vm8-hA-4QG"/>
                             <constraint firstItem="Uzd-fD-mSt" firstAttribute="top" secondItem="UX2-BT-ioX" secondAttribute="top" constant="8" id="y3a-n2-PxV"/>
                             <constraint firstItem="UX2-BT-ioX" firstAttribute="trailing" secondItem="wZY-zo-Gg0" secondAttribute="trailing" constant="160" id="yKL-Jj-mdY"/>
