@@ -91,7 +91,7 @@ class LockViewController: UIViewController{
     
     //update
     func update(curPw : String, pw : String) {
-        let updateStatementString = "UPDATE Password SET pw = '\(curPw)' WHERE pw = '\(curPw)';"
+        let updateStatementString = "UPDATE Password SET pw = '\(pw)' WHERE pw = '\(curPw)';"
         var updateStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
             if sqlite3_step(updateStatement) == SQLITE_DONE {
