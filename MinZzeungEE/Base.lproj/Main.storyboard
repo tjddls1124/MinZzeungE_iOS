@@ -401,55 +401,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uzd-fD-mSt">
-                                <rect key="frame" x="0.0" y="88" width="465" height="271"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uzd-fD-mSt">
+                                <rect key="frame" x="8" y="96" width="398" height="263"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="driver_license" translatesAutoresizingMaskIntoConstraints="NO" id="3lT-q8-RGT">
-                                        <rect key="frame" x="8" y="10" width="372" height="251"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="driver_license" translatesAutoresizingMaskIntoConstraints="NO" id="3lT-q8-RGT">
+                                        <rect key="frame" x="7.6878246067482277" y="6.2939104849088423" width="476.4629508123428" height="240.90823355694914"/>
                                     </imageView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="3lT-q8-RGT" firstAttribute="top" secondItem="Uzd-fD-mSt" secondAttribute="top" constant="8" id="ObS-5N-RZI"/>
+                                    <constraint firstItem="3lT-q8-RGT" firstAttribute="leading" secondItem="Uzd-fD-mSt" secondAttribute="leading" constant="8" id="TAd-B1-9Tr"/>
+                                    <constraint firstAttribute="trailing" secondItem="3lT-q8-RGT" secondAttribute="trailing" constant="8" id="hga-HB-VqK"/>
+                                </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4rV-9E-2Pl">
-                                <rect key="frame" x="80" y="348" width="240" height="243"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wZY-zo-Gg0">
-                                        <rect key="frame" x="110.5" y="137.5" width="20" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </activityIndicatorView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Pv-OV-cs5">
-                                        <rect key="frame" x="72" y="65" width="95" height="95"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="진위 여부를 조회중입니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCn-vS-pbA">
-                                        <rect key="frame" x="8" y="165" width="224" height="43"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rg3-J2-U6r">
-                                <rect key="frame" x="20" y="599" width="374" height="132"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Pv-OV-cs5">
+                                <rect key="frame" x="160" y="495" width="94" height="0.0"/>
+                            </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wZY-zo-Gg0">
+                                <rect key="frame" x="160" y="438" width="94" height="20"/>
+                            </activityIndicatorView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rg3-J2-U6r" userLabel="Text View1">
+                                <rect key="frame" x="20" y="601" width="374" height="132"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">총리령 제1309호(2016년 8월 2일)
 식품위생법 시행규칙 일부개정령을 이에 공포한다.  청소년에게 주류를 제공하는 행위를 한 식품접객업자가 청소년의 신분증 위조ㆍ변조 또는 도용으로 청소년인 사실을 알지 못하였거나 폭행 또는 협박으로 인하여 청소년임을 확인하지 못한 사정이 인정되면 행정처분을 받지 아니한다.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="=&gt; 신분증 위조를 한 청소년만 처벌을 받습니다." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mvc-ZZ-YBJ">
-                                <rect key="frame" x="20" y="734" width="374" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="=&gt; 신분증 위조를 한 청소년만 처벌을 받습니다." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mvc-ZZ-YBJ" userLabel="Text View2">
+                                <rect key="frame" x="20" y="736" width="374" height="46"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="R1a-4M-tce"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="진위 여부를 조회중입니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCn-vS-pbA">
+                                <rect key="frame" x="100" y="503" width="214" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Uzd-fD-mSt" secondAttribute="trailing" constant="8" id="6YM-9C-tQJ"/>
+                            <constraint firstItem="UX2-BT-ioX" firstAttribute="trailing" secondItem="mvc-ZZ-YBJ" secondAttribute="trailing" constant="20" id="B1S-My-zUY"/>
+                            <constraint firstItem="UX2-BT-ioX" firstAttribute="trailing" secondItem="Rg3-J2-U6r" secondAttribute="trailing" constant="20" id="F6G-xX-5Ga"/>
+                            <constraint firstItem="ZCn-vS-pbA" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="100" id="LAY-qj-5fq"/>
+                            <constraint firstItem="mvc-ZZ-YBJ" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="20" id="Qw8-s7-kaG"/>
+                            <constraint firstItem="wZY-zo-Gg0" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="160" id="Ujs-xQ-LBO"/>
+                            <constraint firstItem="UX2-BT-ioX" firstAttribute="trailing" secondItem="0Pv-OV-cs5" secondAttribute="trailing" constant="160" id="V6N-3B-Tt9"/>
+                            <constraint firstItem="0Pv-OV-cs5" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="160" id="WWf-pa-ht9"/>
+                            <constraint firstItem="ZCn-vS-pbA" firstAttribute="top" secondItem="wZY-zo-Gg0" secondAttribute="bottom" constant="45" id="Wf3-Ww-Q1s"/>
+                            <constraint firstItem="0Pv-OV-cs5" firstAttribute="top" secondItem="3lT-q8-RGT" secondAttribute="bottom" constant="150" id="ct2-er-01h"/>
+                            <constraint firstItem="wZY-zo-Gg0" firstAttribute="top" secondItem="Uzd-fD-mSt" secondAttribute="bottom" constant="79" id="dje-Mo-Z9F"/>
+                            <constraint firstItem="Rg3-J2-U6r" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="20" id="eHq-MC-2YL"/>
+                            <constraint firstItem="UX2-BT-ioX" firstAttribute="top" secondItem="Uzd-fD-mSt" secondAttribute="bottom" constant="-271" id="lAB-Sd-2Fa"/>
+                            <constraint firstItem="Rg3-J2-U6r" firstAttribute="top" secondItem="ZCn-vS-pbA" secondAttribute="bottom" constant="80" id="osx-Jr-BmD"/>
+                            <constraint firstItem="UX2-BT-ioX" firstAttribute="bottom" secondItem="mvc-ZZ-YBJ" secondAttribute="bottom" constant="80" id="pW6-LM-3GV"/>
+                            <constraint firstItem="UX2-BT-ioX" firstAttribute="trailing" secondItem="ZCn-vS-pbA" secondAttribute="trailing" constant="100" id="rCN-3Y-gAa"/>
+                            <constraint firstItem="mvc-ZZ-YBJ" firstAttribute="top" secondItem="Rg3-J2-U6r" secondAttribute="bottom" constant="3" id="sJd-g3-XDL"/>
+                            <constraint firstItem="ZCn-vS-pbA" firstAttribute="top" secondItem="0Pv-OV-cs5" secondAttribute="bottom" constant="8" id="vm8-hA-4QG"/>
+                            <constraint firstItem="Uzd-fD-mSt" firstAttribute="top" secondItem="UX2-BT-ioX" secondAttribute="top" constant="8" id="y3a-n2-PxV"/>
+                            <constraint firstItem="UX2-BT-ioX" firstAttribute="trailing" secondItem="wZY-zo-Gg0" secondAttribute="trailing" constant="160" id="yKL-Jj-mdY"/>
+                            <constraint firstItem="Uzd-fD-mSt" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="8" id="z1O-V9-BWh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="UX2-BT-ioX"/>
                     </view>
                     <connections>
