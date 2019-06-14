@@ -34,6 +34,9 @@ class LockViewController: UIViewController{
             currentPw = pw
             doneButton.setTitle("변경", for: .normal)
             currentPassword.isHidden = false
+            newPassword.text = ""
+            repeatedPassword.text = ""
+            currentPassword.text = ""
         }
     }
     override func viewDidLoad() {

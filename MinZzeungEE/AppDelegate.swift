@@ -96,6 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         fillInPassword.addAction(ok)
         fillInPassword.addTextField { (myTextField) in
             myTextField.placeholder = "password"
+            myTextField.isSecureTextEntry = true
         }
         
         var doSetPassword = false;
