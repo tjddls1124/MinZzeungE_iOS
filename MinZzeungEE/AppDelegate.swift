@@ -30,7 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // window?.rootViewController?.
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let blankView = storyboard.instantiateViewController(withIdentifier: "blankView")
+        window?.rootViewController?.present(blankView, animated: true, completion: nil)
+        print("Back")
     }
     
     //read
