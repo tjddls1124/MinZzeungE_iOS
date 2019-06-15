@@ -41,9 +41,42 @@ class LockViewController: UIViewController{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordMessage.delegate = self as? UITextViewDelegate
+        newPassword.delegate = self as? UITextFieldDelegate
+        repeatedPassword.delegate = self as? UITextFieldDelegate
+        currentPassword.delegate = self as? UITextFieldDelegate
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing)))
+       
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification,
+                                             object: nil)
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification,
+                                             object: nil)
         //deleteAll()
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    @objc func keyboardWillShow(_ sender:Notification){
+        self.view.frame.origin.y = -200
+    }
+    
+    @objc func keyboardWillHide(_ sender:Notification){
+        self.view.frame.origin.y = 0
+    }
+    
+    @objc func endEditing(){
+        passwordMessage.resignFirstResponder()
+        newPassword.resignFirstResponder()
+        repeatedPassword.resignFirstResponder()
+        currentPassword.resignFirstResponder()
+    }
     
     //read
     func selectPwQuery() -> String?{

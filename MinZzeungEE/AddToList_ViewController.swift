@@ -241,6 +241,24 @@ class AddToList_ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        textField_name.delegate = self as? UITextFieldDelegate
+        textField_idLastNum.delegate = self as? UITextFieldDelegate
+        textField_idFirsttNum.delegate = self as? UITextFieldDelegate
+        firstLisenceNumber.delegate = self as? UITextFieldDelegate
+        secondLisenceNumber.delegate = self as? UITextFieldDelegate
+        thirdLisenceNumber.delegate = self as? UITextFieldDelegate
+        
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing)))
+        
+        
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification,
+                                             object: nil)
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification,
+                                             object: nil)
+        
         addPhotoButton.isHidden = false
         //imageView에 신분증 나타내기 + textView에 추출된 문자 나타내기
         if let idImage = imageView {
@@ -572,32 +590,27 @@ class AddToList_ViewController: UITableViewController {
 //
 //    }
 
-    @IBAction func segmentControl(_ sender: Any) {
-        switch selectedSegment.selectedSegmentIndex{
-        case 0:
-            firstLisenceNumber.placeholder = "Don't"
-            secondLisenceNumber.placeholder = "fill in anything"
-            break
-        case 1:
-            firstLisenceNumber.placeholder = "Lis"
-            secondLisenceNumber.placeholder = "ence Number"
-            break
-        case 2:
-            firstLisenceNumber.placeholder = "Don't"
-            secondLisenceNumber.placeholder = "fill in anything"
-            break
-        default:
-            break
-        }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        textField.resignFirstResponder()
+        return true
     }
-
-//    @IBAction func AthenticateButton(_ sender: UIButton) {
-//        if(setPasswordSucess){
-//            모달 -> 인증화면
-//        }else{
-//            인증화면
-//        }
-//    }
+    
+    @objc func keyboardWillShow(_ sender:Notification){
+        self.view.frame.origin.y = -150
+    }
+    
+    @objc func keyboardWillHide(_ sender:Notification){
+        self.view.frame.origin.y = 0
+    }
+    
+    @objc func endEditing(){
+        textField_name.resignFirstResponder()
+        textField_idLastNum.resignFirstResponder()
+        textField_idFirsttNum.resignFirstResponder()
+        firstLisenceNumber.resignFirstResponder()
+        secondLisenceNumber.resignFirstResponder()
+        thirdLisenceNumber.resignFirstResponder()
+    }
 }
 
 extension AddToList_ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
