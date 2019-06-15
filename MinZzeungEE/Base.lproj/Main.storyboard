@@ -594,28 +594,40 @@
             </objects>
             <point key="canvasLocation" x="668" y="742.61083743842369"/>
         </scene>
-        <!--Second-->
-        <scene sceneID="TNy-wA-DT0">
+        <!--사용 가능 가게-->
+        <scene sceneID="qWo-GN-tlo">
             <objects>
-                <viewController title="Second" id="FjC-58-d3M" customClass="MapsViewController" customModule="MinZzeungEE" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qsm-r3-nXV">
+                <viewController id="Vrk-F4-Csu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fLf-5O-cGn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c6T-K6-q7d">
-                                <rect key="frame" x="0.0" y="67" width="414" height="44"/>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O8N-46-snX">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="사용 가능 가게" id="CXm-LT-qx1"/>
+                                </items>
+                            </navigationBar>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pPZ-S2-M8m">
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1eY-N4-fVN">
+                                <rect key="frame" x="0.0" y="132" width="414" height="681"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="FAC-sQ-aAS"/>
+                        <viewLayoutGuide key="safeArea" id="Zu7-SN-GUQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="사용가능가게" image="secondTab" id="vBp-bf-VZc"/>
+                    <tabBarItem key="tabBarItem" title="사용 가능 가게" image="secondTab" id="h2v-Kb-rv5"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0d6-jR-F2z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UN7-2x-7fJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1796" y="600"/>
+            <point key="canvasLocation" x="1682.608695652174" y="741.96428571428567"/>
         </scene>
         <!--ColorPallet-->
         <scene sceneID="kES-a1-keI">
@@ -663,7 +675,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="YPg-NN-1OZ" kind="relationship" relationship="viewControllers" id="A16-Le-q3d"/>
-                        <segue destination="FjC-58-d3M" kind="relationship" relationship="viewControllers" id="5dg-yo-ukI"/>
+                        <segue destination="Vrk-F4-Csu" kind="relationship" relationship="viewControllers" id="jga-LQ-TQk"/>
                         <segue destination="MJO-Js-gMP" kind="relationship" relationship="viewControllers" id="mCP-Q6-sWU"/>
                     </connections>
                 </tabBarController>

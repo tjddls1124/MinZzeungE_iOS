@@ -18,13 +18,13 @@
 		3DC367952269E36900633672 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC367942269E36900633672 /* DetailViewController.swift */; };
 		3DC8D318224E051500C3170F /* IDListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8D317224E051500C3170F /* IDListCell.swift */; };
 		5AF5C0276CE4FD4FD851C302 /* Pods_MinZzeungEE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D8E1470D23D1530320E1F8 /* Pods_MinZzeungEE.framework */; };
-		8404580622925C1400861CE9 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404580522925C1400861CE9 /* MapsViewController.swift */; };
 		840EDB09229D5DBD00801B03 /* LockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840EDB08229D5DBD00801B03 /* LockViewController.swift */; };
 		8434EDE2228D873F00BD93BF /* ScaledElementProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434EDDD228D873E00BD93BF /* ScaledElementProcessor.swift */; };
 		8434EDE3228D873F00BD93BF /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434EDDE228D873F00BD93BF /* UIImage+Extension.swift */; };
 		84B6FD7D2293FA5800ECF2F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6FD7C2293FA5800ECF2F0 /* AppDelegate.swift */; };
 		84CA6B2C229287F30023E5F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84CA6B2B229287F20023E5F1 /* GoogleService-Info.plist */; };
 		84CA6B302292A02A0023E5F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84CA6B2F2292A0290023E5F1 /* Assets.xcassets */; };
+		D6094A9122B5302B008BAB2A /* StoreMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6094A9022B5302B008BAB2A /* StoreMapController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +42,6 @@
 		3DC8D317224E051500C3170F /* IDListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDListCell.swift; sourceTree = "<group>"; };
 		67ED21462F1FF81CF6CA1849 /* Pods-MinZzeungEE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinZzeungEE.release.xcconfig"; path = "Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE.release.xcconfig"; sourceTree = "<group>"; };
 		74D8E1470D23D1530320E1F8 /* Pods_MinZzeungEE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MinZzeungEE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8404580522925C1400861CE9 /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		840EDB08229D5DBD00801B03 /* LockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewController.swift; sourceTree = "<group>"; };
 		8434EDDD228D873E00BD93BF /* ScaledElementProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaledElementProcessor.swift; sourceTree = "<group>"; };
 		8434EDDE228D873F00BD93BF /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -50,6 +49,7 @@
 		84CA6B2B229287F20023E5F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84CA6B2F2292A0290023E5F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6DCD77B53E2CB83EC384616 /* Pods-MinZzeungEE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinZzeungEE.debug.xcconfig"; path = "Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE.debug.xcconfig"; sourceTree = "<group>"; };
+		D6094A9022B5302B008BAB2A /* StoreMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMapController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +91,6 @@
 				8434EDDE228D873F00BD93BF /* UIImage+Extension.swift */,
 				3D90631F22438152007ED6B7 /* Main.storyboard */,
 				84CA6B2B229287F20023E5F1 /* GoogleService-Info.plist */,
-				8404580522925C1400861CE9 /* MapsViewController.swift */,
 				84CA6B2F2292A0290023E5F1 /* Assets.xcassets */,
 				3DAF85912270BC0100AB0462 /* AddToList_ViewController.swift */,
 				840EDB08229D5DBD00801B03 /* LockViewController.swift */,
@@ -103,6 +102,7 @@
 				3D916AF6224CC4D900F2611A /* ID.swift */,
 				3DC8D317224E051500C3170F /* IDListCell.swift */,
 				3D86BC5322841226006A6657 /* AddPhotoStoryboard.storyboard */,
+				D6094A9022B5302B008BAB2A /* StoreMapController.swift */,
 			);
 			path = MinZzeungEE;
 			sourceTree = "<group>";
@@ -262,11 +262,11 @@
 			files = (
 				84B6FD7D2293FA5800ECF2F0 /* AppDelegate.swift in Sources */,
 				840EDB09229D5DBD00801B03 /* LockViewController.swift in Sources */,
+				D6094A9122B5302B008BAB2A /* StoreMapController.swift in Sources */,
 				3D916AF7224CC4D900F2611A /* ID.swift in Sources */,
 				3D916AF3224CC3E100F2611A /* MyTableViewController.swift in Sources */,
 				3DC367952269E36900633672 /* DetailViewController.swift in Sources */,
 				3D86BC5822843941006A6657 /* AuthenticationViewController.swift in Sources */,
-				8404580622925C1400861CE9 /* MapsViewController.swift in Sources */,
 				3DC8D318224E051500C3170F /* IDListCell.swift in Sources */,
 				8434EDE2228D873F00BD93BF /* ScaledElementProcessor.swift in Sources */,
 				8434EDE3228D873F00BD93BF /* UIImage+Extension.swift in Sources */,
