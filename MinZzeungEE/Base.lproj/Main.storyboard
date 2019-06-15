@@ -597,7 +597,7 @@
         <!--사용 가능 가게-->
         <scene sceneID="qWo-GN-tlo">
             <objects>
-                <viewController id="Vrk-F4-Csu" sceneMemberID="viewController">
+                <viewController id="Vrk-F4-Csu" customClass="StoreMapController" customModule="MinZzeungEE" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fLf-5O-cGn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -614,7 +614,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1eY-N4-fVN">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1eY-N4-fVN" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="132" width="414" height="681"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -624,6 +624,9 @@
                         <viewLayoutGuide key="safeArea" id="Zu7-SN-GUQ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="사용 가능 가게" image="secondTab" id="h2v-Kb-rv5"/>
+                    <connections>
+                        <outlet property="mapView" destination="1eY-N4-fVN" id="HuR-1a-tGi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UN7-2x-7fJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

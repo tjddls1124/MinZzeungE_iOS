@@ -7,13 +7,31 @@
 //
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
-class StoreMapController: UIViewController {
-
+class StoreMapController: UIViewController, CLLocationManagerDelegate {
+    
+    @IBOutlet weak var mapView: GMSMapView!
+    let defaultLocation = CLLocation(latitude: 37.561138, longitude: 127.039279)
+    let defaultZoomLevel: Float = 16.0
+    var locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        let camera = GMSCameraPosition.camera(withTarget: defaultLocation.coordinate, zoom: defaultZoomLevel)
+        self.mapView.camera = camera
+        
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        self.locationManager.distanceFilter = 50
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.startUpdatingLocation()
+        
+        self.mapView.settings.myLocationButton = true
     }
     
 
