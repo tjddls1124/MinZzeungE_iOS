@@ -16,13 +16,15 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate {
     let defaultLocation = CLLocation(latitude: 37.561138, longitude: 127.039279)
     let defaultZoomLevel: Float = 16.0
     var locationManager = CLLocationManager()
+    var _mapView: GMSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         let camera = GMSCameraPosition.camera(withTarget: defaultLocation.coordinate, zoom: defaultZoomLevel)
-        self.mapView.camera = camera
+        _mapView = GMSMapView(frame: self.mapView.frame, camera: camera)
+        _mapView.frame = mapView.bounds
         
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
@@ -31,7 +33,10 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate {
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.startUpdatingLocation()
         
-        self.mapView.settings.myLocationButton = true
+        _mapView.settings.myLocationButton = true
+        
+        self.mapView.addSubview(_mapView)
+        
     }
     
 
