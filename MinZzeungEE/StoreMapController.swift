@@ -34,11 +34,31 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate {
         self.locationManager.startUpdatingLocation()
         
         _mapView.settings.myLocationButton = true
+        _mapView.isMyLocationEnabled = true
         
         self.mapView.addSubview(_mapView)
         
     }
     
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if (status == CLAuthorizationStatus.authorizedWhenInUse) {
+            _mapView.isMyLocationEnabled = true
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let newLocation = locations.last
+        _mapView.camera = GMSCameraPosition.camera(withTarget: newLocation!.coordinate, zoom: defaultZoomLevel)
+//        self.view = self.mapView
+        mapView.addSubview(_mapView)
+        
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        locationManager.stopUpdatingLocation()
+        print("Error: \(error)")
+    }
 
     /*
     // MARK: - Navigation
