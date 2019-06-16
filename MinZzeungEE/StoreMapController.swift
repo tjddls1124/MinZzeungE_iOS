@@ -12,6 +12,11 @@ import GooglePlaces
 import Firebase
 
 class StoreCell: UITableViewCell {
+    
+    @IBOutlet weak var storeImage: UIImageView!
+    @IBOutlet weak var storeTitle: UILabel!
+    @IBOutlet weak var storeSnippet: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -101,11 +106,13 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! StoreCell
         if (searchActive) {
-            cell.textLabel?.text = filteredData[indexPath.row].title
+            cell.storeTitle?.text = filteredData[indexPath.row].title
+            cell.storeSnippet?.text = filteredData[indexPath.row].snippet
         } else {
-            cell.textLabel?.text = storesData[indexPath.row].title
+            cell.storeTitle?.text = storesData[indexPath.row].title
+            cell.storeSnippet?.text = storesData[indexPath.row].snippet
         }
         
         return cell
