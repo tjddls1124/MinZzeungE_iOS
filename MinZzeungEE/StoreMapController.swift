@@ -45,9 +45,7 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
     var ref: DatabaseReference!
     var storesData: [Store] = [] // store data in this array
     var filteredData: [Store] = [] // filled when sth. is in the search text input
-    
-    @IBOutlet weak var realSearchBar: UISearchBar!
-    // searchBar is never used; just for a display
+
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var resultTable: UITableView!
@@ -55,8 +53,26 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     var searchActive: Bool = false
     
-    @IBAction func onClickBackButton(_ sender: Any) {
+    func toggleMapView() -> Void {
+        // change view layout of button and search bar
+        // open map view
         self.resultView.isHidden = true
+        searchBar.frame.size.width = 414
+        searchBar.frame.origin.x -= 44
+        backButton.isHidden = true
+    }
+    
+    func toggleSearchView() -> Void {
+        // change view layout of button and search bar
+        // open search view
+        self.resultView.isHidden = false
+        searchBar.frame.size.width = 370
+        searchBar.frame.origin.x += 44
+        backButton.isHidden = false
+    }
+    
+    @IBAction func onClickBackButton(_ sender: Any) {
+        toggleMapView()
         self.view.endEditing(true)
     }
     
@@ -70,8 +86,7 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
             self.present(alertController, animated: true, completion: nil)
         } else {
             self.searchActive = true
-            self.resultView.isHidden = false
-            self.realSearchBar!.becomeFirstResponder()
+            toggleSearchView()
         }
     }
     
@@ -134,7 +149,7 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         _mapView.camera = GMSCameraPosition.camera(withTarget: storeCoordinate, zoom: defaultZoomLevel)
         mapView.addSubview(_mapView)
         tableView.deselectRow(at: indexPath, animated: false)
-        self.resultView.isHidden = true
+        toggleMapView()
     }
     
     override func viewDidLoad() {
@@ -151,8 +166,6 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         // these two search bars have to be distinguished in delegate method
         searchBar.delegate = self
         searchBar.placeholder = "상호명을 입력해주세요"
-        realSearchBar.delegate = self
-        realSearchBar.placeholder = "상호명을 입력해주세요"
         
         // delegate settings for search result table
         resultTable.delegate = self
