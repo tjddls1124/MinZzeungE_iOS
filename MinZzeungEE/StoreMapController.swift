@@ -11,6 +11,14 @@ import GoogleMaps
 import GooglePlaces
 import Firebase
 
+// data model for store data
+struct Store {
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
+    var title: String = ""
+    var snippet: String = ""
+}
+
 class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var mapView: GMSMapView!
@@ -20,6 +28,8 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
     var _mapView: GMSMapView!
     
     var ref: DatabaseReference!
+    var storesData: [Store] = [] // store data in this array
+    
     
     @IBOutlet weak var realSearchBar: UISearchBar!
     // searchBar is never used; just for a display
@@ -27,6 +37,8 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var resultTable: UITableView!
     @IBOutlet weak var backButton: UIButton!
+    
+    var searchActive: Bool = false
     
     @IBAction func onClickBackButton(_ sender: Any) {
         self.resultView.isHidden = true
@@ -65,8 +77,6 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
         
-//        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
-        
         // Do any additional setup after loading the view.
         let camera = GMSCameraPosition.camera(withTarget: defaultLocation.coordinate, zoom: defaultZoomLevel)
         _mapView = GMSMapView(frame: self.mapView.frame, camera: camera)
@@ -94,10 +104,30 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
             /*
              * Request data of stores supports this application from Firebase DB
              * bring them together, and use it in to generate marker
-             * CAUTIONS: the `snapshot` is volatile data; you can only use the data within this closure
+             * data retrieved here will be stored in `storesData` variable
+             * CAUTION for asynchronous action
              */
             
             // Generate marker for each store
+//            for store in stores {
+//                let title = store.key
+//                if let storeData = stores[store.key] as? [String: AnyObject],
+//                    let location = storeData["gps"] as? [String: AnyObject] {
+//                    // Preparing data to display in the marker
+//                    // Datatype for data in Firebase DB is different from native datatype in Swift,
+//                    // So it has to be converted to adequate types before using it
+//                    let latitude = Double(truncating: location["latitude"]! as! NSNumber)
+//                    let longitude = Double(truncating: location["longitude"]! as! NSNumber)
+//
+//                    let snippet = storeData["snippet"] as? String
+//
+//                    let store = GMSMarker()
+//                    store.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+//                    store.title = title
+//                    store.snippet = snippet
+//                    store.map = self._mapView
+//                }
+//            }
             for store in stores {
                 let title = store.key
                 if let storeData = stores[store.key] as? [String: AnyObject],
@@ -107,14 +137,10 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
                     // So it has to be converted to adequate types before using it
                     let latitude = Double(truncating: location["latitude"]! as! NSNumber)
                     let longitude = Double(truncating: location["longitude"]! as! NSNumber)
-                    
+
                     let snippet = storeData["snippet"] as? String
                     
-                    let store = GMSMarker()
-                    store.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                    store.title = title
-                    store.snippet = snippet
-                    store.map = self._mapView
+                    self.storesData.append(Store(latitude: latitude, longitude: longitude, title: title, snippet: snippet!))
                 }
             }
             
@@ -145,20 +171,22 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     // Search Bar relevant delegate functions
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchActive = true
         self.resultView.isHidden = false
         self.realSearchBar!.becomeFirstResponder()
-        
+        print(self.storesData)
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        
+        self.searchActive = false
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
+        self.searchActive = false
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchActive = false
         
     }
     
