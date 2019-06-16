@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func applicationDidEnterBackground(_ application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let blankView = storyboard.instantiateViewController(withIdentifier: "blankView")
         window?.rootViewController?.present(blankView, animated: true, completion: nil)

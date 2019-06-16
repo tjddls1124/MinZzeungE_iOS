@@ -247,19 +247,20 @@ class AddToList_ViewController: UITableViewController {
         firstLisenceNumber.delegate = self as? UITextFieldDelegate
         secondLisenceNumber.delegate = self as? UITextFieldDelegate
         thirdLisenceNumber.delegate = self as? UITextFieldDelegate
-        
-        
+
+
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing)))
-        
-        
+
+
         NotificationCenter.default.addObserver(self, selector:
             #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification,
                                              object: nil)
         NotificationCenter.default.addObserver(self, selector:
             #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification,
                                              object: nil)
-        
-        addPhotoButton.isHidden = false
+
+
+        addPhotoButton.setTitle("Click here to add photo",for: .normal)
         //imageView에 신분증 나타내기 + textView에 추출된 문자 나타내기
         if let idImage = imageView {
             drawFeatures(in: idImage)
@@ -529,7 +530,9 @@ class AddToList_ViewController: UITableViewController {
 
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBAction func test(_ sender: Any) {
-        addPhotoButton.isHidden = true
+        //addPhotoButton.isHidden = true
+        addPhotoButton.setTitle("",for: .normal)
+        
         let alert =  UIAlertController(title: "신분증 사진을 선택해주세요", message: "", preferredStyle: .actionSheet)
         let library =  UIAlertAction(title: "사진앨범", style: .default) { (action) in self.openLibrary()
         }

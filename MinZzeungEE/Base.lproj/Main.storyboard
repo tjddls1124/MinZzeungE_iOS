@@ -143,13 +143,13 @@
                                                     <rect key="frame" x="12" y="5" width="183" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rV5-Ux-8he">
                                                     <rect key="frame" x="219" y="5" width="183" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -188,19 +188,19 @@
                                                     <rect key="frame" x="299" y="6" width="107" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad" secureTextEntry="YES"/>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lisence" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JHB-XN-E1j">
                                                     <rect key="frame" x="12" y="6" width="103" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bcL-3l-jiH">
                                                     <rect key="frame" x="139" y="6" width="136" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -444,18 +444,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="=&gt; 점주님은 처벌받지 않습니다." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mvc-ZZ-YBJ" userLabel="Text View2">
-                                <rect key="frame" x="20" y="756" width="374" height="46"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text=" 점주님은 처벌받지 않습니다." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mvc-ZZ-YBJ" userLabel="Text View2">
+                                <rect key="frame" x="20" y="756" width="374" height="37"/>
+                                <color key="backgroundColor" red="0.81550757289999998" green="0.85823667560000005" blue="0.93074194789999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="R1a-4M-tce"/>
+                                    <constraint firstAttribute="height" constant="37" id="R1a-4M-tce"/>
                                 </constraints>
-                                <color key="textColor" red="1" green="0.5" blue="0.25775587746993867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="진위 여부를 조회중입니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCn-vS-pbA">
-                                <rect key="frame" x="100" y="490" width="214" height="18"/>
-                                <color key="backgroundColor" red="0.81550757289999998" green="0.85823667560000005" blue="0.93074194789999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="99" y="500" width="214" height="18"/>
+                                <color key="backgroundColor" red="0.71195600079999999" green="0.73250709020000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -467,22 +468,22 @@
                             <constraint firstItem="UX2-BT-ioX" firstAttribute="trailing" secondItem="mvc-ZZ-YBJ" secondAttribute="trailing" constant="20" id="B1S-My-zUY"/>
                             <constraint firstItem="mvc-ZZ-YBJ" firstAttribute="top" secondItem="Rg3-J2-U6r" secondAttribute="bottom" constant="25" id="B5h-Yq-L2K"/>
                             <constraint firstItem="UX2-BT-ioX" firstAttribute="trailing" secondItem="Rg3-J2-U6r" secondAttribute="trailing" constant="20" id="F6G-xX-5Ga"/>
-                            <constraint firstItem="ZCn-vS-pbA" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="100" id="LAY-qj-5fq"/>
+                            <constraint firstItem="ZCn-vS-pbA" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="99" id="LAY-qj-5fq"/>
                             <constraint firstItem="0Pv-OV-cs5" firstAttribute="top" secondItem="3lT-q8-RGT" secondAttribute="bottom" constant="37" id="PqQ-Tq-fHA"/>
                             <constraint firstItem="mvc-ZZ-YBJ" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="20" id="Qw8-s7-kaG"/>
                             <constraint firstItem="mvc-ZZ-YBJ" firstAttribute="top" secondItem="CBn-Ks-dZi" secondAttribute="top" constant="756" id="Qza-jp-DBL"/>
                             <constraint firstItem="wZY-zo-Gg0" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="160" id="Ujs-xQ-LBO"/>
                             <constraint firstItem="UX2-BT-ioX" firstAttribute="trailing" secondItem="0Pv-OV-cs5" secondAttribute="trailing" constant="161" id="V6N-3B-Tt9"/>
                             <constraint firstItem="0Pv-OV-cs5" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="159" id="WWf-pa-ht9"/>
-                            <constraint firstItem="ZCn-vS-pbA" firstAttribute="top" secondItem="wZY-zo-Gg0" secondAttribute="bottom" constant="66" id="Wf3-Ww-Q1s"/>
+                            <constraint firstItem="ZCn-vS-pbA" firstAttribute="top" secondItem="wZY-zo-Gg0" secondAttribute="bottom" constant="76" id="Wf3-Ww-Q1s"/>
                             <constraint firstItem="0Pv-OV-cs5" firstAttribute="top" secondItem="3lT-q8-RGT" secondAttribute="bottom" constant="37" id="ct2-er-01h"/>
                             <constraint firstItem="wZY-zo-Gg0" firstAttribute="top" secondItem="Uzd-fD-mSt" secondAttribute="bottom" constant="45" id="dje-Mo-Z9F"/>
                             <constraint firstItem="Rg3-J2-U6r" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="20" id="eHq-MC-2YL"/>
                             <constraint firstItem="UX2-BT-ioX" firstAttribute="top" secondItem="Uzd-fD-mSt" secondAttribute="bottom" constant="-271" id="lAB-Sd-2Fa"/>
-                            <constraint firstItem="Rg3-J2-U6r" firstAttribute="top" secondItem="ZCn-vS-pbA" secondAttribute="bottom" constant="78" id="osx-Jr-BmD"/>
-                            <constraint firstItem="UX2-BT-ioX" firstAttribute="bottom" secondItem="mvc-ZZ-YBJ" secondAttribute="bottom" constant="60" id="pW6-LM-3GV"/>
-                            <constraint firstItem="UX2-BT-ioX" firstAttribute="trailing" secondItem="ZCn-vS-pbA" secondAttribute="trailing" constant="100" id="rCN-3Y-gAa"/>
-                            <constraint firstItem="ZCn-vS-pbA" firstAttribute="top" secondItem="0Pv-OV-cs5" secondAttribute="bottom" constant="8" id="vm8-hA-4QG"/>
+                            <constraint firstItem="Rg3-J2-U6r" firstAttribute="top" secondItem="ZCn-vS-pbA" secondAttribute="bottom" constant="68" id="osx-Jr-BmD"/>
+                            <constraint firstItem="UX2-BT-ioX" firstAttribute="bottom" secondItem="mvc-ZZ-YBJ" secondAttribute="bottom" constant="69" id="pW6-LM-3GV"/>
+                            <constraint firstItem="UX2-BT-ioX" firstAttribute="trailing" secondItem="ZCn-vS-pbA" secondAttribute="trailing" constant="101" id="rCN-3Y-gAa"/>
+                            <constraint firstItem="ZCn-vS-pbA" firstAttribute="top" secondItem="0Pv-OV-cs5" secondAttribute="bottom" constant="18" id="vm8-hA-4QG"/>
                             <constraint firstItem="Uzd-fD-mSt" firstAttribute="top" secondItem="UX2-BT-ioX" secondAttribute="top" constant="8" id="y3a-n2-PxV"/>
                             <constraint firstItem="UX2-BT-ioX" firstAttribute="trailing" secondItem="wZY-zo-Gg0" secondAttribute="trailing" constant="160" id="yKL-Jj-mdY"/>
                             <constraint firstItem="Uzd-fD-mSt" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="8" id="z1O-V9-BWh"/>
