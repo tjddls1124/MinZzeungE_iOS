@@ -22,6 +22,7 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
     var ref: DatabaseReference!
     
     @IBOutlet weak var realSearchBar: UISearchBar!
+    // searchBar is never used; just for a display
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var resultTable: UITableView!
@@ -48,8 +49,13 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // these two search bars have to be distinguished in delegate method
         searchBar.delegate = self
         searchBar.placeholder = "상호명을 입력해주세요"
+        
+        realSearchBar.delegate = self
+        realSearchBar.placeholder = "상호명을 입력해주세요"
         
         resultTable.delegate = self
         resultTable.dataSource = self
@@ -137,9 +143,11 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         print("Error: \(error)")
     }
     
-    // Search Bar relevant functions
+    // Search Bar relevant delegate functions
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.resultView.isHidden = false
+        self.realSearchBar!.becomeFirstResponder()
+        
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
