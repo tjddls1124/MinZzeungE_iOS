@@ -62,10 +62,17 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     // Search Bar relevant delegate functions
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.searchActive = true
-        self.resultView.isHidden = false
-        self.realSearchBar!.becomeFirstResponder()
-        print(self.storesData)
+        if (self.storesData.count == 0) {
+            // data is not fetched yet! prevent unwrapping nil object
+            self.resultView.isHidden = true
+            let alertController = UIAlertController(title: "MinZzeungE", message: "가게 목록을 불러오는 중입니다. 잠시만 기다려주세요.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "확인", style: .default))
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            self.searchActive = true
+            self.resultView.isHidden = false
+            self.realSearchBar!.becomeFirstResponder()
+        }
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -107,7 +114,7 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! StoreCell
-        if (searchActive) {
+        if (searchActive && filteredData.count != 0) {
             cell.storeTitle?.text = filteredData[indexPath.row].title
             cell.storeSnippet?.text = filteredData[indexPath.row].snippet
         } else {
@@ -118,11 +125,25 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // when an item is selected
+        // hide the result view, and return to the map view
+        // map camera is set to the store's location
+        let selectedStore = self.storesData[indexPath.row]
+        let storeCoordinate = CLLocationCoordinate2D(latitude: selectedStore.latitude, longitude: selectedStore.longitude)
+        _mapView.camera = GMSCameraPosition.camera(withTarget: storeCoordinate, zoom: defaultZoomLevel)
+        mapView.addSubview(_mapView)
+        tableView.deselectRow(at: indexPath, animated: false)
+        self.resultView.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // to hide keyboard when other screen is touched
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        // VERY IMPORTANT SINGLE CODE LINE TO PREVENT INTERFERENCE WITH TableViewCell touch
+        tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
 
         
