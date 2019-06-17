@@ -15,6 +15,7 @@ import SQLite3
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var currentPw : String?
+    var blankVC: UIViewController!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
@@ -30,12 +31,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let blankView = storyboard.instantiateViewController(withIdentifier: "blankView")
-        window?.rootViewController?.present(blankView, animated: true, completion: nil)
-        print("Back")
+        if blankVC == nil {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            blankVC = storyboard.instantiateViewController(withIdentifier: "blankView")
+            
+            let vc = self.window?.rootViewController?.presentedViewController ?? self.window?.rootViewController
+            vc!.present(blankVC, animated: true, completion: nil)
+        }
+        
     }
-    
     //read
     func selectPwQuery() -> String?{
         let queryStatementString = "SELECT pw FROM Password;"
@@ -68,8 +72,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         createPwTable()
     }
     func applicationDidBecomeActive(_ application: UIApplication) {
-        dbCreate()
+        if blankVC != nil {
+            blankVC.dismiss(animated: false, completion: nil)
+            print("0")
+        }
         
+        print("1")
+        dbCreate()
+        print("2")
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let nextView = storyboard.instantiateViewController(withIdentifier: "idListTableView")
 

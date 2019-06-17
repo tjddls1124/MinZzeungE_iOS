@@ -46,7 +46,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.spinner.startAnimating()
-        /* To allow custom request by Alamofire, you should add `App Transport Security Settings` option in info.plist */
+        /* To allow custom request bDetailViewControllerld add `App Transport Security Settings` option in info.plist */
         AF.request("http://www.efine.go.kr/licen/truth/licenTruth.do?subMenuLv=010100", method: .post, parameters: parameters, encoding: URLEncoding.httpBody)
             .responseString{ response in
                 // Parse only the result of verification part from the response
