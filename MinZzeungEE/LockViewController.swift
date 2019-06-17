@@ -28,6 +28,7 @@ class LockViewController: UIViewController{
             self.currentPassword.isHidden = true
             doneButton.setTitle("확인", for: .normal)
             currentPassword.isHidden = true
+            newPassword.placeholder = "password"
         }
         else{
             modifyMode = true
@@ -64,7 +65,7 @@ class LockViewController: UIViewController{
     }
     
     @objc func keyboardWillShow(_ sender:Notification){
-        self.view.frame.origin.y = -200
+        self.view.frame.origin.y = -150
     }
     
     @objc func keyboardWillHide(_ sender:Notification){

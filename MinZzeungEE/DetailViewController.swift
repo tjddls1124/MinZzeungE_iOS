@@ -71,12 +71,12 @@ class DetailViewController: UIViewController {
                         //TODO : id valid 변경할 것
                         print("success")
                         self.authResult.text = "유효한 신분증입니다."
-                        self.authResultIcon.image = UIImage(named: "auth_success")
+                        self.authResultIcon.image = UIImage(named: "successAuth")
                     } else {
                         print("fail")
                         
                         self.authResult.text = "유효한 신분증이 아닙니다."
-                        self.authResultIcon.image = UIImage(named: "auth_fail")
+                        self.authResultIcon.image = UIImage(named: "failAuth")
                     }
                     
                 } catch {
