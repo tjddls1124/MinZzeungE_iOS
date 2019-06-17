@@ -29,6 +29,8 @@ class LockViewController: UIViewController{
             doneButton.setTitle("확인", for: .normal)
             currentPassword.isHidden = true
             newPassword.placeholder = "password"
+            repeatedPassword.placeholder = "one more"
+            passwordMessage.text = ""
         }
         else{
             modifyMode = true
@@ -38,6 +40,7 @@ class LockViewController: UIViewController{
             newPassword.text = ""
             repeatedPassword.text = ""
             currentPassword.text = ""
+            passwordMessage.text = ""
         }
     }
     override func viewDidLoad() {

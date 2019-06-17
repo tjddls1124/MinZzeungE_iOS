@@ -73,7 +73,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="cED-t2-3Pg">
-                                                    <rect key="frame" x="8" y="12" width="398" height="29"/>
+                                                    <rect key="frame" x="12" y="12" width="390" height="29"/>
                                                     <segments>
                                                         <segment title="주민등록증"/>
                                                         <segment title="운전면허증"/>
@@ -86,8 +86,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="cED-t2-3Pg" firstAttribute="top" secondItem="1Zb-qD-fAs" secondAttribute="top" constant="12" id="1uC-A7-EPs"/>
-                                                <constraint firstItem="cED-t2-3Pg" firstAttribute="leading" secondItem="1Zb-qD-fAs" secondAttribute="leading" constant="8" id="QFr-BN-Ih9"/>
-                                                <constraint firstAttribute="trailing" secondItem="cED-t2-3Pg" secondAttribute="trailing" constant="8" id="awL-xQ-ZEO"/>
+                                                <constraint firstItem="cED-t2-3Pg" firstAttribute="leading" secondItem="1Zb-qD-fAs" secondAttribute="leading" constant="12" id="QFr-BN-Ih9"/>
+                                                <constraint firstAttribute="trailing" secondItem="cED-t2-3Pg" secondAttribute="trailing" constant="12" id="awL-xQ-ZEO"/>
                                                 <constraint firstItem="cED-t2-3Pg" firstAttribute="centerX" secondItem="1Zb-qD-fAs" secondAttribute="centerX" id="nfU-Zp-pZK"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -402,10 +402,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="신분증 목록" id="jXr-y3-YJ4">
-                        <barButtonItem key="backBarButtonItem" title="ID_List" id="WWL-cG-39k"/>
-                        <barButtonItem key="rightBarButtonItem" title="Add ID" id="oYp-7N-FMb">
+                        <barButtonItem key="backBarButtonItem" title="신분증 목록" id="WWL-cG-39k"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ES8-CY-hp9">
                             <connections>
-                                <segue destination="Amy-UE-6De" kind="presentation" id="n3V-GJ-CC0"/>
+                                <segue destination="Amy-UE-6De" kind="presentation" id="n3g-KT-BjJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -466,7 +466,7 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rg3-J2-U6r" userLabel="Text View1">
-                                <rect key="frame" x="20" y="648" width="374" height="145"/>
+                                <rect key="frame" x="20" y="663" width="374" height="130"/>
                                 <color key="backgroundColor" red="0.81550757285276076" green="0.85823667561349692" blue="0.93074194785276076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <string key="text">총리령 제1309호(2016년 8월 2일)
 식품위생법 시행규칙 일부개정령을 이에 공포한다.  청소년에게 주류를 제공하는 행위를 한 식품접객업자가 청소년의 신분증 위조ㆍ변조 또는 도용으로 청소년인 사실을 알지 못하였거나 폭행 또는 협박으로 인하여 청소년임을 확인하지 못한 사정이 인정되면 행정처분을 받지 아니한다.</string>
@@ -502,7 +502,7 @@
                             <constraint firstItem="Rg3-J2-U6r" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="20" id="eHq-MC-2YL"/>
                             <constraint firstItem="JQV-Sq-GFp" firstAttribute="leading" secondItem="UX2-BT-ioX" secondAttribute="leading" constant="13" id="gIe-Wf-bUQ"/>
                             <constraint firstItem="UX2-BT-ioX" firstAttribute="top" secondItem="Uzd-fD-mSt" secondAttribute="bottom" constant="-271" id="lAB-Sd-2Fa"/>
-                            <constraint firstItem="Rg3-J2-U6r" firstAttribute="top" secondItem="ZCn-vS-pbA" secondAttribute="bottom" constant="100" id="osx-Jr-BmD"/>
+                            <constraint firstItem="Rg3-J2-U6r" firstAttribute="top" secondItem="ZCn-vS-pbA" secondAttribute="bottom" constant="115" id="osx-Jr-BmD"/>
                             <constraint firstItem="UX2-BT-ioX" firstAttribute="trailing" secondItem="ZCn-vS-pbA" secondAttribute="trailing" constant="101" id="rCN-3Y-gAa"/>
                             <constraint firstItem="ZCn-vS-pbA" firstAttribute="top" secondItem="0Pv-OV-cs5" secondAttribute="bottom" constant="18" id="vm8-hA-4QG"/>
                             <constraint firstItem="Uzd-fD-mSt" firstAttribute="top" secondItem="UX2-BT-ioX" secondAttribute="top" constant="8" id="y3a-n2-PxV"/>
@@ -569,13 +569,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="비밀번호를 한번 더 입력해주세요." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7Lg-OL-L8T">
-                                <rect key="frame" x="80" y="519" width="254" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="(비밀번호 설정 후, 비밀번호를 입력해야만 앱을 사용할 수 있습니다.)" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hfC-cx-PKe">
                                 <rect key="frame" x="30" y="337" width="356" height="41"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -583,13 +576,13 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AVc-65-svi">
-                                <rect key="frame" x="180" y="579" width="54" height="30"/>
+                                <rect key="frame" x="185" y="549" width="44" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTq-EA-wNf">
-                                <rect key="frame" x="192" y="579" width="30" height="30"/>
+                                <rect key="frame" x="192" y="549" width="30" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="확인"/>
                                 <connections>
@@ -602,6 +595,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7Lg-OL-L8T">
+                                <rect key="frame" x="80" y="513" width="254" height="2"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="1" green="0.41176470590000003" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -610,21 +610,20 @@
                             <constraint firstItem="6Pr-ak-V92" firstAttribute="trailing" secondItem="hfC-cx-PKe" secondAttribute="trailing" constant="28" id="4Ky-B1-aNs"/>
                             <constraint firstItem="hfC-cx-PKe" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="30" id="4Sr-dH-Nn5"/>
                             <constraint firstItem="7Lg-OL-L8T" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="80" id="6bp-bM-cgn"/>
-                            <constraint firstItem="AVc-65-svi" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="180" id="6yN-Tq-hDs"/>
+                            <constraint firstItem="AVc-65-svi" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="185" id="6yN-Tq-hDs"/>
                             <constraint firstItem="6Pr-ak-V92" firstAttribute="trailing" secondItem="7Lg-OL-L8T" secondAttribute="trailing" constant="80" id="6yg-3G-3vq"/>
                             <constraint firstItem="067-jO-W0b" firstAttribute="top" secondItem="dyn-Yf-CUQ" secondAttribute="bottom" constant="8" symbolic="YES" id="7y7-1m-Ed4"/>
-                            <constraint firstItem="6Pr-ak-V92" firstAttribute="bottom" secondItem="tTq-EA-wNf" secondAttribute="bottom" constant="160" id="80q-Fg-AkZ"/>
+                            <constraint firstItem="6Pr-ak-V92" firstAttribute="bottom" secondItem="tTq-EA-wNf" secondAttribute="bottom" constant="190" id="80q-Fg-AkZ"/>
                             <constraint firstItem="tTq-EA-wNf" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="192" id="AmE-Nn-P3c"/>
-                            <constraint firstItem="AVc-65-svi" firstAttribute="top" secondItem="7Lg-OL-L8T" secondAttribute="bottom" constant="30" id="Dj0-aO-Qvm"/>
                             <constraint firstItem="2q5-h8-URb" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="60" id="E0h-P0-1uZ"/>
                             <constraint firstItem="dyn-Yf-CUQ" firstAttribute="top" secondItem="hfC-cx-PKe" secondAttribute="bottom" constant="27" id="Fjo-cP-BcT"/>
+                            <constraint firstItem="tTq-EA-wNf" firstAttribute="top" secondItem="7Lg-OL-L8T" secondAttribute="bottom" constant="34" id="HN7-mz-PUh"/>
                             <constraint firstItem="kk7-CJ-po9" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="120" id="Je8-Q5-P1h"/>
                             <constraint firstItem="kk7-CJ-po9" firstAttribute="top" secondItem="6Pr-ak-V92" secondAttribute="top" constant="60" id="Kd8-iT-c2T"/>
                             <constraint firstItem="0uE-Ks-1vn" firstAttribute="top" secondItem="067-jO-W0b" secondAttribute="bottom" constant="8" id="KyS-Vp-Ymo"/>
                             <constraint firstItem="dyn-Yf-CUQ" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="80" id="MNG-4q-Qdl"/>
-                            <constraint firstItem="7Lg-OL-L8T" firstAttribute="top" secondItem="0uE-Ks-1vn" secondAttribute="bottom" constant="8" id="ObA-rQ-wQ2"/>
-                            <constraint firstItem="6Pr-ak-V92" firstAttribute="trailing" secondItem="AVc-65-svi" secondAttribute="trailing" constant="180" id="Pha-DW-9tD"/>
-                            <constraint firstItem="tTq-EA-wNf" firstAttribute="top" secondItem="7Lg-OL-L8T" secondAttribute="bottom" constant="30" id="S21-ti-oXc"/>
+                            <constraint firstItem="7Lg-OL-L8T" firstAttribute="top" secondItem="0uE-Ks-1vn" secondAttribute="bottom" constant="2" id="ObA-rQ-wQ2"/>
+                            <constraint firstItem="6Pr-ak-V92" firstAttribute="trailing" secondItem="AVc-65-svi" secondAttribute="trailing" constant="185" id="Pha-DW-9tD"/>
                             <constraint firstItem="6Pr-ak-V92" firstAttribute="trailing" secondItem="dyn-Yf-CUQ" secondAttribute="trailing" constant="80" id="Zlh-5K-XOa"/>
                             <constraint firstItem="067-jO-W0b" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="80" id="aYL-GU-GDA"/>
                             <constraint firstItem="dyn-Yf-CUQ" firstAttribute="top" secondItem="2q5-h8-URb" secondAttribute="bottom" constant="65" id="bDz-gi-X1L"/>
@@ -894,6 +893,6 @@
         <image name="unlock" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LDo-pk-NeE"/>
+        <segue reference="n3g-KT-BjJ"/>
     </inferredMetricsTieBreakers>
 </document>
