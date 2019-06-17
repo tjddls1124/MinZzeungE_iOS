@@ -76,6 +76,9 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         self.view.endEditing(true)
     }
     
+    @IBOutlet weak var storeInfoView: UIView!
+    
+    
     // Search Bar relevant delegate functions
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         if (self.storesData.count == 0) {

@@ -25,6 +25,7 @@
 		84CA6B2C229287F30023E5F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84CA6B2B229287F20023E5F1 /* GoogleService-Info.plist */; };
 		84CA6B302292A02A0023E5F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84CA6B2F2292A0290023E5F1 /* Assets.xcassets */; };
 		D6094A9122B5302B008BAB2A /* StoreMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6094A9022B5302B008BAB2A /* StoreMapController.swift */; };
+		D6665F4822B77F2000B3E89B /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6665F4722B77F2000B3E89B /* StoreDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		84CA6B2F2292A0290023E5F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6DCD77B53E2CB83EC384616 /* Pods-MinZzeungEE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinZzeungEE.debug.xcconfig"; path = "Target Support Files/Pods-MinZzeungEE/Pods-MinZzeungEE.debug.xcconfig"; sourceTree = "<group>"; };
 		D6094A9022B5302B008BAB2A /* StoreMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMapController.swift; sourceTree = "<group>"; };
+		D6665F4722B77F2000B3E89B /* StoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				3DC8D317224E051500C3170F /* IDListCell.swift */,
 				3D86BC5322841226006A6657 /* AddPhotoStoryboard.storyboard */,
 				D6094A9022B5302B008BAB2A /* StoreMapController.swift */,
+				D6665F4722B77F2000B3E89B /* StoreDetailViewController.swift */,
 			);
 			path = MinZzeungEE;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				3D86BC5822843941006A6657 /* AuthenticationViewController.swift in Sources */,
 				3DC8D318224E051500C3170F /* IDListCell.swift in Sources */,
 				8434EDE2228D873F00BD93BF /* ScaledElementProcessor.swift in Sources */,
+				D6665F4822B77F2000B3E89B /* StoreDetailViewController.swift in Sources */,
 				8434EDE3228D873F00BD93BF /* UIImage+Extension.swift in Sources */,
 				3DAF85922270BC0100AB0462 /* AddToList_ViewController.swift in Sources */,
 			);
@@ -424,7 +428,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ACF3DZY2SU;
 				DEVELOPMENT_TEAM = 4HMLMW8X99;
 				INFOPLIST_FILE = MinZzeungEE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -446,7 +449,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ACF3DZY2SU;
 				DEVELOPMENT_TEAM = 4HMLMW8X99;
 				INFOPLIST_FILE = MinZzeungEE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
