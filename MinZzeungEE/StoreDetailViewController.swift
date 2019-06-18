@@ -10,10 +10,19 @@ import UIKit
 
 class StoreDetailViewController: UIViewController {
 
+    var storeTitle: String!
+    var storeSnippet: String!
+    
+    @IBOutlet weak var storeTitleView: UILabel!
+    @IBOutlet weak var storeSnippetView: UILabel!
+    @IBOutlet weak var storeImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        storeTitleView!.text = storeTitle
+        storeSnippetView!.text = storeSnippet
     }
     
 

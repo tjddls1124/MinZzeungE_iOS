@@ -32,6 +32,7 @@ struct Store {
     var longitude: Double = 0.0
     var title: String = ""
     var snippet: String = ""
+//    var storeId: String = ""
 }
 
 class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, GMSMapViewDelegate {
@@ -290,6 +291,19 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         locationManager.stopUpdatingLocation()
         print("Error: \(error)")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "STORE_DETAIL"){
+            let dest = segue.destination as! StoreDetailViewController
+            
+            dest.storeTitle = storeInfoTitle!.text
+            dest.storeSnippet = storeInfoSnippet!.text
+            
+        }
+        else {
+            return
+        }
     }
     
 }
