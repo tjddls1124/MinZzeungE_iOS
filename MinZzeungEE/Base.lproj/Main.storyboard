@@ -748,40 +748,25 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="124.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wt1-id-aF9">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wt1-id-aF9">
                                                             <rect key="frame" x="13" y="10.5" width="103" height="103.5"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="103" id="J2s-aQ-xu9"/>
-                                                            </constraints>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLb-1F-PJ0">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="title" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLb-1F-PJ0">
                                                             <rect key="frame" x="124" y="10.5" width="280" height="53.5"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="snippet" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcc-Ew-lVB">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="snippet" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcc-Ew-lVB">
                                                             <rect key="frame" x="124" y="72" width="280" height="42"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="42" id="uH6-Ee-vHa"/>
-                                                            </constraints>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="Wt1-id-aF9" firstAttribute="bottom" secondItem="hcc-Ew-lVB" secondAttribute="bottom" id="IWr-i2-Kh4"/>
-                                                        <constraint firstItem="MLb-1F-PJ0" firstAttribute="leading" secondItem="Wt1-id-aF9" secondAttribute="trailing" constant="8" symbolic="YES" id="Lqd-Qj-0JJ"/>
-                                                        <constraint firstItem="Wt1-id-aF9" firstAttribute="centerY" secondItem="313-Tz-yxC" secondAttribute="centerY" id="RwY-8s-vdX"/>
-                                                        <constraint firstItem="MLb-1F-PJ0" firstAttribute="leading" secondItem="hcc-Ew-lVB" secondAttribute="leading" id="V9b-B4-yQv"/>
-                                                        <constraint firstItem="hcc-Ew-lVB" firstAttribute="top" secondItem="MLb-1F-PJ0" secondAttribute="bottom" constant="8" symbolic="YES" id="bDT-0l-i7b"/>
-                                                        <constraint firstItem="Wt1-id-aF9" firstAttribute="bottom" secondItem="313-Tz-yxC" secondAttribute="bottomMargin" id="cO7-9A-ITa"/>
-                                                        <constraint firstItem="MLb-1F-PJ0" firstAttribute="trailing" secondItem="hcc-Ew-lVB" secondAttribute="trailing" id="qxh-Rk-NLG"/>
-                                                        <constraint firstItem="Wt1-id-aF9" firstAttribute="top" secondItem="MLb-1F-PJ0" secondAttribute="top" id="tUJ-Vq-kyF"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="MLb-1F-PJ0" secondAttribute="trailing" constant="-10" id="teC-Yl-h1O"/>
-                                                        <constraint firstItem="Wt1-id-aF9" firstAttribute="leading" secondItem="313-Tz-yxC" secondAttribute="leadingMargin" constant="-7" id="u3R-VQ-7Rc"/>
-                                                    </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="storeImage" destination="Wt1-id-aF9" id="yBH-dj-Hs3"/>

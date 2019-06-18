@@ -32,7 +32,8 @@ struct Store {
     var longitude: Double = 0.0
     var title: String = ""
     var snippet: String = ""
-//    var storeId: String = ""
+    var id: String = ""
+    var thumb: UIImage?
 }
 
 class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, GMSMapViewDelegate {
@@ -43,7 +44,8 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
     var locationManager = CLLocationManager()
     var _mapView: GMSMapView!
     
-    var ref: DatabaseReference!
+    var refDatabase : DatabaseReference!
+    var refStorage: StorageReference!
     var storesData: [Store] = [] // store data in this array
     var filteredData: [Store] = [] // filled when sth. is in the search text input
 
@@ -53,6 +55,7 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
     @IBOutlet weak var backButton: UIButton!
     
     var searchActive: Bool = false
+    var imageReady: Bool = false
     
     func toggleMapView() -> Void {
         // change view layout of button and search bar
@@ -79,15 +82,18 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     // Search Bar relevant delegate functions
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        if (self.storesData.count == 0) {
+        if (self.storesData.count == 0 || !self.imageReady) {
             // data is not fetched yet! prevent unwrapping nil object
             self.resultView.isHidden = true
             let alertController = UIAlertController(title: "MinZzeungE", message: "가게 목록을 불러오는 중입니다. 잠시만 기다려주세요.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "확인", style: .default))
             self.present(alertController, animated: true, completion: nil)
-        } else {
+        } else if (self.resultView.isHidden == true){
+            self.resultTable.reloadData()
             self.searchActive = true
             toggleSearchView()
+        } else {
+            // do nothing
         }
     }
     
@@ -133,10 +139,16 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         if (searchActive && filteredData.count != 0) {
             cell.storeTitle?.text = filteredData[indexPath.row].title
             cell.storeSnippet?.text = filteredData[indexPath.row].snippet
+            cell.storeImage?.image = filteredData[indexPath.row].thumb
         } else {
             cell.storeTitle?.text = storesData[indexPath.row].title
             cell.storeSnippet?.text = storesData[indexPath.row].snippet
+            cell.storeImage?.image = storesData[indexPath.row].thumb
         }
+        
+        // fix the size of image view
+        cell.storeImage.frame.size.width = 103
+        cell.storeImage.frame.size.height = 103
         
         return cell
     }
@@ -156,9 +168,18 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         // SHOULD CHANGE Z-INDEX; _mapview will be plcaed over it
         storeInfoTitle!.text = storesData[indexPath.row].title
         storeInfoSnippet!.text = storesData[indexPath.row].snippet
+        storeInfoImage!.image = storesData[indexPath.row].thumb
         mapView.bringSubviewToFront(storeInfoView)
         
+        // fix the size of image view
+        storeInfoImage.frame.size.width = 128
+        storeInfoImage.frame.size.height = 128
+        
         toggleMapView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 125
     }
     
     @IBOutlet weak var storeInfoView: UIView!
@@ -210,9 +231,9 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         self.mapView.addSubview(_mapView)
         
         // data fetch from firebase DB
-        ref = Database.database().reference()
+        refDatabase = Database.database().reference()
         
-        ref.child("stores").observe(.value, with: {(snapshot) in
+        refDatabase.child("stores").observe(.value, with: {(snapshot) in
             let stores = snapshot.value as? [String: AnyObject] ?? [:]
             
             /*
@@ -234,21 +255,43 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
                     let longitude = Double(truncating: location["longitude"]! as! NSNumber)
 
                     let snippet = storeData["snippet"] as? String
+                    // identifier to fetch image from firebase storage
+                    let id = storeData["id"] as? String
                     
-                    self.storesData.append(Store(latitude: latitude, longitude: longitude, title: title, snippet: snippet!))
+                    self.storesData.append(Store(latitude: latitude, longitude: longitude, title: title, snippet: snippet!, id: id!, thumb: nil))
                 }
             }
             
-            // generate markers
-            for store in self.storesData {
-                let marker = GMSMarker()
-                marker.position = CLLocationCoordinate2D(latitude: store.latitude, longitude: store.longitude)
-                marker.title = store.title
-                marker.snippet = store.snippet
-                marker.map = self._mapView
+            // fetch images for each stores (small-size-thumbnails
+            self.refStorage = Storage.storage().reference().child("stores/thumbnails")
+            for i in 0 ..< self.storesData.count {
+                // fetch image
+                let imageId = self.storesData[i].id
+                let imageRef = self.refStorage.child("\(imageId).png")
+                imageRef.getData(maxSize: 1 * 1024 * 256) { data, error in
+                    if let error = error {
+                        print(error)
+                    } else {
+                        // generate marker
+                        let marker = GMSMarker()
+                        
+                        // store thumbnail image for each store
+                        self.storesData[i].thumb = UIImage(data: data!)
+                        marker.position = CLLocationCoordinate2D(latitude: self.storesData[i].latitude, longitude: self.storesData[i].longitude)
+                        marker.title = self.storesData[i].title
+                        marker.snippet = self.storesData[i].snippet
+                        marker.appearAnimation = GMSMarkerAnimation.pop
+                        marker.map = self._mapView
+                        
+                        // used as an identifier to fetch images from firebase storage
+                        marker.userData = self.storesData[i].id
+                    }
+                }
+                if i == self.storesData.count - 1 {
+                    self.imageReady = true
+                    self.resultTable.reloadData()
+                }
             }
-            self.resultTable.reloadData()
-            
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -271,6 +314,13 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         // SHOULD CHANGE Z-INDEX; _mapview will be plcaed over it
         storeInfoTitle!.text = marker.title
         storeInfoSnippet!.text = marker.snippet
+        storeInfoImage!.image = storesData.filter({(value: Store) -> Bool in
+            return value.id == (marker.userData as! String)
+        })[0].thumb
+        
+        // fix the size of image view
+        storeInfoImage.frame.size.width = 128
+        storeInfoImage.frame.size.height = 128
         self.mapView.bringSubviewToFront(storeInfoView)
         
         return true
