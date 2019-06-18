@@ -11,7 +11,8 @@ import FirebaseDatabase
 import Firebase
 import SQLite3
 
-class AddToList_ViewController: UITableViewController {
+class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
     var modIndex : Int = -1
     var idImage = UIImage(named:"driver_license")
     var idNumValid : Bool = false
@@ -247,7 +248,8 @@ class AddToList_ViewController: UITableViewController {
         firstLisenceNumber.delegate = self as? UITextFieldDelegate
         secondLisenceNumber.delegate = self as? UITextFieldDelegate
         thirdLisenceNumber.delegate = self as? UITextFieldDelegate
-
+        locationPicker.delegate = self
+        locationPicker.dataSource = self
 
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing)))
 
@@ -614,6 +616,28 @@ class AddToList_ViewController: UITableViewController {
         secondLisenceNumber.resignFirstResponder()
         thirdLisenceNumber.resignFirstResponder()
     }
+    
+    @IBOutlet weak var locationPicker: UIPickerView!
+    
+    var locationData = ["없음", "서울(11)", "부산(12)", "경기(13)", "강원(14)", "충북(15)", "충남(16)", "전북(17)", "전남(18)", "경북(19)", "경남(20)", "제주(21)", "대구(22)", "인천(23)", "광주(24)", "대전(25)", "울산(26)"]
+    var pickedNumber:Int = 0
+    var pickedIndex:Int = 0
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return locationData[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return locationData.count
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickedIndex = row
+        pickedNumber = 10 + row
+        print(pickedNumber)
+    }
+    
+    
 }
 
 extension AddToList_ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
