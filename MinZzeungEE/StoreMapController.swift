@@ -146,10 +146,6 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
             cell.storeImage?.image = storesData[indexPath.row].thumb
         }
         
-        // fix the size of image view
-        cell.storeImage.frame.size.width = 103
-        cell.storeImage.frame.size.height = 103
-        
         return cell
     }
     
@@ -171,15 +167,11 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         storeInfoImage!.image = storesData[indexPath.row].thumb
         mapView.bringSubviewToFront(storeInfoView)
         
-        // fix the size of image view
-        storeInfoImage.frame.size.width = 128
-        storeInfoImage.frame.size.height = 128
-        
         toggleMapView()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 125
+        return 115
     }
     
     @IBOutlet weak var storeInfoView: UIView!
@@ -262,7 +254,8 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
                 }
             }
             
-            // fetch images for each stores (small-size-thumbnails
+            // fetch images for each stores (small-size-thumbnails)
+            // ### THUMBNAIL FILE NAME and STORE ID HAS TO BE IDENTICAL ###
             self.refStorage = Storage.storage().reference().child("stores/thumbnails")
             for i in 0 ..< self.storesData.count {
                 // fetch image
@@ -286,10 +279,10 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
                         // used as an identifier to fetch images from firebase storage
                         marker.userData = self.storesData[i].id
                     }
-                }
-                if i == self.storesData.count - 1 {
-                    self.imageReady = true
                     self.resultTable.reloadData()
+                    if i == self.storesData.count - 1 {
+                        self.imageReady = true
+                    }
                 }
             }
         }) { (error) in
@@ -318,9 +311,6 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
             return value.id == (marker.userData as! String)
         })[0].thumb
         
-        // fix the size of image view
-        storeInfoImage.frame.size.width = 128
-        storeInfoImage.frame.size.height = 128
         self.mapView.bringSubviewToFront(storeInfoView)
         
         return true
