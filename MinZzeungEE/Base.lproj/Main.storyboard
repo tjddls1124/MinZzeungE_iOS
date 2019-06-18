@@ -743,10 +743,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5FO-er-tYV">
-                                                <rect key="frame" x="314" y="13" width="69" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="398" height="128"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                <state key="normal" title="자세히 보기"/>
                                                 <connections>
                                                     <segue destination="ZT5-7v-eB9" kind="show" identifier="STORE_DETAIL" id="GcT-Vf-q1g"/>
                                                 </connections>
