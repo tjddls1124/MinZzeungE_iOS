@@ -34,6 +34,7 @@ struct Store {
     var snippet: String = ""
     var id: String = ""
     var thumb: UIImage?
+    var marker: GMSMarker?
 }
 
 class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, GMSMapViewDelegate {
@@ -56,6 +57,7 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     var searchActive: Bool = false
     var imageReady: Bool = false
+    var selectedMarker: GMSMarker?
     
     func toggleMapView() -> Void {
         // change view layout of button and search bar
@@ -167,6 +169,14 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         storeInfoImage!.image = storesData[indexPath.row].thumb
         mapView.bringSubviewToFront(storeInfoView)
         
+        // change the previous store marker to default color
+        if let marker = selectedMarker {
+            marker.icon = GMSMarker.markerImage(with: UIColor.red)
+        }
+        // and remember the marker
+        selectedMarker = storesData[indexPath.row].marker
+        selectedMarker!.icon = GMSMarker.markerImage(with: UIColor.blue)
+        
         toggleMapView()
     }
     
@@ -250,7 +260,7 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
                     // identifier to fetch image from firebase storage
                     let id = storeData["id"] as? String
                     
-                    self.storesData.append(Store(latitude: latitude, longitude: longitude, title: title, snippet: snippet!, id: id!, thumb: nil))
+                    self.storesData.append(Store(latitude: latitude, longitude: longitude, title: title, snippet: snippet!, id: id!, thumb: nil,  marker: nil))
                 }
             }
             
@@ -278,6 +288,9 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
                         
                         // used as an identifier to fetch images from firebase storage
                         marker.userData = self.storesData[i].id
+                        
+                        // save the reference for its GMSMarker
+                        self.storesData[i].marker = marker
                     }
                     self.resultTable.reloadData()
                     if i == self.storesData.count - 1 {
@@ -293,14 +306,30 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     // when the map except for marker is touched - hide info view
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        
+        // change the previous marker to default color
+        if let marker = selectedMarker {
+            marker.icon = GMSMarker.markerImage(with: UIColor.red)
+        }
+        selectedMarker = nil
+        
         // hide info view
         storeInfoView.isHidden = true
     }
     
     // when the marker is touched - show info view relevent to that marker
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        
+        // change the previous marker to default color
+        if let marker = selectedMarker {
+            marker.icon = GMSMarker.markerImage(with: UIColor.red)
+        }
+        // and remember the marker
+        selectedMarker = marker
+        
         // camera move to the marker
         _mapView.camera = GMSCameraPosition.camera(withTarget: marker.position, zoom: defaultZoomLevel)
+        marker.icon = GMSMarker.markerImage(with: UIColor.blue)
         
         // show storeInfoView
         storeInfoView.isHidden = false
