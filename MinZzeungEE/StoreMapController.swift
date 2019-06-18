@@ -379,8 +379,7 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
             let dest = segue.destination as! StoreDetailViewController
             
             dest.storeTitle = storeInfoTitle!.text
-            dest.storeSnippet = storeInfoSnippet!.text
-            
+            dest.storeId = selectedMarker!.userData as? String
         }
         else {
             return
