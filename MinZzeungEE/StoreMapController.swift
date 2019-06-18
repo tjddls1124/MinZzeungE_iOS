@@ -76,9 +76,6 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         self.view.endEditing(true)
     }
     
-    @IBOutlet weak var storeInfoView: UIView!
-    
-    
     // Search Bar relevant delegate functions
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         if (self.storesData.count == 0) {
@@ -152,18 +149,26 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         _mapView.camera = GMSCameraPosition.camera(withTarget: storeCoordinate, zoom: defaultZoomLevel)
         mapView.addSubview(_mapView)
         tableView.deselectRow(at: indexPath, animated: false)
+        
+        // show storeInfoView
+        storeInfoView.isHidden = false
+        // SHOULD CHANGE Z-INDEX; _mapview will be plcaed over it
+        mapView.bringSubviewToFront(storeInfoView)
+        
         toggleMapView()
     }
     
+    @IBOutlet weak var storeInfoView: UIView!
+    
+    // ### MAIN METHOD FOR THIS VIEW CONTROLLER ###
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // to hide keyboard when other screen is touched
-        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        let tapGesture_Keyboard = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         // VERY IMPORTANT SINGLE CODE LINE TO PREVENT INTERFERENCE WITH TableViewCell touch
-        tapGesture.cancelsTouchesInView = false
-        view.addGestureRecognizer(tapGesture)
-
+        tapGesture_Keyboard.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture_Keyboard)
         
         // delegate settings for search bars
         // these two search bars have to be distinguished in delegate method
