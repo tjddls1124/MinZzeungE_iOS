@@ -15,6 +15,7 @@ class StoreCell: UITableViewCell {
     
     @IBOutlet weak var storeImage: UIImageView!
     @IBOutlet weak var storeTitle: UILabel!
+    @IBOutlet weak var storeAddress: UILabel!
     @IBOutlet weak var storeSnippet: UILabel!
     
     override func awakeFromNib() {
@@ -35,6 +36,8 @@ struct Store {
     var id: String = ""
     var thumb: UIImage?
     var marker: GMSMarker?
+    var address: String = ""
+    var star: Double = 0.0
 }
 
 class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, GMSMapViewDelegate {
@@ -141,10 +144,12 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         if (searchActive && filteredData.count != 0) {
             cell.storeTitle?.text = filteredData[indexPath.row].title
             cell.storeSnippet?.text = filteredData[indexPath.row].snippet
+            cell.storeAddress?.text = filteredData[indexPath.row].address
             cell.storeImage?.image = filteredData[indexPath.row].thumb
         } else {
             cell.storeTitle?.text = storesData[indexPath.row].title
             cell.storeSnippet?.text = storesData[indexPath.row].snippet
+            cell.storeAddress?.text = storesData[indexPath.row].address
             cell.storeImage?.image = storesData[indexPath.row].thumb
         }
         
@@ -166,6 +171,7 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         // SHOULD CHANGE Z-INDEX; _mapview will be plcaed over it
         storeInfoTitle!.text = storesData[indexPath.row].title
         storeInfoSnippet!.text = storesData[indexPath.row].snippet
+        storeInfoAddress!.text = storesData[indexPath.row].address
         storeInfoImage!.image = storesData[indexPath.row].thumb
         mapView.bringSubviewToFront(storeInfoView)
         
@@ -188,6 +194,7 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     @IBOutlet weak var storeInfoImage: UIImageView!
     @IBOutlet weak var storeInfoTitle: UILabel!
+    @IBOutlet weak var storeInfoAddress: UILabel!
     @IBOutlet weak var storeInfoSnippet: UILabel!
     
     // ### MAIN METHOD FOR THIS VIEW CONTROLLER ###
@@ -255,12 +262,15 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
                     // So it has to be converted to adequate types before using it
                     let latitude = Double(truncating: location["latitude"]! as! NSNumber)
                     let longitude = Double(truncating: location["longitude"]! as! NSNumber)
-
+                    
+                    let address = storeData["address"] as? String
+                    let star = storeData["star"] as? Double
                     let snippet = storeData["snippet"] as? String
                     // identifier to fetch image from firebase storage
                     let id = storeData["id"] as? String
                     
-                    self.storesData.append(Store(latitude: latitude, longitude: longitude, title: title, snippet: snippet!, id: id!, thumb: nil,  marker: nil))
+                    
+                    self.storesData.append(Store(latitude: latitude, longitude: longitude, title: title, snippet: snippet!, id: id!, thumb: nil,  marker: nil, address: address!, star: star! ))
                 }
             }
             
@@ -281,9 +291,8 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
                         // store thumbnail image for each store
                         self.storesData[i].thumb = UIImage(data: data!)
                         marker.position = CLLocationCoordinate2D(latitude: self.storesData[i].latitude, longitude: self.storesData[i].longitude)
-                        marker.title = self.storesData[i].title
-                        marker.snippet = self.storesData[i].snippet
                         marker.appearAnimation = GMSMarkerAnimation.pop
+                        
                         marker.map = self._mapView
                         
                         // used as an identifier to fetch images from firebase storage
@@ -334,11 +343,14 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         // show storeInfoView
         storeInfoView.isHidden = false
         // SHOULD CHANGE Z-INDEX; _mapview will be plcaed over it
-        storeInfoTitle!.text = marker.title
-        storeInfoSnippet!.text = marker.snippet
-        storeInfoImage!.image = storesData.filter({(value: Store) -> Bool in
+        let storeData = storesData.filter({(value: Store) -> Bool in
             return value.id == (marker.userData as! String)
-        })[0].thumb
+        })[0]
+        
+        storeInfoTitle!.text = storeData.title
+        storeInfoSnippet!.text = storeData.snippet
+        storeInfoAddress!.text = storeData.address
+        storeInfoImage!.image = storeData.thumb
         
         self.mapView.bringSubviewToFront(storeInfoView)
         
