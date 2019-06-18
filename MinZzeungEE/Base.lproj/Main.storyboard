@@ -693,7 +693,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5FO-er-tYV">
-                                                <rect key="frame" x="344" y="13" width="54" height="35"/>
+                                                <rect key="frame" x="329" y="13" width="54" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                 <state key="normal" title="더 보기"/>
@@ -782,6 +782,9 @@
                         <outlet property="resultTable" destination="4pj-u2-j0D" id="USc-FH-6Hh"/>
                         <outlet property="resultView" destination="DcV-yb-KyH" id="AgW-hW-ff2"/>
                         <outlet property="searchBar" destination="pPZ-S2-M8m" id="lPc-n7-MUk"/>
+                        <outlet property="storeInfoImage" destination="ocj-HA-N7A" id="fuQ-L8-qtd"/>
+                        <outlet property="storeInfoSnippet" destination="ene-Dq-AIU" id="oCT-pd-UhP"/>
+                        <outlet property="storeInfoTitle" destination="X7u-Ut-Duc" id="zKQ-U8-12L"/>
                         <outlet property="storeInfoView" destination="McM-qp-e0T" id="FH4-dR-3Xs"/>
                     </connections>
                 </viewController>

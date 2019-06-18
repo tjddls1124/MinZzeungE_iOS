@@ -34,7 +34,7 @@ struct Store {
     var snippet: String = ""
 }
 
-class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
+class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, GMSMapViewDelegate {
     
     @IBOutlet weak var mapView: GMSMapView!
     let defaultLocation = CLLocation(latitude: 37.561138, longitude: 127.039279)
@@ -153,12 +153,18 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         // show storeInfoView
         storeInfoView.isHidden = false
         // SHOULD CHANGE Z-INDEX; _mapview will be plcaed over it
+        storeInfoTitle!.text = storesData[indexPath.row].title
+        storeInfoSnippet!.text = storesData[indexPath.row].snippet
         mapView.bringSubviewToFront(storeInfoView)
         
         toggleMapView()
     }
     
     @IBOutlet weak var storeInfoView: UIView!
+    
+    @IBOutlet weak var storeInfoImage: UIImageView!
+    @IBOutlet weak var storeInfoTitle: UILabel!
+    @IBOutlet weak var storeInfoSnippet: UILabel!
     
     // ### MAIN METHOD FOR THIS VIEW CONTROLLER ###
     override func viewDidLoad() {
@@ -184,6 +190,9 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         let camera = GMSCameraPosition.camera(withTarget: defaultLocation.coordinate, zoom: defaultZoomLevel)
         _mapView = GMSMapView(frame: self.mapView.frame, camera: camera)
         _mapView.frame = mapView.bounds
+        
+        // delegate settings for _mapview relevant functions
+        _mapView.delegate = self
         
         // settings for location manager (tracking)
         self.locationManager.delegate = self
@@ -243,6 +252,27 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
             print(error.localizedDescription)
         }
         
+    }
+    
+    // when the map except for marker is touched - hide info view
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        // hide info view
+        storeInfoView.isHidden = true
+    }
+    
+    // when the marker is touched - show info view relevent to that marker
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        // camera move to the marker
+        _mapView.camera = GMSCameraPosition.camera(withTarget: marker.position, zoom: defaultZoomLevel)
+        
+        // show storeInfoView
+        storeInfoView.isHidden = false
+        // SHOULD CHANGE Z-INDEX; _mapview will be plcaed over it
+        storeInfoTitle!.text = marker.title
+        storeInfoSnippet!.text = marker.snippet
+        self.mapView.bringSubviewToFront(storeInfoView)
+        
+        return true
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
