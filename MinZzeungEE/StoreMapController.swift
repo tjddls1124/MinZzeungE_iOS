@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import Firebase
+import Cosmos
 
 class StoreCell: UITableViewCell {
     
@@ -196,6 +197,7 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
     @IBOutlet weak var storeInfoTitle: UILabel!
     @IBOutlet weak var storeInfoAddress: UILabel!
     @IBOutlet weak var storeInfoSnippet: UILabel!
+    @IBOutlet weak var storeInfoStars: CosmosView!
     
     // ### MAIN METHOD FOR THIS VIEW CONTROLLER ###
     override func viewDidLoad() {
@@ -238,6 +240,10 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         _mapView.isMyLocationEnabled = true
         
         self.mapView.addSubview(_mapView)
+        
+        // settings for star ratings
+        storeInfoStars!.settings.fillMode = .precise
+        storeInfoStars!.settings.updateOnTouch = false
         
         // data fetch from firebase DB
         refDatabase = Database.database().reference()
@@ -310,7 +316,6 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         }) { (error) in
             print(error.localizedDescription)
         }
-        
     }
     
     // when the map except for marker is touched - hide info view
@@ -351,6 +356,10 @@ class StoreMapController: UIViewController, CLLocationManagerDelegate, UISearchB
         storeInfoSnippet!.text = storeData.snippet
         storeInfoAddress!.text = storeData.address
         storeInfoImage!.image = storeData.thumb
+        
+        storeInfoStars!.rating = storeData.star
+        print(storeInfoStars!.rating)
+        storeInfoStars!.text = "(\(Int.random(in: 0..<50)))"
         
         self.mapView.bringSubviewToFront(storeInfoView)
         

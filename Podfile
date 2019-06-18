@@ -18,4 +18,6 @@ target 'MinZzeungEE' do
 
 	pod 'Alamofire', '~> 5.0.0-beta.5'
 	pod 'Kanna', '~> 4.0.0'
+
+	pod 'Cosmos', '~> 19.0'
 end

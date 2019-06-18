@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Cosmos
 
 // spinner view for entire screen
 var vSpinner1 : UIView?
@@ -24,6 +25,7 @@ class StoreDetailViewController: UIViewController {
     @IBOutlet weak var storeAddressView: UILabel!
     @IBOutlet weak var storeSnippetView: UILabel!
     @IBOutlet weak var storeDescView: UILabel!
+    @IBOutlet weak var storeStarsView: CosmosView!
     
     var refDB: DatabaseReference!
     var refSR: StorageReference!
@@ -36,6 +38,9 @@ class StoreDetailViewController: UIViewController {
         
         self.storeTitleView!.text = storeTitle
         
+        // settings for star ratings
+        self.storeStarsView!.settings.fillMode = .precise
+        self.storeStarsView!.settings.updateOnTouch = false
         
         // 추가 데이터 로드
         self.refDB = Database.database().reference()
@@ -47,6 +52,8 @@ class StoreDetailViewController: UIViewController {
             
             self.storeAddressView!.text = info["address"] as? String
             self.storeSnippetView!.text = info["snippet"] as? String
+            self.storeStarsView!.rating = info["star"] as? Double ?? 4.0
+            self.storeStarsView!.text = "(\(Int.random(in: 0..<50)))"
             
             // spinner 전환; 텍스트 정보 -> 이미지
             vSpinner2 = self.showSpinner(onView: self.storeImageView, spinner: vSpinner2)
