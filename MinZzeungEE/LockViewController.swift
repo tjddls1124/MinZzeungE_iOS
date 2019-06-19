@@ -18,7 +18,48 @@ class LockViewController: UIViewController{
     @IBOutlet weak var newPassword: UITextField!
     @IBOutlet weak var repeatedPassword: UITextField!
     @IBOutlet weak var currentPassword: UITextField!
+    @IBOutlet weak var deleteButton: UIButton!
     
+    func showToast(message : String, second : Double){
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.view.backgroundColor = UIColor.lightGray
+        alert.view.alpha = 0.6
+        alert.view.layer.cornerRadius = 15
+        self.present(alert, animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + second) {
+            alert.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    
+    @IBAction func deleteCurPw(_ sender: Any) {
+        let alert = UIAlertController(title:"비밀번호 삭제", message: "비밀번호를 삭제하시려면\n현재 설정된 비밀번호를 입력하세요.", preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "OK", style: .default) { (ok) in
+            let inputPw = alert.textFields![0].text
+            if(inputPw == self.currentPw){//올바른 입력
+                self.deleteAll()
+                self.showToast(message: "비밀번호가 삭제되었습니다", second: 2.0)
+                self.performSegue(withIdentifier: "deletePwComplete", sender: nil)
+            }
+            else{//아니라면 다시 입력 확인
+                self.showToast(message: "비밀번호가 올바르지 않습니다.\n다시 확인해주세요", second: 2.0)
+            }
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (cancel) in
+            
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "비밀번호를 입력하세요"
+            textField.textContentType = UITextContentType.password
+            textField.isSecureTextEntry = true
+        }
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
+        
+        
+    }
     @IBOutlet weak var doneButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,8 +72,10 @@ class LockViewController: UIViewController{
             newPassword.placeholder = "password"
             repeatedPassword.placeholder = "one more"
             passwordMessage.text = ""
+            self.deleteButton.isHidden = true
         }
         else{
+            self.deleteButton.isHidden = false
             modifyMode = true
             currentPw = pw
             doneButton.setTitle("변경", for: .normal)
@@ -210,7 +253,7 @@ class LockViewController: UIViewController{
                 present(failAlert, animated: true, completion: nil)
             }
         }
-        
+        performSegue(withIdentifier: "deletePwComplete", sender: nil)
     }
     
     @IBAction func checkPasswordSame(_ sender: Any) {
