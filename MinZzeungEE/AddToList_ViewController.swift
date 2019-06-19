@@ -32,12 +32,46 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var firstEnrollLabel: UILabel!
     @IBOutlet weak var thirdLisenceNumber: UITextField!
     @IBAction func idKind_change(_ sender: Any) {
-        if(self.selectedSegment.selectedSegmentIndex == 1){
-                viewChangeBySeg(isHide: false)
-        }
-        else{
-            viewChangeBySeg(isHide: true)
-        }
+        
+        var this = ""
+        
+        
+         
+         if(self.selectedSegment.selectedSegmentIndex==0){
+         
+         this = "주민등록증"
+         
+         }
+         
+         else if(self.selectedSegment.selectedSegmentIndex==2){
+         
+         this = "여권"
+         
+         }
+         
+         if(self.selectedSegment.selectedSegmentIndex == 1){
+         
+         viewChangeBySeg(isHide: false)
+         
+         }
+         
+         
+         
+         else{
+         
+         let alert = UIAlertController(title: "\(this) 인증 서비스 준비중", message: "현재 \(this) 인증 서비스는 준비중입니다.\n등록 이후 신분증 인증이 되지 않으니 참고해주세요.", preferredStyle: UIAlertController.Style.alert)
+         
+         let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+         
+         
+         
+         alert.addAction(action)
+         
+         present(alert, animated: true, completion: nil)
+         
+         viewChangeBySeg(isHide: true)
+         
+         }
     }
     func viewChangeBySeg(isHide : Bool){
         //pick를 변경하면 view 종류에 맞는 view를 바꿔 띄워준다.
@@ -129,15 +163,20 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
     }
     
     func checkVaild() -> Bool{
-        guard let idFirstNum = self.textField_idFirsttNum.text else{ return true }
-        guard let idLastNum = self.textField_idLastNum.text, let name = self.textField_name.text else {return true}
-        guard let enrollFirstD = self.firstLisenceNumber.text, let enrollSecondD =  self.secondLisenceNumber.text , let enrollThirdD = self.thirdLisenceNumber.text else { return true}
+        guard let idFirstNum = self.textField_idFirsttNum.text else{
+            return true }
+        guard let idLastNum = self.textField_idLastNum.text, let name = self.textField_name.text else {
+            return true
+        }
+        guard let enrollFirstD = self.firstLisenceNumber.text, let enrollSecondD =  self.secondLisenceNumber.text , let enrollThirdD = self.thirdLisenceNumber.text else {
+            return true
+        }
         
         //추출정보와 입력정보가 일치한지 확인
         for text in self.extractedText!{
             print("text :\(text)")
             let idNum = idFirstNum + "-" + idLastNum
-            if(String(text) == idNum){
+            if(String(text).contains(idNum)){
                 self.idNumValid = true
                 print("주민등록번호가 일치합니다")
                 
@@ -163,7 +202,7 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
                 
             }
             let enrollD = enrollFirstD + "-" + enrollSecondD + "-" + enrollThirdD
-            if(String(text) == enrollD){
+            if(String(text).contains(enrollD)){
                 self.enrollNumVaild = true
                 print("등록번호가 일치합니다")
             }
@@ -209,7 +248,7 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
             //alert.addAction(disAction)
             present(alert, animated: true, completion: nil)
         }
-        else if(checkDup(imgPath: uid)){
+        else if(checkDup(imgPath: uid) && modIndex == -1){ //수정모드가 아니고 중복된 신분증을 등록
             let alert = UIAlertController(title: "신분증 중복 오류", message: "이미 같은 주민등록번호로 등록된 같은종류의 신분증이 있습니다!\n 해당 신분증을 수정해주세요.", preferredStyle: UIAlertController.Style.alert)
             let action = UIAlertAction(title: "확인", style: .default, handler: nil)
             //let disAction = UIAlertAction(title:"취소", style: .default, handler: nil)
@@ -286,8 +325,8 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
             case .some(.StudentID_Card):
                 self.selectedSegment.selectedSegmentIndex = 1
             }
-            self.imageView.image = id.imageFilePath
-            self.idImage = id.imageFilePath
+            //self.imageView.image = id.imageFilePath
+            //self.idImage = id.imageFilePath
             self.textField_name.text = id.name
             self.textField_idLastNum.text = id.idLastNum
             self.textField_idFirsttNum.text = id.idFirstNum
@@ -462,7 +501,7 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
             let uid = "\(self.textField_idFirsttNum.text!)-\(self.textField_idLastNum.text! )-\(getKindString(index: self.selectedSegment.selectedSegmentIndex))"
             var kindString = ""
             kindString = getKindString(index: selectedSegment.selectedSegmentIndex)
-            guard let newID = makeNewID(kind: kindString, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, enrollDate: "\(self.firstLisenceNumber.text!)-\(self.secondLisenceNumber.text!)-\(self.thirdLisenceNumber)", img: self.idImage!, valid: false), let _ = segue.destination as? MyTableViewController else{
+            guard let newID = makeNewID(kind: kindString, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, enrollDate: "\(self.firstLisenceNumber.text!)-\(self.secondLisenceNumber.text!)-\(self.thirdLisenceNumber.text!)", img: self.idImage!, valid: false), let _ = segue.destination as? MyTableViewController else{
                 return
             }
             //modify list
@@ -480,7 +519,7 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
             //TODO : check equality with parsed text
             var kindString = ""
             kindString = getKindString(index: selectedSegment.selectedSegmentIndex)
-            guard let newID = makeNewID(kind: kindString, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, enrollDate: "\(self.firstLisenceNumber.text!)-\(self.secondLisenceNumber.text!)", img: self.idImage!, valid: false), let _ = segue.destination as? MyTableViewController else{
+            guard let newID = makeNewID(kind: kindString, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, enrollDate: "\(self.firstLisenceNumber.text!)-\(self.secondLisenceNumber.text!)-\(self.thirdLisenceNumber.text!)", img: self.idImage!, valid: false), let _ = segue.destination as? MyTableViewController else{
                 return
             }
             idList.append(newID)
