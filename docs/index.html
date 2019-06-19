@@ -19,7 +19,7 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<span class="logo"><img src="images/logo.svg" alt="" /></span>
+						<span class="logo"><img src="images/logo.png" alt="" /></span>
 						<h1>MinZzengE</h1>
 						<p>간편하고, 공인된, 모바일 성인인증 어플리케이션</p>
 					</header>
@@ -82,7 +82,7 @@
 										<header class="major">
 											<h2>신분증 등록</h2>
 										</header>
-										<p class="content">다양한 유형의 신분증을 등록하고 바로 사용하세요. 등록된 신분증을 메뉴 화면에서 선택하면 진위검사가 진행되고, 검사 결과를 바로 확인할 수 있습니다.</p>
+										<p class="content">다양한 유형의 신분증을 등록하고 바로 사용하세요. 최초 등록시에 신분증을 촬영하게 됩니다. 사용자가 기입한 정보와 사진에서 추출한 데이터가 일치하는지 확인합니다.</p>
 									</div>
 									<span class="image right"><img src="images/pic01.jpg" alt="" /></span>
 								</div>
@@ -90,19 +90,28 @@
 									<span class="image left"><img src="images/pic02.jpg" alt="" /></span>
 									<div class="content">
 										<header class="major">
-											<h2>주변 상점 검색</h2>
+											<h2>유효성 인증</h2>
 										</header>
-										<p class="content">주변에 민쯩이 서비스를 지원하는 상점이 있는지 검색해보세요. 상점에 대한 정보도 확인할 수 있습니다.</p>
+										<p class="content">신분증을 사용할 때마다 실시간으로 유효성 검사가 진행됩니다. 신분증이 효력을 상실하면 더 이상 사용할 수 없게 됩니다.</p>
 									</div>
 								</div>
 								<div class="spotlight">
 									<div class="content">
 										<header class="major">
-											<h2>개인정보 보호</h2>
+											<h2>주변 식당 검색</h2>
 										</header>
-										<p class="content">민쯩이는 사용자의 개인정보를 안전하게 보호합니다. 암호를 설정하여 신분증 내의 식별번호와 같은 민감정보를 타인에게 노출시키지 마세요.</p>
+										<p class="content">주변에 민쯩이 서비스를 지원하는 식당이 있는지 검색해보세요. 식당에 대한 정보도 확인할 수 있습니다.</p>
 									</div>
 									<span class="image right"><img src="images/pic03.jpg" alt="" /></span>
+								</div>
+								<div class="spotlight">
+									<span class="image left"><img src="images/pic04.jpg" alt="" /></span>
+									<div class="content">
+										<header class="major">
+											<h2>개인정보 보호</h2>
+										</header>
+										<p class="content">민쯩이는 사용자의 개인정보를 암호화하여 안전하게 보호합니다. 앱에 비밀 번호를 설정하여 민감정보를 타인에게 노출시키지 마세요.</p>
+									</div>
 								</div>
 							</section>
 
@@ -115,25 +124,31 @@
 								<ul class="features">
 									<li>
 										<span class="icon solid major style1 fa-camera-retro"></span>
-										<h3>Google Vision OCR</h3>
-										<p>신분증에 표기된 정보를 인식하고 문자 정보로 변환합니다. 사용자는 개인정보를 직접 입력하지 않아도 됩니다.</p>
+										<h3>Google ML Vision OCR</h3>
+										<p>사진의 내용을 추출하여 문자 정보로 변환하고, 사용자가 입력한 정보와 일치하는지 확인합니다.</p>
 									</li>
 									<li>
-										<span class="icon major style3 fa-id-badge"></span>
-										<h3>경찰청 운전면허증 API</h3>
-										<p>경찰청에서 제공하는 운전면허증 진위여부조회 API를 사용하여, 경찰청 DB 데이터를 기반으로 운전면허증의 진위를 판별합니다.</p>
+										<span class="icon solid major style1 fa-camera-retro"></span>
+										<h3>Alamofire/Kanna</h3>
+										<h3>(경찰청 웹 페이지 연동)</h3>
+										<p>경찰청 웹 페이지와 HTTP 통신을 진행하고, 응답으로부터 진위여부 결과를 파싱합니다. 경찰청에서 제공하는 운전면허증 진위여부조회 기능을 사용하여, 사용자의 신분증 정보의 진위 여부를 판별합니다.</p>
 									</li>
 								</ul>
 								<ul class="features">
 									<li>
 										<span class="icon solid major style1 fa-map-marked-alt"></span>
 										<h3>Google Maps</h3>
-										<p>현재 사용자의 위치를 표시해주고, 이를 기반으로 사용자는 주변에 본 서비스를 지원하는 상점들을 검색할 수 있습니다.</p>
+										<p>사용자 주변에 본 서비스를 지원하는 식당들을 마커로 표시해주고, 식당의 세부 정보를 볼 수 있습니다.</p>
 									</li>
 									<li>
 										<span class="icon major style5 fa-database"></span>
-										<h3>Google Firebase DB</h3>
-										<p>각 사용자의 개인별 민감 정보를 계정 별로 저장하는 데에 사용합니다. 또한 본 서비스를 지원하는 상점 데이터 저장에도 사용됩니다.</p>
+										<h3>Firebase Database/Storage</h3>
+										<p>민쯩이 서비스와 제휴된 식당들의 데이터를 보관합니다.</p>
+									</li>
+									<li>
+										<span class="icon major style3 fa-id-badge"></span>
+										<h3>SQLite3</h3>
+										<p>(사용자 개인 정보를 암호화하여 로컬에 [미완])</p>
 									</li>
 								</ul>
 							</section>
