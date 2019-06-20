@@ -80,7 +80,8 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
         self.thirdLisenceNumber.isHidden = isHide
         self.firstEnrollLabel.isHidden = isHide
         self.secondEnrolllLabel.isHidden = isHide
-        
+        self.locationName.isHidden = isHide
+        self.locationPicker.isHidden = isHide
     }
     
     
@@ -657,6 +658,7 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
     }
     
     @IBOutlet weak var locationPicker: UIPickerView!
+    @IBOutlet weak var locationName: UITextField!
     
     var locationData = ["없음", "서울(11)", "부산(12)", "경기(13)", "강원(14)", "충북(15)", "충남(16)", "전북(17)", "전남(18)", "경북(19)", "경남(20)", "제주(21)", "대구(22)", "인천(23)", "광주(24)", "대전(25)", "울산(26)"]
     var pickedNumber:Int = 0
