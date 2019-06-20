@@ -19,6 +19,7 @@ class LockViewController: UIViewController{
     @IBOutlet weak var repeatedPassword: UITextField!
     @IBOutlet weak var currentPassword: UITextField!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var deleteButtonBox: UITextField!
     
     func showToast(message : String, second : Double){
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
@@ -73,9 +74,12 @@ class LockViewController: UIViewController{
             repeatedPassword.placeholder = "one more"
             passwordMessage.text = ""
             self.deleteButton.isHidden = true
+            deleteButtonBox.isHidden = true
+            
         }
         else{
             self.deleteButton.isHidden = false
+            self.deleteButtonBox.isHidden = false
             modifyMode = true
             currentPw = pw
             doneButton.setTitle("변경", for: .normal)
