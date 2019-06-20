@@ -577,12 +577,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AVc-65-svi">
-                                <rect key="frame" x="183" y="549" width="46" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="개인정보 보호를 위해 비밀번호를 설정해주세요." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2q5-h8-URb">
                                 <rect key="frame" x="60" y="308" width="294" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -596,58 +590,76 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTq-EA-wNf">
-                                <rect key="frame" x="191" y="549" width="30" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="066-sd-HuJ">
+                                <rect key="frame" x="155" y="619" width="105" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Bp-dm-PdW">
+                                <rect key="frame" x="166" y="619" width="82" height="30"/>
+                                <state key="normal" title="비밀번호 삭제">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.37890953929999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteCurPw:" destination="IwC-ea-bKc" eventType="touchUpInside" id="zvO-lH-C4c"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AVc-65-svi">
+                                <rect key="frame" x="184" y="560" width="46" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTq-EA-wNf">
+                                <rect key="frame" x="192" y="560" width="30" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="확인"/>
                                 <connections>
                                     <action selector="finishSetPassword:" destination="IwC-ea-bKc" eventType="touchUpInside" id="BQ2-aY-hkf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Bp-dm-PdW">
-                                <rect key="frame" x="166" y="606" width="82" height="30"/>
-                                <state key="normal" title="비밀번호 삭제"/>
-                                <connections>
-                                    <action selector="deleteCurPw:" destination="IwC-ea-bKc" eventType="touchUpInside" id="zvO-lH-C4c"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Pr-ak-V92" firstAttribute="trailing" secondItem="7Bp-dm-PdW" secondAttribute="trailing" constant="166" id="1cY-8t-Dtj"/>
-                            <constraint firstItem="6Pr-ak-V92" firstAttribute="trailing" secondItem="AVc-65-svi" secondAttribute="trailing" constant="185" id="2T6-yw-1Ev"/>
                             <constraint firstItem="7Lg-OL-L8T" firstAttribute="top" secondItem="0uE-Ks-1vn" secondAttribute="bottom" constant="4" id="5VL-nB-Syb"/>
+                            <constraint firstItem="7Bp-dm-PdW" firstAttribute="top" secondItem="7Lg-OL-L8T" secondAttribute="bottom" constant="78" id="5hW-OL-oFP"/>
                             <constraint firstItem="0uE-Ks-1vn" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="80" id="7sp-my-lxb"/>
                             <constraint firstItem="7Bp-dm-PdW" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="166" id="8KW-h4-cqN"/>
                             <constraint firstItem="hfC-cx-PKe" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="30" id="8ou-W0-Fof"/>
-                            <constraint firstItem="6Pr-ak-V92" firstAttribute="trailing" secondItem="tTq-EA-wNf" secondAttribute="trailing" constant="193" id="B2W-YF-GYK"/>
                             <constraint firstItem="6Pr-ak-V92" firstAttribute="trailing" secondItem="7Lg-OL-L8T" secondAttribute="trailing" constant="80" id="DnJ-ht-AJ6"/>
+                            <constraint firstItem="tTq-EA-wNf" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="192" id="E0Z-lz-YVw"/>
                             <constraint firstItem="6Pr-ak-V92" firstAttribute="trailing" secondItem="dyn-Yf-CUQ" secondAttribute="trailing" constant="80" id="E54-bf-RXE"/>
                             <constraint firstItem="hfC-cx-PKe" firstAttribute="top" secondItem="2q5-h8-URb" secondAttribute="bottom" constant="-3" id="EC6-qm-EIb"/>
-                            <constraint firstItem="AVc-65-svi" firstAttribute="top" secondItem="7Lg-OL-L8T" secondAttribute="bottom" constant="8" symbolic="YES" id="JlY-6Z-08z"/>
+                            <constraint firstItem="066-sd-HuJ" firstAttribute="top" secondItem="7Lg-OL-L8T" secondAttribute="bottom" constant="78" id="Gnj-N2-OiB"/>
+                            <constraint firstItem="6Pr-ak-V92" firstAttribute="bottom" secondItem="7Bp-dm-PdW" secondAttribute="bottom" constant="120" id="JgG-5L-5Kf"/>
+                            <constraint firstItem="AVc-65-svi" firstAttribute="top" secondItem="7Lg-OL-L8T" secondAttribute="bottom" constant="19" id="JlY-6Z-08z"/>
                             <constraint firstItem="2q5-h8-URb" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="60" id="KaX-lZ-QOG"/>
-                            <constraint firstItem="6Pr-ak-V92" firstAttribute="bottom" secondItem="7Bp-dm-PdW" secondAttribute="bottom" constant="133" id="NAr-b1-xDU"/>
+                            <constraint firstItem="6Pr-ak-V92" firstAttribute="trailing" secondItem="066-sd-HuJ" secondAttribute="trailing" constant="154" id="PEW-5U-fzv"/>
                             <constraint firstItem="dyn-Yf-CUQ" firstAttribute="top" secondItem="2q5-h8-URb" secondAttribute="bottom" constant="65" id="RIn-MU-6U5"/>
                             <constraint firstItem="6Pr-ak-V92" firstAttribute="trailing" secondItem="kk7-CJ-po9" secondAttribute="trailing" constant="120" id="RlJ-L5-dkv"/>
                             <constraint firstItem="dyn-Yf-CUQ" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="80" id="T2l-IG-CxI"/>
-                            <constraint firstItem="7Bp-dm-PdW" firstAttribute="top" secondItem="tTq-EA-wNf" secondAttribute="bottom" constant="27" id="TbW-oR-Dhh"/>
-                            <constraint firstItem="AVc-65-svi" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="183" id="Wcz-hA-XvJ"/>
-                            <constraint firstItem="tTq-EA-wNf" firstAttribute="firstBaseline" secondItem="7Lg-OL-L8T" secondAttribute="baseline" constant="28.5" id="YV1-9W-SzR"/>
+                            <constraint firstItem="7Bp-dm-PdW" firstAttribute="leading" secondItem="AVc-65-svi" secondAttribute="trailing" constant="-64" id="Tzc-Cd-gRZ"/>
+                            <constraint firstItem="AVc-65-svi" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="184" id="Wcz-hA-XvJ"/>
+                            <constraint firstItem="6Pr-ak-V92" firstAttribute="trailing" secondItem="tTq-EA-wNf" secondAttribute="trailing" constant="192" id="Ws6-EX-XCe"/>
+                            <constraint firstItem="tTq-EA-wNf" firstAttribute="firstBaseline" secondItem="7Lg-OL-L8T" secondAttribute="baseline" constant="39.5" id="YV1-9W-SzR"/>
                             <constraint firstItem="dyn-Yf-CUQ" firstAttribute="top" secondItem="hfC-cx-PKe" secondAttribute="bottom" constant="27" id="ZPF-zZ-Sla"/>
                             <constraint firstItem="067-jO-W0b" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="80" id="aGe-tW-TZg"/>
                             <constraint firstItem="067-jO-W0b" firstAttribute="top" secondItem="dyn-Yf-CUQ" secondAttribute="bottom" constant="8" id="bxg-Ne-vfD"/>
                             <constraint firstItem="hfC-cx-PKe" firstAttribute="top" secondItem="kk7-CJ-po9" secondAttribute="bottom" constant="60" id="c3u-kT-B3D"/>
                             <constraint firstItem="6Pr-ak-V92" firstAttribute="trailing" secondItem="067-jO-W0b" secondAttribute="trailing" constant="80" id="gbC-uj-B6j"/>
+                            <constraint firstItem="6Pr-ak-V92" firstAttribute="bottom" secondItem="066-sd-HuJ" secondAttribute="bottom" constant="120" id="h00-in-dVs"/>
+                            <constraint firstItem="066-sd-HuJ" firstAttribute="leading" secondItem="AVc-65-svi" secondAttribute="trailing" constant="-75" id="h9B-RP-Cl9"/>
                             <constraint firstItem="7Lg-OL-L8T" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="80" id="hed-xe-xLG"/>
                             <constraint firstItem="0uE-Ks-1vn" firstAttribute="top" secondItem="067-jO-W0b" secondAttribute="bottom" constant="8" id="iBS-iz-C01"/>
                             <constraint firstItem="kk7-CJ-po9" firstAttribute="top" secondItem="6Pr-ak-V92" secondAttribute="top" constant="60" id="ioV-e5-JoU"/>
                             <constraint firstItem="6Pr-ak-V92" firstAttribute="trailing" secondItem="2q5-h8-URb" secondAttribute="trailing" constant="60" id="l2S-t6-nBe"/>
-                            <constraint firstItem="tTq-EA-wNf" firstAttribute="leading" secondItem="AVc-65-svi" secondAttribute="trailing" constant="-38" id="qSr-pj-BPZ"/>
                             <constraint firstItem="6Pr-ak-V92" firstAttribute="trailing" secondItem="0uE-Ks-1vn" secondAttribute="trailing" constant="80" id="qpt-Y2-wFq"/>
-                            <constraint firstItem="6Pr-ak-V92" firstAttribute="bottom" secondItem="AVc-65-svi" secondAttribute="bottom" constant="190" id="whq-QL-ScZ"/>
+                            <constraint firstItem="7Bp-dm-PdW" firstAttribute="leading" secondItem="tTq-EA-wNf" secondAttribute="trailing" constant="-56" id="saF-TV-PqO"/>
+                            <constraint firstItem="6Pr-ak-V92" firstAttribute="bottom" secondItem="AVc-65-svi" secondAttribute="bottom" constant="179" id="whq-QL-ScZ"/>
                             <constraint firstItem="6Pr-ak-V92" firstAttribute="trailing" secondItem="hfC-cx-PKe" secondAttribute="trailing" constant="30" id="xYu-em-glg"/>
                             <constraint firstItem="kk7-CJ-po9" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="120" id="xfO-L9-NDF"/>
-                            <constraint firstItem="tTq-EA-wNf" firstAttribute="leading" secondItem="6Pr-ak-V92" secondAttribute="leading" constant="191" id="yCh-Jb-JBS"/>
                             <constraint firstItem="2q5-h8-URb" firstAttribute="top" secondItem="kk7-CJ-po9" secondAttribute="bottom" constant="31" id="zVU-I0-ezw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Pr-ak-V92"/>
@@ -664,6 +676,7 @@
                     <connections>
                         <outlet property="currentPassword" destination="dyn-Yf-CUQ" id="de1-Hp-5Ww"/>
                         <outlet property="deleteButton" destination="7Bp-dm-PdW" id="Mut-Lx-Wsk"/>
+                        <outlet property="deleteButtonBox" destination="066-sd-HuJ" id="179-SQ-35L"/>
                         <outlet property="doneButton" destination="tTq-EA-wNf" id="cp6-uQ-ii4"/>
                         <outlet property="newPassword" destination="067-jO-W0b" id="lZC-fj-cNR"/>
                         <outlet property="passwordMessage" destination="7Lg-OL-L8T" id="c8h-42-3MO"/>
