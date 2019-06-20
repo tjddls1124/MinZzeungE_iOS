@@ -23,31 +23,31 @@ extension String {
             return self[index(at: value.lowerBound)...index(at: value.upperBound)]
         }
     }
-    
+
     subscript(value: CountableRange<Int>) -> Substring {
         get {
             return self[index(at: value.lowerBound)..<index(at: value.upperBound)]
         }
     }
-    
+
     subscript(value: PartialRangeUpTo<Int>) -> Substring {
         get {
             return self[..<index(at: value.upperBound)]
         }
     }
-    
+
     subscript(value: PartialRangeThrough<Int>) -> Substring {
         get {
             return self[...index(at: value.upperBound)]
         }
     }
-    
+
     subscript(value: PartialRangeFrom<Int>) -> Substring {
         get {
             return self[index(at: value.lowerBound)...]
         }
     }
-    
+
     func index(at offset: Int) -> String.Index {
         return index(startIndex, offsetBy: offset)
     }
@@ -68,40 +68,36 @@ class DetailViewController: UIViewController {
         // above four numbers make up the full license number
         "ghostNo": "AAAAAA" // code written under the picture; 6-length string
     ]*/
-    
+
     @IBOutlet weak var idImageView : UIImageView?
     var id : ID?
-    
+
     @IBOutlet weak var authResultIcon: UIImageView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    
+
     @IBAction func authen(_ sender: Any) {
         performSegue(withIdentifier: "authenSegue", sender: nil)
     }
     @IBOutlet weak var authResult: UILabel!
-    
-    var checkFlag: Bool = false
-    
-    func convertIDtoParm(id : ID) -> Parameters?{
-        
-        
+    func convertIDtoParm(id : ID, num: Int) -> Parameters?{
+
+
          let str = id.enrollDate.split(separator: "-")
         if(str.count != 4){
             print("Error")
             return nil
         }
-        
+
         let split = str[0].split(separator: ":")
         let parameters: Parameters = [
-            
+
             "checkPage": 2,
             "flag": "searchPage",
             "regYear": "19\(id.idFirstNum[0..<2])",
             "regMonth": String(id.idFirstNum[2..<4]),
             "regDate": String(id.idFirstNum[4..<6]), // date should be 2-digit number
             "name": id.name,
-            "licenNo0-0": String(split[0]), // 2-digit
-            "licenNo0-1": String(split[1]), // 2-digit
+            "licenNo0": String(split[num]), // 2-digit
             "licenNo1": String(str[1]), // 2-digit
             "licenNo2": String(str[2]), // 6-digit
             "licenNo3": String(str[3]), // 2-digit
@@ -113,11 +109,11 @@ class DetailViewController: UIViewController {
         parameters["regYear"] =
         parameters["regYear"] =
         parameters["name"] =
-        
-       
-        
+
+
+
         {
-            
+
             parameters["licenNo0"] = str[0]
             parameters["licenNo1"] = str[1]
             parameters["licenNo2"] = str[2]
@@ -126,12 +122,12 @@ class DetailViewController: UIViewController {
          */
         return parameters
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.spinner.startAnimating()
-        let parameters = convertIDtoParm(id: self.id!)
+        let parameters = convertIDtoParm(id: self.id!, num:0)
         /* To allow custom request bDetailViewControllerld add `App Transport Security Settings` option in info.plist */
         AF.request("http://www.efine.go.kr/licen/truth/licenTruth.do?subMenuLv=010100", method: .post, parameters: parameters, encoding: URLEncoding.httpBody)
             .responseString{ response in
@@ -151,14 +147,14 @@ class DetailViewController: UIViewController {
                         resultMsg = resultMsg + msgs[i] + "\n"
                     }
                     resultMsg = resultMsg + msgs[msgs.count-1]
-                    
+
                     if (resultMsg == "전산 자료와 일치 합니다." || resultMsg == "전산 자료와 일치 합니다.\n식별번호가 일치합니다." || resultMsg == "전산 자료와 일치 합니다.\n식별번호가 일치하지 않니다.") {
                         //TODO : id valid 변경할 것
                         self.checkFlag = true
-                        
+
                         Thread.sleep(forTimeInterval: 3)
                         self.spinner.stopAnimating()
-                    
+
                         print("success")
                         self.authResult.text = "유효한 신분증입니다."
                         self.authResultIcon.image = UIImage(named: "successAuth")
@@ -182,42 +178,42 @@ class DetailViewController: UIViewController {
                                         resultMsg = resultMsg + msgs[i] + "\n"
                                     }
                                     resultMsg = resultMsg + msgs[msgs.count-1]
-                                    
+
                                     if (resultMsg == "전산 자료와 일치 합니다." || resultMsg == "전산 자료와 일치 합니다.\n식별번호가 일치합니다." || resultMsg == "전산 자료와 일치 합니다.\n식별번호가 일치하지 않니다.") {
                                         //TODO : id valid 변경할 것
                                         print("success")
                                         self.checkFlag = true
-                                        
+
                                         Thread.sleep(forTimeInterval: 3)
                                         self.spinner.stopAnimating()
-                                        
+
                                         self.authResult.text = "유효한 신분증입니다."
                                         self.authResultIcon.image = UIImage(named: "successAuth")
                                     } else {
                                         print("fail")
                                         Thread.sleep(forTimeInterval: 3)
                                         self.spinner.stopAnimating()
-                                    
+
                                         self.authResult.text = "유효한 신분증이 아닙니다."
                                         self.authResultIcon.image = UIImage(named: "failAuth")
                                     }
                                 } catch {
-                                    
+
                                 }
                         }
                     }
-                    
+
                 } catch {
 
                 }
         }
         // Do any additional setup after loading the view.
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         idImageView?.image = id!.imageFilePath
     }
-    
+
 
     /*
     // MARK: - Navigation
