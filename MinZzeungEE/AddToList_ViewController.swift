@@ -283,7 +283,6 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         textField_name.delegate = self as? UITextFieldDelegate
         textField_idLastNum.delegate = self as? UITextFieldDelegate
         textField_idFirsttNum.delegate = self as? UITextFieldDelegate
@@ -309,7 +308,7 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
         if let idImage = imageView {
             drawFeatures(in: idImage)
         }
-
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped(img:)))
 
         imageView_IDCard.isUserInteractionEnabled = true
@@ -328,6 +327,13 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
             case .some(.StudentID_Card):
                 self.selectedSegment.selectedSegmentIndex = 1
             }
+            var pickSp = id.enrollDate.split(separator: ":")
+            pickSp = pickSp[1].split(separator: "-")
+            let pickerIndex : Int! = Int(pickSp[0])
+            //print(pickSp[0])
+            //print(pickerIndex)
+            
+            self.locationPicker.selectRow(pickerIndex % 10, inComponent: 0, animated: true)
             //self.imageView.image = id.imageFilePath
             //self.idImage = id.imageFilePath
             self.textField_name.text = id.name
@@ -431,7 +437,9 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
             validInt = 1
         }
         
-        let updateStatementString = "UPDATE ID SET kind = '\(idKindString)', Name = '\(idName)', IdFirstNum = '\(idFirstNum)', IdLastNum = '\(idLastNum)' , EnrollDate = '\(enrollD)', imagePath = '\(ipath)', vaild = \(validInt) WHERE imagePath = '\(pk)';"
+        let updateStatementString = "UPDATE ID SET Kind = '\(idKindString)', Name = '\(idName)', IdFirstNum = '\(idFirstNum)', IdLastNum = '\(idLastNum)',EnrollDate = '\(enrollD)', imagePath = '\(ipath)', valid = \(validInt) WHERE imagePath = '\(pk)';"
+        //let updateStatementString = "UPDATE ID SET Name = '\(idName)' Where imagePath = '\(pk)';"
+        print(updateStatementString)
         var updateStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
             if sqlite3_step(updateStatement) == SQLITE_DONE {

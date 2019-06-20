@@ -169,7 +169,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //create table
     func createTable() {
         let createTableString = """
- CREATE TABLE ID(Kind CHAR(20) , Name CHAR(20), IdFirstNum CHAR(20) , IdLastNum CHAR(20), EnrollDate Char(30), imagePath Char(255) PRIMARY KEY NOT NULL , valid INTEGER);
+ CREATE TABLE ID(Kind CHAR(20) , Name CHAR(20), IdFirstNum CHAR(20) , IdLastNum CHAR(20), EnrollDate Char(40), imagePath Char(255) PRIMARY KEY NOT NULL , valid INTEGER);
  """
         var createTableStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK {
