@@ -151,8 +151,8 @@ class MyTableViewController: UITableViewController{
         tableView.dataSource = self
         tableView.delegate = self
         
-        
         dataLoad()
+        self.tableView!.tableFooterView = UIView()
         //print(idList)
         /*
         //data insert
@@ -206,12 +206,11 @@ class MyTableViewController: UITableViewController{
         return idList.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let row = idList[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "idListCell") as! IDListCell
+        
         cell.idImageView.image = row.imageFilePath
-        
-
-        
         var kindString = row.kind.idKind_korString
         kindString = "분류 : \(kindString)"
         
