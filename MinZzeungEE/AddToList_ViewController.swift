@@ -334,10 +334,10 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
             self.textField_idLastNum.text = id.idLastNum
             self.textField_idFirsttNum.text = id.idFirstNum
             let s = id.enrollDate.split(separator: "-")
-            if(s.count >= 3){
-                self.firstLisenceNumber.text = String(s[0])
-                self.secondLisenceNumber.text = String(s[1])
-                self.thirdLisenceNumber.text = String(s[2])
+            if(s.count >= 4){
+                self.firstLisenceNumber.text = String(s[1])
+                self.secondLisenceNumber.text = String(s[2])
+                self.thirdLisenceNumber.text = String(s[3])
             }
             else{
                 viewChangeBySeg(isHide: true)
@@ -504,7 +504,7 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
             let uid = "\(self.textField_idFirsttNum.text!)-\(self.textField_idLastNum.text! )-\(getKindString(index: self.selectedSegment.selectedSegmentIndex))"
             var kindString = ""
             kindString = getKindString(index: selectedSegment.selectedSegmentIndex)
-            guard let newID = makeNewID(kind: kindString, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, enrollDate: "\(self.firstLisenceNumber.text!)-\(self.secondLisenceNumber.text!)-\(self.thirdLisenceNumber.text!)", img: self.idImage!, valid: false), let _ = segue.destination as? MyTableViewController else{
+            guard let newID = makeNewID(kind: kindString, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, enrollDate: "\(self.pickedNumber)-\(self.firstLisenceNumber.text!)-\(self.secondLisenceNumber.text!)-\(self.thirdLisenceNumber.text!)", img: self.idImage!, valid: false), let _ = segue.destination as? MyTableViewController else{
                 return
             }
             //modify list
@@ -522,7 +522,7 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
             //TODO : check equality with parsed text
             var kindString = ""
             kindString = getKindString(index: selectedSegment.selectedSegmentIndex)
-            guard let newID = makeNewID(kind: kindString, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, enrollDate: "\(self.firstLisenceNumber.text!)-\(self.secondLisenceNumber.text!)-\(self.thirdLisenceNumber.text!)", img: self.idImage!, valid: false), let _ = segue.destination as? MyTableViewController else{
+            guard let newID = makeNewID(kind: kindString, name: self.textField_name.text!, idFirst: self.textField_idFirsttNum.text!, idLast: self.textField_idLastNum.text!, enrollDate: "\(self.pickedNumber)-\(self.firstLisenceNumber.text!)-\(self.secondLisenceNumber.text!)-\(self.thirdLisenceNumber.text!)", img: self.idImage!, valid: false), let _ = segue.destination as? MyTableViewController else{
                 return
             }
             idList.append(newID)
