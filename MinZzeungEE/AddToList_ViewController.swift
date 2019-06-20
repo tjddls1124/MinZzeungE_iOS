@@ -27,6 +27,7 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var imageView_IDCard: UIImageView!
     @IBOutlet weak var firstLisenceNumber: UITextField!
     @IBOutlet weak var secondLisenceNumber: UITextField!
+    @IBOutlet weak var lawText: UITextView!
     
     @IBOutlet weak var locatinImage: UIImageView!
     @IBOutlet weak var secondEnrolllLabel: UILabel!
@@ -289,10 +290,10 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
         firstLisenceNumber.delegate = self as? UITextFieldDelegate
         secondLisenceNumber.delegate = self as? UITextFieldDelegate
         thirdLisenceNumber.delegate = self as? UITextFieldDelegate
+        lawText.delegate = self as? UITextViewDelegate
         locationPicker.delegate = self
         locationPicker.dataSource = self
-
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing)))
+         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing)))
 
 
         NotificationCenter.default.addObserver(self, selector:
@@ -656,6 +657,7 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
         firstLisenceNumber.resignFirstResponder()
         secondLisenceNumber.resignFirstResponder()
         thirdLisenceNumber.resignFirstResponder()
+        lawText.resignFirstResponder()
     }
     
     @IBOutlet weak var locationPicker: UIPickerView!

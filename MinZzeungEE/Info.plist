@@ -38,12 +38,12 @@
 	<string>The application will show you nearby stores supports this service</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Text scanning from a photo library</string>
-	<key>UIApplicationExitsOnSuspend</key>
-	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>Launch Screen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>UIApplicationExitsOnSuspend</key>
+	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
