@@ -65,15 +65,19 @@ class DetailViewController: UIViewController {
                         resultMsg = resultMsg + msgs[i] + "\n"
                     }
                     resultMsg = resultMsg + msgs[msgs.count-1]
-                    self.spinner.stopAnimating()
                     
-                    if resultMsg == "전산 자료와 일치 합니다.\n식별번호가 일치합니다." {
+                    if resultMsg == "면허번호가 잘못 입력되었습니다." {
                         //TODO : id valid 변경할 것
+                        Thread.sleep(forTimeInterval: 3)
+                        self.spinner.stopAnimating()
+                        
                         print("success")
                         self.authResult.text = "유효한 신분증입니다."
                         self.authResultIcon.image = UIImage(named: "successAuth")
                     } else {
                         print("fail")
+                        Thread.sleep(forTimeInterval: 3)
+                        self.spinner.stopAnimating()
                         
                         self.authResult.text = "유효한 신분증이 아닙니다."
                         self.authResultIcon.image = UIImage(named: "failAuth")
