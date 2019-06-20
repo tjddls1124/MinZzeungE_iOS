@@ -28,6 +28,7 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var firstLisenceNumber: UITextField!
     @IBOutlet weak var secondLisenceNumber: UITextField!
     
+    @IBOutlet weak var locatinImage: UIImageView!
     @IBOutlet weak var secondEnrolllLabel: UILabel!
     @IBOutlet weak var firstEnrollLabel: UILabel!
     @IBOutlet weak var thirdLisenceNumber: UITextField!
@@ -80,8 +81,8 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
         self.thirdLisenceNumber.isHidden = isHide
         self.firstEnrollLabel.isHidden = isHide
         self.secondEnrolllLabel.isHidden = isHide
-        self.locationName.isHidden = isHide
         self.locationPicker.isHidden = isHide
+        self.locatinImage.isHidden = isHide
     }
     
     
@@ -677,8 +678,6 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
         pickedNumber = 10 + row
         print(pickedNumber)
     }
-    
-    
 }
 
 extension AddToList_ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
