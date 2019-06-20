@@ -79,7 +79,7 @@ class DetailViewController: UIViewController {
         performSegue(withIdentifier: "authenSegue", sender: nil)
     }
     @IBOutlet weak var authResult: UILabel!
-    func convertIDtoParm(id : ID) -> Parameters?{
+    func convertIDtoParm(id : ID, num: Int) -> Parameters?{
         
         
          let str = id.enrollDate.split(separator: "-")
@@ -97,8 +97,7 @@ class DetailViewController: UIViewController {
             "regMonth": String(id.idFirstNum[2..<4]),
             "regDate": String(id.idFirstNum[4..<6]), // date should be 2-digit number
             "name": id.name,
-            "licenNo0_1": String(split[0]), // 2-digit
-            "licenNo0_2": String(split[1]),
+            "licenNo0": String(split[num]), // 2-digit
             "licenNo1": String(str[1]), // 2-digit
             "licenNo2": String(str[2]), // 6-digit
             "licenNo3": String(str[3]), // 2-digit
@@ -128,7 +127,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.spinner.startAnimating()
-        let parameters = convertIDtoParm(id: self.id!)
+        let parameters = convertIDtoParm(id: self.id!, num:0)
         /* To allow custom request bDetailViewControllerld add `App Transport Security Settings` option in info.plist */
         AF.request("http://www.efine.go.kr/licen/truth/licenTruth.do?subMenuLv=010100", method: .post, parameters: parameters, encoding: URLEncoding.httpBody)
             .responseString{ response in
