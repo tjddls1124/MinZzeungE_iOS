@@ -663,8 +663,8 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var locationPicker: UIPickerView!
     @IBOutlet weak var locationName: UITextField!
     
-    var locationData = ["없음", "서울(11)", "부산(12)", "경기(13)", "강원(14)", "충북(15)", "충남(16)", "전북(17)", "전남(18)", "경북(19)", "경남(20)", "제주(21)", "대구(22)", "인천(23)", "광주(24)", "대전(25)", "울산(26)"]
-    var pickedNumber:Int = 0
+    var locationData = ["없음", "서울", "부산", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주", "대구", "인천", "광주", "대전", "울산"]
+    var pickedNumber:String = ""
     var pickedIndex:Int = 0
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -677,7 +677,7 @@ class AddToList_ViewController: UITableViewController, UIPickerViewDelegate, UIP
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pickedIndex = row
-        pickedNumber = 10 + row
+        pickedNumber = locationData[row]
         print(pickedNumber)
     }
 }

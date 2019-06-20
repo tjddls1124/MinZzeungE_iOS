@@ -99,7 +99,7 @@ class DetailViewController: UIViewController {
             "licenNo2": String(str[2]), // 6-digit
             "licenNo3": String(str[3]), // 2-digit
             // above four numbers make up the full license number
-            "ghostNo": "AAAAAA" // code written under the picture; 6-length string
+            "ghostNo": "5747AP" // code written under the picture; 6-length string
         ]
         /*
         parameters["regYear"] =
