@@ -79,6 +79,9 @@ class DetailViewController: UIViewController {
         performSegue(withIdentifier: "authenSegue", sender: nil)
     }
     @IBOutlet weak var authResult: UILabel!
+    
+    var checkFlag: Bool = false
+    
     func convertIDtoParm(id : ID) -> Parameters?{
         
         
@@ -97,8 +100,8 @@ class DetailViewController: UIViewController {
             "regMonth": String(id.idFirstNum[2..<4]),
             "regDate": String(id.idFirstNum[4..<6]), // date should be 2-digit number
             "name": id.name,
-            "licenNo0_1": String(split[0]), // 2-digit
-            "licenNo0_2": String(split[1]),
+            "licenNo0-0": String(split[0]), // 2-digit
+            "licenNo0-1": String(split[1]), // 2-digit
             "licenNo1": String(str[1]), // 2-digit
             "licenNo2": String(str[2]), // 6-digit
             "licenNo3": String(str[3]), // 2-digit
@@ -149,21 +152,59 @@ class DetailViewController: UIViewController {
                     }
                     resultMsg = resultMsg + msgs[msgs.count-1]
                     
-                    if resultMsg == "면허번호가 잘못 입력되었습니다." {
+                    if (resultMsg == "전산 자료와 일치 합니다." || resultMsg == "전산 자료와 일치 합니다.\n식별번호가 일치합니다." || resultMsg == "전산 자료와 일치 합니다.\n식별번호가 일치하지 않니다.") {
                         //TODO : id valid 변경할 것
+                        self.checkFlag = true
+                        
                         Thread.sleep(forTimeInterval: 3)
                         self.spinner.stopAnimating()
-                        
+                    
                         print("success")
                         self.authResult.text = "유효한 신분증입니다."
                         self.authResultIcon.image = UIImage(named: "successAuth")
                     } else {
-                        print("fail")
-                        Thread.sleep(forTimeInterval: 3)
-                        self.spinner.stopAnimating()
-                        
-                        self.authResult.text = "유효한 신분증이 아닙니다."
-                        self.authResultIcon.image = UIImage(named: "failAuth")
+                        // one more
+                        AF.request("http://www.efine.go.kr/licen/truth/licenTruth.do?subMenuLv=010100", method: .post, parameters: parameters, encoding: URLEncoding.httpBody)
+                            .responseString{ response in
+                                // Parse only the result of verification part from the response
+                                do {
+                                    let doc = try HTML(html: response.result.get(), encoding: .utf8)
+                                    let elements = doc.css("#licen-truth").first!.css("tr td b")
+                                    var msgs: Array<String> = []
+                                    var resultMsg: String = ""
+                                    self.authResult.numberOfLines = 0
+                                    for msg in elements {
+                                        if let msgNode = msg.css("font").first {
+                                            msgs.append(msgNode.text!)
+                                        }
+                                    }
+                                    for i in 0 ..< msgs.count - 1 {
+                                        resultMsg = resultMsg + msgs[i] + "\n"
+                                    }
+                                    resultMsg = resultMsg + msgs[msgs.count-1]
+                                    
+                                    if (resultMsg == "전산 자료와 일치 합니다." || resultMsg == "전산 자료와 일치 합니다.\n식별번호가 일치합니다." || resultMsg == "전산 자료와 일치 합니다.\n식별번호가 일치하지 않니다.") {
+                                        //TODO : id valid 변경할 것
+                                        print("success")
+                                        self.checkFlag = true
+                                        
+                                        Thread.sleep(forTimeInterval: 3)
+                                        self.spinner.stopAnimating()
+                                        
+                                        self.authResult.text = "유효한 신분증입니다."
+                                        self.authResultIcon.image = UIImage(named: "successAuth")
+                                    } else {
+                                        print("fail")
+                                        Thread.sleep(forTimeInterval: 3)
+                                        self.spinner.stopAnimating()
+                                    
+                                        self.authResult.text = "유효한 신분증이 아닙니다."
+                                        self.authResultIcon.image = UIImage(named: "failAuth")
+                                    }
+                                } catch {
+                                    
+                                }
+                        }
                     }
                     
                 } catch {
@@ -189,3 +230,38 @@ class DetailViewController: UIViewController {
     */
 
 }
+
+
+//
+//if (resultMsg == "전산 자료와 일치 합니다." || resultMsg == "전산 자료와 일치 합니다.\n식별번호가 일치합니다." || resultMsg == "전산 자료와 일치 합니다.\n식별번호가 일치하지 않니다.") {
+//    //TODO : id valid 변경할 것
+//    Thread.sleep(forTimeInterval: 3)
+//    self.spinner.stopAnimating()
+//
+//    print("success")
+//    self.authResult.text = "유효한 신분증입니다."
+//    self.authResultIcon.image = UIImage(named: "successAuth")
+//} else {
+//    print("fail")
+//    Thread.sleep(forTimeInterval: 3)
+//    self.spinner.stopAnimating()
+//
+//    self.authResult.text = "유효한 신분증이 아닙니다."
+//    self.authResultIcon.image = UIImage(named: "failAuth")
+//}
+
+//
+//[
+//    "checkPage": 2,
+//    "flag": "searchPage",
+//    "regYear": parameters!["reqYear"] as! String,
+//    "regMonth": parameters!["reqMonth"] as! String,
+//    "regDate": parameters!["reqDate"] as! String, // date should be 2-digit number
+//    "name": parameters!["name"] as! String,
+//    "licenNo0": parameters!["licenNo0-0"] as! String, // 2-digit
+//    "licenNo1": parameters!["licenNo1"] as! String, // 2-digit
+//    "licenNo2": parameters!["licenNo2"] as! String, // 6-digit
+//    "licenNo3": parameters!["licenNo3"] as! String, // 2-digit
+//    // above four numbers make up the full license number
+//    "ghostNo": parameters!["ghostNo"] as! String // code written under the picture; 6-length string
+//]
