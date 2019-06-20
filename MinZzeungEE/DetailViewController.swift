@@ -87,14 +87,18 @@ class DetailViewController: UIViewController {
             print("Error")
             return nil
         }
+        
+        let split = str[0].split(separator: ":")
         let parameters: Parameters = [
+            
             "checkPage": 2,
             "flag": "searchPage",
             "regYear": "19\(id.idFirstNum[0..<2])",
             "regMonth": String(id.idFirstNum[2..<4]),
             "regDate": String(id.idFirstNum[4..<6]), // date should be 2-digit number
             "name": id.name,
-            "licenNo0": String(str[0]), // 2-digit
+            "licenNo0_1": String(split[0]), // 2-digit
+            "licenNo0_2": String(split[1]),
             "licenNo1": String(str[1]), // 2-digit
             "licenNo2": String(str[2]), // 6-digit
             "licenNo3": String(str[3]), // 2-digit
