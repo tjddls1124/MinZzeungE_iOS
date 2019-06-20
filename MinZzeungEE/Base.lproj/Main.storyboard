@@ -531,7 +531,7 @@
             </objects>
             <point key="canvasLocation" x="4606" y="-103"/>
         </scene>
-        <!--Title-->
+        <!--비밀번호 설정-->
         <scene sceneID="CSS-PO-ito">
             <objects>
                 <viewController storyboardIdentifier="a" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IwC-ea-bKc" customClass="LockViewController" customModule="MinZzeungEE" customModuleProvider="target" sceneMemberID="viewController">
@@ -665,7 +665,7 @@
                         <viewLayoutGuide key="safeArea" id="6Pr-ak-V92"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="bBb-Hq-rwD">
+                    <navigationItem key="navigationItem" title="비밀번호 설정" id="bBb-Hq-rwD">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="rFG-i4-Yeo">
                             <connections>
                                 <action selector="finishSetPassword:" destination="IwC-ea-bKc" id="dtf-e2-5c3"/>

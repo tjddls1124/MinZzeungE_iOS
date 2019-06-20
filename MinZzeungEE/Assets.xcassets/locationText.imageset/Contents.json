@@ -6,16 +6,17 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
       "filename" : "스크린샷 2019-06-20 13.49.36.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
       "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "1x",
+      "unassigned" : true
     }
   ],
   "info" : {
