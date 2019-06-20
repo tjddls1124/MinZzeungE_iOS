@@ -127,9 +127,10 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         self.spinner.startAnimating()
-        let parameters = convertIDtoParm(id: self.id!, num:0)
+        let parameters0 = convertIDtoParm(id: self.id!, num:0)
+        let parameters1 = convertIDtoParm(id: self.id!, num:1)
         /* To allow custom request bDetailViewControllerld add `App Transport Security Settings` option in info.plist */
-        AF.request("http://www.efine.go.kr/licen/truth/licenTruth.do?subMenuLv=010100", method: .post, parameters: parameters, encoding: URLEncoding.httpBody)
+        AF.request("http://www.efine.go.kr/licen/truth/licenTruth.do?subMenuLv=010100", method: .post, parameters: parameters0, encoding: URLEncoding.httpBody)
             .responseString{ response in
                 // Parse only the result of verification part from the response
                 do {
@@ -150,7 +151,6 @@ class DetailViewController: UIViewController {
 
                     if (resultMsg == "전산 자료와 일치 합니다." || resultMsg == "전산 자료와 일치 합니다.\n식별번호가 일치합니다." || resultMsg == "전산 자료와 일치 합니다.\n식별번호가 일치하지 않니다.") {
                         //TODO : id valid 변경할 것
-                        self.checkFlag = true
 
                         Thread.sleep(forTimeInterval: 3)
                         self.spinner.stopAnimating()
@@ -160,7 +160,7 @@ class DetailViewController: UIViewController {
                         self.authResultIcon.image = UIImage(named: "successAuth")
                     } else {
                         // one more
-                        AF.request("http://www.efine.go.kr/licen/truth/licenTruth.do?subMenuLv=010100", method: .post, parameters: parameters, encoding: URLEncoding.httpBody)
+                        AF.request("http://www.efine.go.kr/licen/truth/licenTruth.do?subMenuLv=010100", method: .post, parameters: parameters1, encoding: URLEncoding.httpBody)
                             .responseString{ response in
                                 // Parse only the result of verification part from the response
                                 do {
@@ -179,10 +179,9 @@ class DetailViewController: UIViewController {
                                     }
                                     resultMsg = resultMsg + msgs[msgs.count-1]
 
-                                    if (resultMsg == "전산 자료와 일치 합니다." || resultMsg == "전산 자료와 일치 합니다.\n식별번호가 일치합니다." || resultMsg == "전산 자료와 일치 합니다.\n식별번호가 일치하지 않니다.") {
+                                    if (resultMsg == "전산 자료와 일치 합니다." || resultMsg == "전산 자료와 일치 합니다.\n식별번호가 일치합니다." || resultMsg == "전산 자료와 일치 합니다.\n식별번호가 일치하지 않습니다.") {
                                         //TODO : id valid 변경할 것
                                         print("success")
-                                        self.checkFlag = true
 
                                         Thread.sleep(forTimeInterval: 3)
                                         self.spinner.stopAnimating()
